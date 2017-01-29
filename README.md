@@ -284,7 +284,7 @@ See [these notes](https://wiki.gentoo.org/wiki/Binary_package_guide#Using_binary
 
 ## Acknowledgment
 
-I'd like to acknowledge NeddySeagoon's work getting Gentoo to run in 64-bit mode on the RPi3 (see particularly [url=https://forums.gentoo.org/viewtopic-t-1041352.html]this thread[/url], which was a really useful reference when putting this project together).
+I'd like to acknowledge NeddySeagoon's work getting Gentoo to run in 64-bit mode on the RPi3 (see particularly [this thread](https://forums.gentoo.org/viewtopic-t-1041352.html), which was a really useful reference when putting this project together).
 
 ## Feedback Welcome!
 
