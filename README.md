@@ -274,7 +274,7 @@ Should you setup `crossdev` on your PC in this manner, you can then take things 
 
 ## Image binhost
 
-I have made available a [Portage binhost](https://wiki.gentoo.org/wiki/Binary_package_guide) containing all the packages in this image, available at [http://isshoni.org/pi64](http://isshoni.org/pi64). You may find this useful (to save compilation time) if building your own 64-bit system from scratch. For most users, adding/uncommenting the following lines in `/etc/portage/make.conf` (on your Pi) will suffice to start using automatically the provided binary packages, where available (and building locally - as usual - where not):
+I have made available a [Portage binhost](https://wiki.gentoo.org/wiki/Binary_package_guide) containing all the packages in this image, available at [https://isshoni.org/pi64](https://isshoni.org/pi64). You may find this useful (to save compilation time) if building your own 64-bit system from scratch. For most users, adding/uncommenting the following lines in `/etc/portage/make.conf` (on your Pi) will suffice to start using automatically the provided binary packages, where available (and building locally - as usual - where not):
 ```sh
 PORTAGE_BINHOST="https://isshoni.org/pi64"
 FEATURES="${FEATURES} getbinpkg"
