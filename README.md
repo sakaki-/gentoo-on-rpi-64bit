@@ -20,7 +20,7 @@ The image may be downloaded from the link below (or via `wget`, per the instruct
 
 Variant | Version | Image | Digital Signature
 :--- | ---: | ---: | ---:
-Raspberry Pi 3 Model B 64-bit | v1.0.0 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz.asc)
+Raspberry Pi 3 Model B 64-bit | v1.0.1 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz.asc)
 
 Please read the instructions below before proceeding. Also please note that all images are provided 'as is' and without warranty. You should also be comfortable with the (at the moment, unavoidable) non-free licenses required by the firmware and boot software supplied on the image before proceeding: these may be reviewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/tree/master/licenses).
 
@@ -44,8 +44,8 @@ For simplicity, I am going to assume that you will be logging into the image (at
 
 On your Linux box, issue:
 ```console
-# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz
-# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz.asc
+# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz
+# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz.asc
 ```
 to fetch the compressed disk image file (~680MiB) and its signature.
 
