@@ -57,7 +57,7 @@ if [ -f "${SENTINEL1}" ]; then
 	# create second sentinel to mark that we have done this
 	touch "${SENTINEL2}"
 	if ! [ -f "${SENTINEL2}" ]; then
-		>&2 echo "Failed to create sentinel file '${SENTINEL2}' - exiting"
+		cecho "Failed to create sentinel file '${SENTINEL2}' - exiting"
 		exit 1
 	fi
 	cecho ""
@@ -66,7 +66,8 @@ if [ -f "${SENTINEL1}" ]; then
 	cecho "*******************************************************************"
 	cecho ""
 	# then reboot, but don't do it in the context of this, an init script
-	nohup bash -c 'sleep 3; reboot' &>/dev/null&
+	sync
+	nohup bash -c 'sleep 7; reboot' &>/dev/null&
 elif [ -f "${SENTINEL2}" ]; then
 	# second boot, partition has been resized (and kernel is aware); so now
 	# we just need to update the filesystem, which can be done online
@@ -94,8 +95,9 @@ elif [ -f "${SENTINEL2}" ]; then
 	cecho "*         Root filesytem resized OK - proceeding with boot!       *"
 	cecho "*******************************************************************"
 	cecho ""
-	# start graphical login
-	nohup bash -c 'sleep 1; rc-update add xdm default; rc' &>/dev/null&
+	# start graphical login after a decent interval
+	sync
+	nohup bash -c 'sleep 7; rc-update add xdm default; rc' &>/dev/null&
 else
 	# no sentinel, just exit silently
 	:
