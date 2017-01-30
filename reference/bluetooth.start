@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Bluetooth is connected to /dev/ttyAMA0 so attach it and
+# load the firmware (from /etc/firmware)
+declare -i I
+for ((I=0;I<5;I++)); do
+	/usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+	# process is unreliable, so retry if not successful
+	if pgrep hciattach; then
+		break;
+	fi
+done
