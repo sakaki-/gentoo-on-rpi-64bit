@@ -166,7 +166,7 @@ Have fun! ^-^
 * ALSA sound on the system is operative and routed by default through the headphone jack on the Pi. If you connect a sound-capable HDMI monitor (or television) sound should automatically also play through that device (in parallel) - at the moment there is only one 'master' volume control available.
    > If you are connecting to a computer monitor _without_ sound support, you can safely comment out the `hdmi_drive=2` entry in `/boot/config.txt`, or even set `hdmi_drive=1`; doing so may give you [better display quality](https://github.com/NicoHood/NicoHood.github.io/wiki/Fix-blurry-HDMI-output-with-DVI-mode#user-content-raspberry-pi-fix).
 
-* The frequency governer is switched to `ondemand` (from the default, `powersave`), for better performance, as of version 1.0.1. This is done by the script `/etc/local.d/ondemand_freq_scaling.start`, which may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/ondemand_freq_scaling.start).
+* The frequency governor is switched to `ondemand` (from the default, `powersave`), for better performance, as of version 1.0.1. This is done by the script `/etc/local.d/ondemand_freq_scaling.start`, which may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/ondemand_freq_scaling.start).
 * `PermitRootLogin yes` has explicitly been set in `/etc/ssh/sshd_config`, and `sshd` is present in the `default` runlevel. This is for configuration convenience only - feel free to adopt a more restrictive configuration.
 * I haven't properly tested suspend to RAM or suspend to swap functionality yet.
 * As of version 1.0.1, all users in the `wheel` group (which includes `demouser`) have a passwordless sudo ability for all commands. Modify `/etc/sudoers` via `visudo` to change this, if desired (the relevant line is `%wheel ALL=(ALL) NOPASSWD: ALL`).
@@ -277,7 +277,7 @@ Should you setup `crossdev` on your PC in this manner, you can then take things 
 
 ## Image binhost
 
-I have made available a [Portage binhost](https://wiki.gentoo.org/wiki/Binary_package_guide) containing all the packages in this image, available at [https://isshoni.org/pi64](https://isshoni.org/pi64). You may find this useful (to save compilation time) if building your own 64-bit system from scratch. For most users, adding/uncommenting the following lines in `/etc/portage/make.conf` (on your Pi) will suffice to start using automatically the provided binary packages, where available (and building locally - as usual - where not):
+I have made available a [Portage binhost](https://wiki.gentoo.org/wiki/Binary_package_guide) containing all the packages in this image, at [https://isshoni.org/pi64](https://isshoni.org/pi64). You may find this useful (to save compilation time) if building your own 64-bit system from scratch. For most users, adding/uncommenting the following lines in `/etc/portage/make.conf` (on your Pi) will suffice to start using automatically the provided binary packages, where available (and building locally - as usual - where not):
 ```sh
 PORTAGE_BINHOST="https://isshoni.org/pi64"
 FEATURES="${FEATURES} getbinpkg"
