@@ -92,7 +92,7 @@ elif [ -f "${SENTINEL2}" ]; then
 	swapon -a
 	cecho ""
 	cecho "*******************************************************************"
-	cecho "*         Root filesytem resized OK - proceeding with boot!       *"
+	cecho "*         Root filesystem resized OK - proceeding with boot!       *"
 	cecho "*******************************************************************"
 	cecho ""
 	# start graphical login after a decent interval

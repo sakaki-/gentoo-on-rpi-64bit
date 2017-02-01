@@ -11,7 +11,7 @@
 # have the CPU frequency scaling governor set to "performance"
 # (sudo echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
 #
-# Benchmark results are saved to to text files (Dhry.txt etc.)
+# Benchmark results are saved to to text files (DhryA8.txt etc.)
 #
 # Copyright (c) 2017 sakaki <sakaki@deciban.com>
 # License: GPL 3.0+
