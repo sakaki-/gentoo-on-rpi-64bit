@@ -20,7 +20,7 @@ The image may be downloaded from the link below (or via `wget`, per the instruct
 
 Variant | Version | Image | Digital Signature
 :--- | ---: | ---: | ---:
-Raspberry Pi 3 Model B 64-bit | v1.0.0 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz.asc)
+Raspberry Pi 3 Model B 64-bit | v1.0.1 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz.asc)
 
 Please read the instructions below before proceeding. Also please note that all images are provided 'as is' and without warranty. You should also be comfortable with the (at the moment, unavoidable) non-free licenses required by the firmware and boot software supplied on the image before proceeding: these may be reviewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/tree/master/licenses).
 
@@ -44,8 +44,8 @@ For simplicity, I am going to assume that you will be logging into the image (at
 
 On your Linux box, issue:
 ```console
-# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz
-# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.0/genpi64.img.xz.asc
+# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz
+# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.1/genpi64.img.xz.asc
 ```
 to fetch the compressed disk image file (~680MiB) and its signature.
 
@@ -150,7 +150,7 @@ Have fun! ^-^
    > Note that getting WiFi to work on the RPi3 requires up-to-date firmware (installed in `/lib/firmware/brcm`): the appropriate files have been pre-installed on the image, and may also be downloaded directly [here](https://github.com/RPi-Distro/firmware-nonfree). In particular, `/lib/firmware/brcm/brcmfmac43430-sdio.bin` and `/lib/firmware/brcm/brcmfmac43430-sdio.txt` are required.
 
 * Bluetooth *is* operational on this image, but since, by default, the Raspberry Pi 3 [uses the hardware UART](http://www.briandorey.com/post/Raspberry-Pi-3-UART-Overlay-Workaround) / `ttyAMA0` to communicate with the Bluetooth adaptor, the standard serial console does not work and has been disabled on this image (see `/etc/inittab` and `/boot/cmdline.txt`). You can of course [change this behaviour](https://www.raspberrypi.org/forums/viewtopic.php?t=138120) if access to the hardware serial port is important to you.
-   > Bluetooth on the RPi3 also requires a custom firmware upload. This is carried out by a boot-time script (in `/etc/local.d/bluetooth.start`), which uses the `hciattach` utility to upload a firmware blob from `/etc/firmware/BCM43430A1.hcd` (sic). The firmware is pre-installed on the image, and may also be downloaded directly [here](https://aur.archlinux.org/pi-bluetooth.git).
+   > Bluetooth on the RPi3 also requires a custom firmware upload. This is carried out by a boot-time script (in `/etc/local.d/bluetooth.start`, visible [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/bluetooth.start)), which uses the `hciattach` utility to upload a firmware blob from `/etc/firmware/BCM43430A1.hcd` (sic). The firmware is pre-installed on the image, and may also be downloaded directly [here](https://aur.archlinux.org/pi-bluetooth.git).
 
 * The Pi3 uses the first (`vfat`) partition of the microSD card (`/dev/mmcblk0p1`) for booting. The various (closed-source) firmware files pre-installed there may be separately downloaded [here](https://github.com/raspberrypi/firmware.git). Once booted, this first partition will be mounted at `/boot`, and you may wish to check or modify the contents of the files `/boot/cmdline.txt` and `/boot/config.txt`.
 
@@ -166,7 +166,10 @@ Have fun! ^-^
 * ALSA sound on the system is operative and routed by default through the headphone jack on the Pi. If you connect a sound-capable HDMI monitor (or television) sound should automatically also play through that device (in parallel) - at the moment there is only one 'master' volume control available.
    > If you are connecting to a computer monitor _without_ sound support, you can safely comment out the `hdmi_drive=2` entry in `/boot/config.txt`, or even set `hdmi_drive=1`; doing so may give you [better display quality](https://github.com/NicoHood/NicoHood.github.io/wiki/Fix-blurry-HDMI-output-with-DVI-mode#user-content-raspberry-pi-fix).
 
+* The frequency governor is switched to `ondemand` (from the default, `powersave`), for better performance, as of version 1.0.1. This is done by the script `/etc/local.d/ondemand_freq_scaling.start`, which may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/ondemand_freq_scaling.start).
+* `PermitRootLogin yes` has explicitly been set in `/etc/ssh/sshd_config`, and `sshd` is present in the `default` runlevel. This is for configuration convenience only - feel free to adopt a more restrictive configuration.
 * I haven't properly tested suspend to RAM or suspend to swap functionality yet.
+* As of version 1.0.1, all users in the `wheel` group (which includes `demouser`) have a passwordless sudo ability for all commands. Modify `/etc/sudoers` via `visudo` to change this, if desired (the relevant line is `%wheel ALL=(ALL) NOPASSWD: ALL`).
 * As mentioned [above](#morespace), by default on first boot the image will attempt to automatically expand the root (second) partition to fill all remaining free space on the microSD card. If, for some reason, you elected _not_ to do this (and so deleted the sentinel file `autoexpand_root_partition`), you can easily expand the size of the second (root) partition manually, so that you have more free space to work in, using the tools (`fdisk` and `resize2fs`). See [these instructions](http://geekpeek.net/resize-filesystem-fdisk-resize2fs/), for example. I **strongly** recommend you do expand the root partition (whether using the default, first-boot mechanism or manually) if you are intending to perform large package (or kernel) builds on your Pi (it isn't necessary just to play around with the image of course).
 
 ### <a name="kernelbuild"></a>Recompiling the Kernel (Optional)
@@ -274,7 +277,7 @@ Should you setup `crossdev` on your PC in this manner, you can then take things 
 
 ## Image binhost
 
-I have made available a [Portage binhost](https://wiki.gentoo.org/wiki/Binary_package_guide) containing all the packages in this image, available at [https://isshoni.org/pi64](https://isshoni.org/pi64). You may find this useful (to save compilation time) if building your own 64-bit system from scratch. For most users, adding/uncommenting the following lines in `/etc/portage/make.conf` (on your Pi) will suffice to start using automatically the provided binary packages, where available (and building locally - as usual - where not):
+I have made available a [Portage binhost](https://wiki.gentoo.org/wiki/Binary_package_guide) containing all the packages in this image, at [https://isshoni.org/pi64](https://isshoni.org/pi64). You may find this useful (to save compilation time) if building your own 64-bit system from scratch. For most users, adding/uncommenting the following lines in `/etc/portage/make.conf` (on your Pi) will suffice to start using automatically the provided binary packages, where available (and building locally - as usual - where not):
 ```sh
 PORTAGE_BINHOST="https://isshoni.org/pi64"
 FEATURES="${FEATURES} getbinpkg"
