@@ -7,9 +7,16 @@
 #
 # Can be run as regular, non-root user
 # You should probably run this on a text console, and ensure that
-# there is no desktop running (sudo service xdm stop), and that you
+# there is no desktop running ("sudo service xdm stop" on Gentoo; Raspbian
+# users may find it easiest to use:
+# "sudo systemctl set-default multi-user.target; sudo reboot"), and that you
 # have the CPU frequency scaling governor set to "performance"
 # (sudo echo "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+#
+# When done, restore the default governor and desktop
+# ("sudo /etc/local.d/ondemand_freq_scaling.start; sudo service xdm start"
+# on Gentoo; Raspbian users may find it easiest to use:
+# "sudo systemctl set-default graphical.target; sudo reboot")
 #
 # Benchmark results are saved to to text files (DhryA8.txt etc.)
 #
