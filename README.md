@@ -87,6 +87,8 @@ The whole process (from first power on to graphical desktop) should take less th
 
 > The initial **root** password on the image is **raspberrypi64**. The password for **demouser** is also **raspberrypi64** (you may need this if e.g. the screen lock comes on). The screensaver for `demouser` has been disabled by default on the image.
 
+> NB - if you have connected a **computer monitor** (not an HTMI TV) to your PI, and the output appears **flickering or distorted**, you should comment out the line `hdmi_drive=2` in the file `config.txt`, located in the microSD-card's first partition (this partition is formatted `FAT` so you should be able to edit it on any PC; alternatively, once running Gentoo, it is available at `/boot/config.txt`). Then try booting again. For an explanation, please see [these notes](https://www.raspberrypi.org/documentation/configuration/config-txt.md).
+
 ## Using Gentoo
 
 The supplied image contains a fully-configured `~arm64` Gentoo system (*not* simply a [minimal install](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Media#Minimal_installation_CD) or [stage 3](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Media#What_are_stages_then.3F)), with a complete Portage tree already downloaded, so you can immediately perform `emerge` operations etc. Be aware that, as shipped, it uses **UK locale settings, keyboard mapping and timezone**; however, these are easily changed if desired. See the Gentoo Handbook ([here](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Timezone) and [here](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/System#Init_and_boot_configuration)) for details.
