@@ -14,6 +14,9 @@
 # run, it is replaced with the file "autoexpand_root_filesystem" (and on
 # second run, this latter sentinel file is deleted).
 #
+# On first run, the root and demouser password will also be set, to
+# "raspberrypi64"
+#
 # Copyright (c) 2017 sakaki <sakaki@deciban.com>
 # License: GPL 3.0+
 # NO WARRANTY
@@ -29,6 +32,7 @@ ROOTDRIVE="/dev/mmcblk0"
 ROOTPART="${ROOTDRIVE}p2"
 SENTINEL1="/boot/autoexpand_root_partition"
 SENTINEL2="/boot/autoexpand_root_filesystem"
+DEFAULTPW="raspberrypi64"
 
 if [ -f "${SENTINEL1}" ]; then
 	# first boot, need to resize /dev/mmcblk0p2 (root) to fill disk
@@ -60,6 +64,10 @@ if [ -f "${SENTINEL1}" ]; then
 		cecho "Failed to create sentinel file '${SENTINEL2}' - exiting"
 		exit 1
 	fi
+	# now, change passwords
+	cecho "Changing root and demouser passwords, to '${DEFAULTPW}'"
+	chpasswd <<<"root:${DEFAULTPW}"
+	chpasswd <<<"demouser:${DEFAULTPW}"
 	cecho ""
 	cecho "*******************************************************************"
 	cecho "*  Resize completed - rebooting now (this will only happen once)  *"
@@ -78,7 +86,7 @@ elif [ -f "${SENTINEL2}" ]; then
 	cecho ""
 	rm -f "${SENTINEL2}"
 	if [ -f "${SENTINEL2}" ]; then
-		cecho "Failed to delete sentinel file '${SENTINEL1}' - exiting"
+		cecho "Failed to delete sentinel file '${SENTINEL2}' - exiting"
 		exit 1
 	fi
 	# turn off swapfiles, for safety
@@ -92,7 +100,7 @@ elif [ -f "${SENTINEL2}" ]; then
 	swapon -a
 	cecho ""
 	cecho "*******************************************************************"
-	cecho "*         Root filesystem resized OK - proceeding with boot!       *"
+	cecho "*        Root filesystem resized OK - proceeding with boot!       *"
 	cecho "*******************************************************************"
 	cecho ""
 	# start graphical login after a decent interval
