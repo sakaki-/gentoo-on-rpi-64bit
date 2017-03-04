@@ -85,7 +85,7 @@ You should get the RPi3's standard 'rainbow square' on-screen for about 10 secon
 
 The whole process (from first power on to graphical desktop) should take less than two minutes or so (on subsequent reboots, the resizing process will not run, so it will be faster).
 
-> The initial **root** password on the image is **raspberrypi64**. The password for **demouser** is also **raspberrypi64** (you may need this if e.g. the screen lock comes on; you can also do `sudo su --login` to get a root prompt at the terminal). The screensaver for `demouser` has been disabled by default on the image.
+> The initial **root** password on the image is **raspberrypi64**. The password for **demouser** is also **raspberrypi64** (you may need this if e.g. the screen lock comes on; you can also do `sudo su --login root` to get a root prompt at the terminal, without requiring a password). The screensaver for `demouser` has been disabled by default on the image.
 
 > NB - if you have connected a **computer monitor** (not an HTMI TV) to your PI, and the output appears **flickering or distorted**, you should comment out the line `hdmi_drive=2` in the file `config.txt`, located in the microSD-card's first partition (this partition is formatted `FAT` so you should be able to edit it on any PC; alternatively, once running Gentoo, it is available at `/boot/config.txt`). Then try booting again. For an explanation, please see [these notes](https://www.raspberrypi.org/documentation/configuration/config-txt.md).
 
