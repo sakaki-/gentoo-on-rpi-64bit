@@ -4,6 +4,7 @@ Bootable 64-bit Gentoo image for the Raspberry Pi 3, with Linux 4.10.0, OpenRC, 
 ## Description
 
 <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/Raspberry_Pi_3_B.jpg" alt="Raspberry Pi 3 B" width="250px" align="right"/>
+
 This project is a bootable, microSD card **64-bit Gentoo image for the [Raspberry Pi 3 model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)** single board computer (SBC).
 
 The image's userland contains a complete (OpenRC-based) Gentoo system (including a full Portage tree) - so you can run `emerge` operations immediately - and has been pre-populated with a reasonable package set (Xfce v4.12, Firefox v50.1.0, Claws Mail v3.14.1, VLC v2.2.4, AibWord v3.0.2 etc.) so that you can get productive *without* having to compile anything first (unless you wish to do so, of course ^-^).
