@@ -15,7 +15,7 @@ ADD https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.2/gen
 # rsync -aAXv /path/to/backup/location/* /mount/point/of/new/install/ --exclude={/mnt/*}
 ## add volumes for building packages , etc.
 VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /packages:rw, /:rw
-VOLUME /var/lib/entropy/client/packages:rw
+# VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo. 
 ## Add emulation Binaries for AMD64 host. 
 ### with arm64 always a bit , make that frustratingly alot of tinkering, 
 ## can add DEBIAN BINFMT service , as it will add more transparent emulation. 
@@ -23,6 +23,10 @@ ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.8.1/x86_6
 ADD https://github.com/mickael-guene/umeq/releases/download/1.7.5/umeq-arm64 /usr/bin/umeq-arm64
 ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-x86_64 /usr/bin/proot-x86_64
 
+# Setup the rc_sys  # fix emulation then let this by.  
+#RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
+# By default, UTC system
+#RUN echo 'UTC' > /etc/timezone
 
 ## more than a number of ways to skin this cat. 
 # ENTRYPOINT ["./umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
