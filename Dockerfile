@@ -2,7 +2,7 @@ FROM scratch
 MAINTAINER sakaki & Necrose99
 ENV ARCH=arm64
 ### ADD Base Image for mnt Loop and load emulation etc. 
-https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x86_64 /busybox/busybox-x86_64
+ADD https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x86_64 /busybox/busybox-x86_64
 ### ADD Base Image
 # gentoo-on-rpi3-64bit
 ADD https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.2/genpi64.img.xz /
