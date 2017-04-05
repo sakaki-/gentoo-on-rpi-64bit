@@ -4,6 +4,13 @@ ENV ARCH=arm64
 ### ADD Base Image
 # gentoo-on-rpi3-64bit
 ADD https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.2/genpi64.img.xz /
+#/mnt/
+## At present its a DD image and not a tar-snapshot. 
+#run -it --rm --privileged -vlosetup -fP --show /mnt/genpi64.img  /dev/loop0
+#  run -it --rm --privileged -v mount -o loop,offset=$((137216*512))  /mnt/genpi64.img 
+#mount /dev/loop0p1 /mnt
+#mount /dev/loop0p2 /mnt
+# rsync -aAXv /path/to/backup/location/* /mount/point/of/new/install/ --exclude={/mnt/*}
 ## add volumes for building packages , etc.
 VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /packages:rw, /:rw
 VOLUME /var/lib/entropy/client/packages:rw
