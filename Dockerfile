@@ -6,6 +6,7 @@ ADD https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x8
 ### ADD Base Image
 # gentoo-on-rpi3-64bit
 ADD https://www.dropbox.com/s/0f1nzj7yze870d6/boot.tar.xz?dl=0   / 
+ADD https://www.dropbox.com/s/c8feto0h538wwdn/rootfs.tar.xz?dl=0 /
 # /boot volume , I extracted to /tmp/boot packed as /boot should dump to /boot/*
 # add root volume extracted from DD image > usb > root-fs.tar.xz 
 ADD https://www.dropbox.com/s/3760agnp0vvs99q/sakaki--gentoo-on-rpi3-64bit.sha3-512?dl=0
