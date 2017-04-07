@@ -11,7 +11,7 @@ ADD https://www.dropbox.com/s/0f1nzj7yze870d6/boot.tar.xz?dl=0   /
 ADD https://www.dropbox.com/s/3760agnp0vvs99q/sakaki--gentoo-on-rpi3-64bit.sha3-512?dl=0
 # ADD hashes. 
 # too DO loop mount images in future @ mnt boot root and @ > / rsync etc. as upsteam autogen's... 
-ADD https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.2/genpi64.img.xz /mnt
+# ADD https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.0.2/genpi64.img.xz /mnt
 #/mnt/
 ## At present its a DD image and not a tar-snapshot. 
 #run -it --rm --privileged -vlosetup -fP --show /mnt/genpi64.img  /dev/loop0
