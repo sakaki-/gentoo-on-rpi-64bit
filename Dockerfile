@@ -28,6 +28,8 @@ VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /package
 ## Add emulation Binaries for AMD64 host. 
 ### with arm64 always a bit , make that frustratingly alot of tinkering, 
 ## can add DEBIAN BINFMT service , as it will add more transparent emulation. 
+ADD https://github.com/necrose99/Arm64-Linux-prep/blob/master/binfmt-support_2.1.6-2_arm64.tar?raw=true /
+# /usr/sbin, update-binfmts < cat update-binfmts_amd update-binfmts_arm64 debian. 
 ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.8.1/x86_64_qemu-aarch64-static.tar.gz /usr/bin/qemu-aarch64-static
 ADD https://github.com/mickael-guene/umeq/releases/download/1.7.5/umeq-arm64 /usr/bin/umeq-arm64
 ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-x86_64 /usr/bin/proot-x86_64
