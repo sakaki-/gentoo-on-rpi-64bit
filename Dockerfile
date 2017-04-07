@@ -21,6 +21,8 @@ ADD https://www.dropbox.com/s/c8feto0h538wwdn/rootfs.tar.xz?dl=0 /
 #mount /dev/loop0p2 /mnt
 # rsync -aAXv /path/to/backup/location/* /mount/point/of/new/install/ --exclude={/mnt/*}
 ## add volumes for building packages , etc.
+ADD https://raw.githubusercontent.com/necrose99/Arm64-Linux-prep/master/prep/etc/resolv.conf_  /etc/resolv.conf
+# use google DNS for Resovler. 
 VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /packages:rw, /:rw
 # VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo. 
 ## Add emulation Binaries for AMD64 host. 
