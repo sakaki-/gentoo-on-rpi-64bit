@@ -41,8 +41,8 @@ ENTRYPOINT ["/usr/bin/umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
 
 
 # Setup the rc_sys  # fix emulation then let this by.  
-RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
+RUN /busybox/busyboxsed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 # By default, UTC system
-RUN echo 'UTC' > /etc/timezone
+RUN /busybox/busybox echo 'UTC' > /etc/timezone
 
 
