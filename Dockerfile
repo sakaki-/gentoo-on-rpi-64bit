@@ -34,11 +34,13 @@ ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.8.1/x86_6
 ADD https://github.com/mickael-guene/umeq/releases/download/1.7.5/umeq-arm64 /usr/bin/umeq-arm64
 ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-x86_64 /usr/bin/proot-x86_64
 
-# Setup the rc_sys  # fix emulation then let this by.  
-#RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
-# By default, UTC system
-#RUN echo 'UTC' > /etc/timezone
-
 ## more than a number of ways to skin this cat. 
 # ENTRYPOINT ["./umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
 # ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
+
+# Setup the rc_sys  # fix emulation then let this by.  
+RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
+# By default, UTC system
+RUN echo 'UTC' > /etc/timezone
+
+
