@@ -40,7 +40,7 @@ ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"
 #RUN /busybox/busybox ash  ./usr/sbin/update-binfmts
 # /usr/sbin, update-binfmts < cat update-binfmts_amd update-binfmts_arm64 debian. 
 #RUN /busybox/busybox ash  ./usr/sbin/update-binfmts_amd
-RUN /busybox/busybox ash  ./usr/sbin/update-binfmts_arm64
+RUN /usr/sbin/update-binfmts_arm64
 #ENTRYPOINT ["/usr/bin/umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
 
 
