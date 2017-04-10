@@ -35,9 +35,9 @@ ADD https://github.com/mickael-guene/umeq/releases/download/1.7.5/umeq-arm64 /us
 ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-x86_64 /usr/bin/proot-x86_64
 
 ## more than a number of ways to skin this cat. 
-RUN /busybox/busybox ash  ./usr/sbin/update-binfmts
+#RUN /busybox/busybox ash  ./usr/sbin/update-binfmts
 # /usr/sbin, update-binfmts < cat update-binfmts_amd update-binfmts_arm64 debian. 
-RUN /busybox/busybox ash  ./usr/sbin/update-binfmts_amd
+#RUN /busybox/busybox ash  ./usr/sbin/update-binfmts_amd
 RUN /busybox/busybox ash  ./usr/sbin/update-binfmts_arm64
 #ENTRYPOINT ["/usr/bin/umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
 ENV ARCH=arm64
