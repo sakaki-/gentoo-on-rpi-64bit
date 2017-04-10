@@ -36,8 +36,8 @@ ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-
 
 ## more than a number of ways to skin this cat. 
 RUN /usr/sbin/update-binfmts
-# ENTRYPOINT ["./umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
-ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
+ENTRYPOINT ["./umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
+#ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
 
 
 # Setup the rc_sys  # fix emulation then let this by.  
