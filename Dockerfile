@@ -5,8 +5,7 @@ MAINTAINER sakaki & Necrose99
 ADD https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x86_64 /busybox/busybox
 ### ADD Base Image
 # gentoo-on-rpi3-64bit
-ADD https://www.dropbox.com/s/0f1nzj7yze870d6/boot.tar.xz?dl=0   / 
-ADD https://www.dropbox.com/s/c8feto0h538wwdn/rootfs.tar.xz?dl=0 /
+ADD https://www.dropbox.com/s/jptnzaf1fgr2k5d/sakaki--gentoo-rpi3-ARM64bit.tar.gz?dl=0   / 
 # RUN /busybox/busybox mv -R /mnt/stick/* / fix tarball image
 # /boot volume , I extracted to /tmp/boot packed as /boot should dump to /boot/*
 # add root volume extracted from DD image > usb > root-fs.tar.xz 
