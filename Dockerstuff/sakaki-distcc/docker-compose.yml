@@ -1,0 +1,9 @@
+distcc:
+    container_name: distcc-server
+    image: sakaki-distcc
+    environment: 
+        - NETWORK=0.0.0.0/8
+        - JOBS=3
+    ports:
+        - 3632:3632
+    user: distccd
