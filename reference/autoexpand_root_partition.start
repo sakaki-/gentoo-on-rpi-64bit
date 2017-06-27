@@ -32,6 +32,7 @@ ROOTDRIVE="/dev/mmcblk0"
 ROOTPART="${ROOTDRIVE}p2"
 SENTINEL1="/boot/autoexpand_root_partition"
 SENTINEL2="/boot/autoexpand_root_filesystem"
+SENTINEL3="/boot/autoexpand_root_none"
 DEFAULTPW="raspberrypi64"
 
 if [ -f "${SENTINEL1}" ]; then
@@ -101,6 +102,32 @@ elif [ -f "${SENTINEL2}" ]; then
 	cecho ""
 	cecho "*******************************************************************"
 	cecho "*        Root filesystem resized OK - proceeding with boot!       *"
+	cecho "*******************************************************************"
+	cecho ""
+	# start graphical login after a decent interval
+	sync
+	nohup bash -c 'sleep 7; rc-update add xdm default; rc' &>/dev/null&
+elif [ -f "${SENTINEL3}" ]; then
+	# First boot, with no resizing requested.
+	# we just need to update the passwords and logon
+	rm -f "${SENTINEL3}"
+	if [ -f "${SENTINEL3}" ]; then
+		cecho "Failed to delete sentinel file '${SENTINEL3}' - exiting"
+		exit 1
+	fi
+	# turn off swapfiles, for safety
+	swapoff -a
+	# sync filesystems before we begin, to minimize any damage if things
+	# should go wrong
+	sync
+	# Change passwords
+	cecho "Changing root and demouser passwords, to '${DEFAULTPW}'"
+	chpasswd <<<"root:${DEFAULTPW}"
+	chpasswd <<<"demouser:${DEFAULTPW}"
+	swapon -a
+	cecho ""
+	cecho "*******************************************************************"
+	cecho "*        Changed passwords - proceeding with boot!                *"
 	cecho "*******************************************************************"
 	cecho ""
 	# start graphical login after a decent interval
