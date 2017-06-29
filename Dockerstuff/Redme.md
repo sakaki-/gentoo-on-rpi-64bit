@@ -30,7 +30,7 @@ https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
 <https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit/packages-rpi3-arm64>
 
 **\@Necrose99’s mini repo… , if you have dropbox and 16 gigs+ it would be wise
-to just take the whole thing**
+to just take the whole thing** [packages](https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=Packages.txt) note may change over time as I upload more or get a WEB Mirror .org to do propper mirroring.
 
 **WARRRRRRRRRRNINGGGGGG F’ONT USE SYSTEMD or Kill EUDEV , from repo above, less
 you get system-D fully integrated , you’ll BIRCK the INIT… and
@@ -42,6 +42,7 @@ however this is why i also made a docker , as its like a CHROOT , mount packages
 
 packages out to host kill docker poof gone , refire docker image wala reset. if
 you poor gasoline onto the image and burn , quit tada ITS back...
+if you got good builds , no problemo its back to pristine after reset. 
 
 DOCKER is Ephemeral so read up on **VOL VOLUME ** tage and or exposing a dir via nfs or sshfs to push/pull packages. 
 
