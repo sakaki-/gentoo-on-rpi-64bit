@@ -38,8 +38,12 @@ however this is why i also made a docker , as its like a CHROOT , mount packages
 
 packages out to host kill docker poof gone , refire docker image wala reset. if
 you poor gasoline onto the image and burn , quit tada ITS back...
+
 DOCKER is Ephemeral so read up on **VOL VOLUME ** tage and or exposing a dir via nfs or sshfs to push/pull packages. 
-though it will cache to disk it will rest , like a RAM drive , so for making a prisitne chroot build enviorment, DEVS love and swear by it.  if you have an APT , and dont have room for shiny servers QUAY.io and letting it cloud build is handy... 
+
+though it will cache to disk it will rest , like a RAM drive ,
+so for making a prisitne chroot build enviorment, DEVS love and swear by it.  
+if you have an APT,,,  , and dont have room for shiny servers QUAY.io and letting it cloud build is handy... and a good buddy. 
 ----------------------------------------------
 
 
