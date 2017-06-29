@@ -1,4 +1,25 @@
-**For Full Documentation SEE**
+[![Docker Repository on Quay](https://quay.io/repository/necrose99/gentoo-on-rpi3-64bit/status "Docker Repository on Quay")](https://quay.io/repository/necrose99/gentoo-on-rpi3-64bit)
+https://quay.io/repository/necrose99/gentoo-on-rpi3-64bit
+
+https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
+
+**For Full Documentation SEE** https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/README.md for the Image. 
+
+\#\#\# TO DO FIX THE F'ing QEMU.... and BINFMT ala debian source, or https://gpo.zugaina.org/app-emulation/qemu-arm-wrappers
+https://gpo.zugaina.org/app-emulation/qemu-charm
+https://gpo.zugaina.org/app-emulation/qemu-user
+https://gpo.zugaina.org   app-emulation/qemu-initscript or app-emulation/qemu-init-script for guest. in this ie the SAKAKI-RPI3 container. 
+services for AMD-64 so you can use as a re-windable CHROOT for PYPY/PYPY3 GHC or
+other PIG Packages some will compile spkie the ram needs then die... PYPY wants
+2 gigs+ (might have to format usb to swap....\@ 16ish gigs)
+https://quay.io/repository/necrose99/gentoo-on-rpi3-64bit
+
+https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
+
+next rub is the gentoo emulation. however the docker container builds just toook
+a crap ton of time to upload a FS dump to dropbox and yank into quay.io.
+
+https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
 
 \@ <https://github.com/sakaki-/gentoo-on-rpi3-64bit>
 
@@ -9,11 +30,18 @@ to just take the whole thing**
 
 **WARRRRRRRRRRNINGGGGGG F’ONT USE SYSTEMD or Kill EUDEV , from repo above, less
 you get system-D fully integrated , you’ll BIRCK the INIT… and
-presto-Reformato….** however this is why i also made a docker , as its like a CHROOT , mount packages volume... give it an IP and ssh...
-packages out to host kill docker poof gone , refire docker image wala reset. 
+presto-Reformato…. (I’ll have to Backup, and reload BINS folders etc but no
+biggy… made a recent enough backup. )**
 
-**(I’ll have to Backup, and reload BINS folders etc but no biggy… made a recent
-enough backup. )**
+---------------------------------------------------------------------
+however this is why i also made a docker , as its like a CHROOT , mount packages volume... give it an IP and ssh...
+
+packages out to host kill docker poof gone , refire docker image wala reset. if
+you poor gasoline onto the image and burn , quit tada ITS back...
+DOCKER is Ephemeral so read up on **VOL VOLUME ** tage and or exposing a dir via nfs or sshfs to push/pull packages. 
+though it will cache to disk it will rest , like a RAM drive , so for making a prisitne chroot build enviorment, DEVS love and swear by it.  if you have an APT , and dont have room for shiny servers QUAY.io and letting it cloud build is handy... 
+----------------------------------------------
+
 
 **( Get a stage 3 unpack to /test-arm64 , kill its INIT… and build if you want
 system-D for latter’s… and or DBUS… can copy packages into from …../packages dir
@@ -39,16 +67,70 @@ compatible. )
 GitHub pushes. dev-ops is like the new Magic... rocket Sci… in IT... the
 Resin.io , you can run the **SAKAKI Docker Image**… and **DistCC on Docker
 slaves, or Parallel emerges with cluster software… and send you builder pi/s
-commands to emerge goddies..**
+commands to emerge goddies.. And or any cluster software, to spawn emerge..**
 
-And or any cluster software, to spawn emerge..
+###### **Note I'm A Docker Enthusiast with some Experience but not as much as I really need.**
 
-**https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=pi-back.sh**
+"From USERNAME/conatiner name" can use the SAKAKI RPI 3 tarball dump to create a
+container. FROM SCRATCH or use the template for thyn own.
 
-Useful in Dumping The PI; As to make a Docker, I wanted the full FS root in a
-tarb-ball snapshot.
+ADD mystuff.tgz /scripts
 
-*(‘Tis slow as Death, so I’d Cron-task it to run overnight)*
+RUN ./scripts/myscripts
+
+**\#\#HOWEVER**
+
+![](https://s-media-cache-ak0.pinimg.com/originals/4a/79/9c/4a799cb0646ec8963ad4399b99defd1a.jpg)
+
+**RESISTANCE IS FUTILE**
+
+**ASSILIATE the CONTAINER, via FROM**
+
+**and fork IT. Into you own,**
+
+**ADD stuff ,**
+
+**RUN –privileged / RUN stuff, IE Emerge…**
+
+**Or abuse the templates… provided…**
+---------------------------------
+You can FROM Orignial image , add to it , fork add, new image add more, etc..
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wedding_cake_with_pillar_supports%2C_2009.jpg/250px-Wedding_cake_with_pillar_supports%2C_2009.jpg)
+Kinda like a wedding Cake or Rushian Dolls.
+![](https://www.therussianstore.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/n/d/nd02415a05.jpg)
+step 1, now fork , now do step 2.. etc.. 
+if someone makes a .. /Docker/stuff/QEMU-builder  FROM necrose99/gentoo-on-rpi3-64bit , 
+*** ...remind me to Amazon YOU Good Sir/M'amm  a flipping case of BEER... *** 
+as gentoo-arm64 has been powning me for more than a year .. time permitting , to fiddle with over a few hours to fix. 
+you can get proot static and UMEQ https://github.com/mickael-guene/umeq to fire in a local chroot. but not in docker... 
+https://github.com/multiarch/qemu-user-static (uberfat binaries?) also on the please if this works.... as is thier Busybox.. if i need native shell to fire emu & bash  ie /bb/bb-sh run-emu-start-arm64-bash.sh , Gentoo is troublesome with the arm64 emu...   
+
+**--------------**
+https://github.com/larsks/undocker  
+@Mulder of @Sabayon /bow.... (we're not worthy....)  use docker to build Sabayon Linux 
+RPI3 32 bit images Via QEMU and docker. also Sabayon uses undocker to pull yank spank into ISO's  https://github.com/sabayon
+some mayhap better examples , than m'yn own. 
+**mine are of the noobish quick and dirty**..  examples in this read.me... 
+
+**FROM DEBIAN-ARM64**
+**\#(has working QEMU) \#\# NEED TO GET reg-emu running, and not have too.**
+**ADD saki….tar-balll /rpi64-builder….**
+**ADD chroot-me.sh**
+**VOL /packages**
+**\#\# add a lazy package dir or expose via SSHFS see docker doc’s… etc…**
+**RUN mount –sbind … /packages /rpi64-builder/usr/portage/packages**
+**ADD build-lots.sh**
+**RUN build-lots.sh..** # emerge lots of stuff.... 
+
+temerimanal or Quay.io , dockerhub : **\@\@\@ eix-sync…..** 
+
+<https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=pi-back.sh>
+**needs a touch of work…**
+
+**Useful in Dumping The PI; As to make a Docker, I wanted the full FS root in a
+tarb-ball snapshot.**
+
+*(‘Tis slow as Death, so I’d Cron-task it to run overnight few hours)*
 
 [https://www.dropbox.com/s/nebngz1mybua2mt/sakaki--gentoo-rpi3-ARM64bit.tar.gz?dl=0](https://www.dropbox.com/s/nebngz1mybua2mt/sakaki--gentoo-rpi3-ARM64bit.tar.gz?dl=0%20)
 **8 gigs includes a few more packages..** Docker ETC on it , extra
