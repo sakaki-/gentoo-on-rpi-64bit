@@ -3,16 +3,19 @@ https://quay.io/repository/necrose99/gentoo-on-rpi3-64bit
 
 https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
 
-**For Full Documentation SEE** https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/README.md for the Image. 
+**For Full Documentation SEE**
+https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/README.md for the
+Image.
 
-\#\#\# TO DO FIX THE F'ing QEMU.... and BINFMT ala debian source, 
-or https://gpo.zugaina.org/app-emulation/qemu-arm-wrappers
+\#\#\# TO DO FIX THE F'ing QEMU.... and BINFMT ala debian source, or
+https://gpo.zugaina.org/app-emulation/qemu-arm-wrappers
 
 https://gpo.zugaina.org/app-emulation/qemu-charm
 
 https://gpo.zugaina.org/app-emulation/qemu-user
 
-https://gpo.zugaina.org   app-emulation/qemu-initscript or app-emulation/qemu-init-script for guest. in this ie the SAKAKI-RPI3 container. 
+https://gpo.zugaina.org app-emulation/qemu-initscript or
+app-emulation/qemu-init-script for guest. in this ie the SAKAKI-RPI3 container.
 services for AMD-64 so you can use as a re-windable CHROOT for PYPY/PYPY3 GHC or
 other PIG Packages some will compile spkie the ram needs then die... PYPY wants
 2 gigs+ (might have to format usb to swap....\@ 16ish gigs)
@@ -30,27 +33,21 @@ https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
 <https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit/packages-rpi3-arm64>
 
 **\@Necrose99’s mini repo… , if you have dropbox and 16 gigs+ it would be wise
-to just take the whole thing** [packages](https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=Packages.txt) note may change over time as I upload more or get a WEB Mirror .org to do propper mirroring.
+to just take the whole thing**
+[packages](https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=Packages.txt)
+note may change over time as I upload more or get a WEB Mirror .org to do
+propper mirroring.
 
 **WARRRRRRRRRRNINGGGGGG F’ONT USE SYSTEMD or Kill EUDEV , from repo above, less
 you get system-D fully integrated , you’ll BIRCK the INIT… and
 presto-Reformato…. (I’ll have to Backup, and reload BINS folders etc but no
 biggy… made a recent enough backup. )**
 
----------------------------------------------------------------------
-however this is why i also made a docker , as its like a CHROOT , mount packages volume... give it an IP and ssh...
-
-packages out to host kill docker poof gone , refire docker image wala reset. if
-you poor gasoline onto the image and burn , quit tada ITS back...
-if you got good builds , no problemo its back to pristine after reset. 
-
-DOCKER is Ephemeral so read up on **VOL VOLUME ** tage and or exposing a dir via nfs or sshfs to push/pull packages. 
-
-though it will cache to disk it will rest , like a RAM drive ,
-so for making a prisitne chroot build enviorment, DEVS love and swear by it.  
-if you have an APT,,,  , and dont have room for shiny servers QUAY.io and letting it cloud build is handy... and a good buddy. 
-----------------------------------------------
-
+| however this is why i also made a docker , as its like a CHROOT , mount packages volume... give it an IP and ssh...                                                                                                                                                       |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| packages out to host kill docker poof gone , refire docker image wala reset. if you poor gasoline onto the image and burn , quit tada ITS back... if you got good builds , no problemo its back to pristine after reset.                                                  |
+| DOCKER is Ephemeral so read up on **VOL VOLUME** tage and or exposing a dir via nfs or sshfs to push/pull packages.                                                                                                                                                       |
+| though it will cache to disk it will rest , like a RAM drive , so for making a prisitne chroot build enviorment, DEVS love and swear by it. if you have an APT,,, , and dont have room for shiny servers QUAY.io and letting it cloud build is handy... and a good buddy. |
 
 **( Get a stage 3 unpack to /test-arm64 , kill its INIT… and build if you want
 system-D for latter’s… and or DBUS… can copy packages into from …../packages dir
@@ -80,8 +77,8 @@ commands to emerge goddies.. And or any cluster software, to spawn emerge..**
 
 ###### **Note I'm A Docker Enthusiast with some Experience but not as much as I really need.**
 
-```From USERNAME/conatiner name" can use the SAKAKI RPI 3 tarball dump to create a
-container. FROM SCRATCH or use the template for thyn own.
+\`\`\`From USERNAME/conatiner name" can use the SAKAKI RPI 3 tarball dump to
+create a container. FROM SCRATCH or use the template for thyn own.
 
 ADD mystuff.tgz /scripts
 
@@ -89,65 +86,68 @@ RUN ./scripts/myscripts
 
 **\#\#HOWEVER**
 
-![](https://s-media-cache-ak0.pinimg.com/originals/4a/79/9c/4a799cb0646ec8963ad4399b99defd1a.jpg)
+| [./media/image1.jpg](./media/image1.jpg)                                                                                                     |
+|----------------------------------------------------------------------------------------------------------------------------------------------|
+| **RESISTANCE IS FUTILE ASSILIATE the CONTAINER,**  via FROM *and fork IT. Into you own,* ADD stuff , RUN –privileged / RUN stuff, IE Emerge… |
 
-**RESISTANCE IS FUTILE**
-
-**ASSILIATE the CONTAINER, via FROM**
-
-**and fork IT. Into you own,**
-
-**ADD stuff ,**
-
-**RUN –privileged / RUN stuff, IE Emerge…**```
-
-**Or abuse the templates… provided…**
+Or abuse the templates… provided…
 ---------------------------------
-You can FROM Orignial image , add to it , fork add, new image add more, etc..
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wedding_cake_with_pillar_supports%2C_2009.jpg/250px-Wedding_cake_with_pillar_supports%2C_2009.jpg)
-Kinda like a wedding Cake or Rushian Dolls.
-![](https://www.therussianstore.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/n/d/nd02415a05.jpg)
-step 1, now fork , now do step 2.. etc.. 
-if someone makes a .. /Docker/stuff/QEMU-builder  FROM necrose99/gentoo-on-rpi3-64bit , 
-*** ...remind me to Amazon YOU Good Sir/M'amm  a flipping case of BEER... *** 
-as gentoo-arm64 has been powning me for more than a year .. time permitting , to fiddle with over a few hours to fix. 
-you can get proot static and UMEQ https://github.com/mickael-guene/umeq to fire in a local chroot. but not in docker... 
-https://github.com/multiarch/qemu-user-static (uberfat binaries?) also on the please if this works.... as is thier Busybox.. if i need native shell to fire emu & bash  ie /bb/bb-sh run-emu-start-arm64-bash.sh , Gentoo is troublesome with the arm64 emu...   
+
+**You can FROM Orignial image, add to it , fork add, new image add more, etc..**
+
+| [./media/image2.vs](./media/image2.vs)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Kinda like a wedding Cake or Rushian Dolls**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [./media/image3.jpg](./media/image3.jpg) you can have Docker do lots of work as you minion.. for CI or not wanting to take you main box down… If a chroot fails its isolated from your box, Docker will just re-spawn… However if the chroot was so bad a fail , it could crash your server , corrupt you real Gentoo box .. and worse , UNLIKELY but possible.. , Docker *is like a surge protector* for really unstable packages… if they fail bad, the container will die , and reload… , next re-do your test case… For Security testing, I’m looking to milk it as a security Engineer to test, test, & test… for all the vulns… however I need more training with Docker etc.. |
+
+step 1, now fork , now do step 2.. etc.. if someone makes a ..
+/Docker/stuff/QEMU-builder
+
+FROM necrose99/gentoo-on-rpi3-64bit ,
+
+\*\*\* ...remind me to Amazon YOU Good Sir/M'amm a flipping case of BEER...
+
+\*\*\* as gentoo-arm64 has been powning me for more than a year .. time
+permitting , to fiddle with over a few hours to fix here or ther
+
+. you can get proot static and UMEQ https://github.com/mickael-guene/umeq to
+fire in a local chroot. but not in docker...
+
+https://github.com/multiarch/qemu-user-static (uberfat binaries?) also on the
+please if this works.... as is thier Busybox.. if i need native shell to fire
+emu & bash ie /bb/bb-sh run-emu-start-arm64-bash.sh , Gentoo is troublesome with
+the arm64 emu...
 
 **--------------**
-https://github.com/larsks/undocker  
-@Mulder of @Sabayon /bow.... (we're not worthy....)  use docker to build Sabayon Linux 
-RPI3 32 bit images Via QEMU and docker. also Sabayon uses undocker to pull yank spank into ISO's  https://github.com/sabayon
-some mayhap better examples , than m'yn own.  so drop by and learn away.. 
 
-**mine are of the noobish quick and dirty**..  examples in this read.me... 
+**https://github.com/larsks/undocker**
 
-FROM DEBIAN-ARM64**
+**\@Mulder** of **\@Sabayon** /bow.... (*we're not worthy....)* use docker to
+build Sabayon Linux
 
-**\#(has working QEMU) \#\# NEED TO GET reg-emu running, and not have too.**
+RPI3 32 bit images Via QEMU and docker. also Sabayon uses (*if memory serves me
+correct..).* undocker to pull yank spank into ISO's <https://github.com/sabayon>
+some mayhap better examples , than m'yn own. so drop by and learn away..
 
-**ADD saki….tar-balll /rpi64-builder….**
+**mine are of the noobish quick and dirty**.. Examples in this read.me... (*some
+Pseudocode…*)
 
-**ADD chroot-me.sh**
+| **FROM DEBIAN-ARM64**                                                        |
+|------------------------------------------------------------------------------|
+| **\#(has working QEMU) \#\# NEED TO GET reg-emu running, and not have too.** |
+| **ADD saki….tar-balll /rpi64-builder….**                                     |
+| **ADD chroot-me.sh**                                                         |
+| **VOL /packages**                                                            |
+| **\#\# add a lazy package dir or expose via SSHFS see docker doc’s… etc…**   |
+| **RUN mount –sbind … /packages /rpi64-builder/usr/portage/packages**         |
+| **ADD build-lots.sh**                                                        |
+| **RUN build-lots.sh.. \# emerge lots of stuff....**                          |
 
-**VOL /packages**
-
-**\#\# add a lazy package dir or expose via SSHFS see docker doc’s… etc…**
-
-**RUN mount –sbind … /packages /rpi64-builder/usr/portage/packages**
-
-**ADD build-lots.sh**
-
-**RUN build-lots.sh..** # emerge lots of stuff.... 
-
-
-```temerimanal or Quay.io , dockerhub : **\@\@\@ eix-sync…..** ```
+`‘’’temerimanal or Quay.io , dockerhub : **\@\@\@ eix-sync…..**’’’`
 
 <https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=pi-back.sh>
-**needs a touch of work…**
-
-**Useful in Dumping The PI; As to make a Docker, I wanted the full FS root in a
-tarb-ball snapshot.**
+**needs a touch of work…Useful in Dumping The PI; As to make a Docker, I wanted
+the full FS root in a tarb-ball snapshot.**
 
 *(‘Tis slow as Death, so I’d Cron-task it to run overnight few hours)*
 
@@ -172,4 +172,5 @@ miles… and a few mo. Of notice… to put you in the red… and “R.N” / COT
 Identical but for more cores. If you take the I-5 VS I-7 X64 Intel slant they
 are kissing cousins… so Many of SAKAKI’s Packages should have the Added bonus of
 running just fine. On the 3000 or 1000 dev-box.**
+
 
