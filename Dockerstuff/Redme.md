@@ -71,7 +71,7 @@ commands to emerge goddies.. And or any cluster software, to spawn emerge..**
 
 ###### **Note I'm A Docker Enthusiast with some Experience but not as much as I really need.**
 
-"From USERNAME/conatiner name" can use the SAKAKI RPI 3 tarball dump to create a
+```From USERNAME/conatiner name" can use the SAKAKI RPI 3 tarball dump to create a
 container. FROM SCRATCH or use the template for thyn own.
 
 ADD mystuff.tgz /scripts
@@ -90,7 +90,7 @@ RUN ./scripts/myscripts
 
 **ADD stuff ,**
 
-**RUN –privileged / RUN stuff, IE Emerge…**
+**RUN –privileged / RUN stuff, IE Emerge…**```
 
 **Or abuse the templates… provided…**
 ---------------------------------
@@ -109,20 +109,30 @@ https://github.com/multiarch/qemu-user-static (uberfat binaries?) also on the pl
 https://github.com/larsks/undocker  
 @Mulder of @Sabayon /bow.... (we're not worthy....)  use docker to build Sabayon Linux 
 RPI3 32 bit images Via QEMU and docker. also Sabayon uses undocker to pull yank spank into ISO's  https://github.com/sabayon
-some mayhap better examples , than m'yn own. 
+some mayhap better examples , than m'yn own.  so drop by and learn away.. 
+
 **mine are of the noobish quick and dirty**..  examples in this read.me... 
 
-**FROM DEBIAN-ARM64**
+FROM DEBIAN-ARM64**
+
 **\#(has working QEMU) \#\# NEED TO GET reg-emu running, and not have too.**
+
 **ADD saki….tar-balll /rpi64-builder….**
+
 **ADD chroot-me.sh**
+
 **VOL /packages**
+
 **\#\# add a lazy package dir or expose via SSHFS see docker doc’s… etc…**
+
 **RUN mount –sbind … /packages /rpi64-builder/usr/portage/packages**
+
 **ADD build-lots.sh**
+
 **RUN build-lots.sh..** # emerge lots of stuff.... 
 
-temerimanal or Quay.io , dockerhub : **\@\@\@ eix-sync…..** 
+
+```temerimanal or Quay.io , dockerhub : **\@\@\@ eix-sync…..** ```
 
 <https://www.dropbox.com/home/sakaki--gentoo-on-rpi3-64bit?preview=pi-back.sh>
 **needs a touch of work…**
