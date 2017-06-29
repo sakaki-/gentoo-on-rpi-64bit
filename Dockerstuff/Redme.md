@@ -5,9 +5,13 @@ https://hub.docker.com/r/necrose99/gentoo-on-rpi3-64bit/builds/
 
 **For Full Documentation SEE** https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/README.md for the Image. 
 
-\#\#\# TO DO FIX THE F'ing QEMU.... and BINFMT ala debian source, or https://gpo.zugaina.org/app-emulation/qemu-arm-wrappers
+\#\#\# TO DO FIX THE F'ing QEMU.... and BINFMT ala debian source, 
+or https://gpo.zugaina.org/app-emulation/qemu-arm-wrappers
+
 https://gpo.zugaina.org/app-emulation/qemu-charm
+
 https://gpo.zugaina.org/app-emulation/qemu-user
+
 https://gpo.zugaina.org   app-emulation/qemu-initscript or app-emulation/qemu-init-script for guest. in this ie the SAKAKI-RPI3 container. 
 services for AMD-64 so you can use as a re-windable CHROOT for PYPY/PYPY3 GHC or
 other PIG Packages some will compile spkie the ram needs then die... PYPY wants
