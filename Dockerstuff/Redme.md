@@ -86,7 +86,7 @@ RUN ./scripts/myscripts
 
 **\#\#HOWEVER**
 
-|  ![borgcube](https://vignette3.wikia.nocookie.net/scifi/images/7/76/Borg_cube.jpg/revision/latest?cb=20130523191156)                                                                                                     |
+|  <img src="https://vignette3.wikia.nocookie.net/scifi/images/7/76/Borg_cube.jpg/revision/latest?cb=20130523191156" width="48">                                                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 | **RESISTANCE IS FUTILE ASSILIATE the CONTAINER,**  via FROM *and fork IT. Into you own,* ADD stuff , RUN –privileged / RUN stuff, IE Emerge… Abuse someone elses container to **save you Endless Hours of work**... |
 
