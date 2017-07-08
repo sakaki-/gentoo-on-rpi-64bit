@@ -15,7 +15,10 @@
 # second run, this latter sentinel file is deleted).
 #
 # On first run, the root and demouser password will also be set, to
-# "raspberrypi64"
+# "raspberrypi64"; if you _only_ want to do this (and not extend the root
+# partition) then create an "autoexpand_root_none" sentinel file on /boot (in
+# place of "autoexpand_root_partition"). For avoidance of doubt, doing so
+# will still enable Xfce4, and start the demouser session.
 #
 # Copyright (c) 2017 sakaki <sakaki@deciban.com>
 # License: GPL 3.0+
@@ -115,16 +118,10 @@ elif [ -f "${SENTINEL3}" ]; then
 		cecho "Failed to delete sentinel file '${SENTINEL3}' - exiting"
 		exit 1
 	fi
-	# turn off swapfiles, for safety
-	swapoff -a
-	# sync filesystems before we begin, to minimize any damage if things
-	# should go wrong
-	sync
 	# Change passwords
 	cecho "Changing root and demouser passwords, to '${DEFAULTPW}'"
 	chpasswd <<<"root:${DEFAULTPW}"
 	chpasswd <<<"demouser:${DEFAULTPW}"
-	swapon -a
 	cecho ""
 	cecho "*******************************************************************"
 	cecho "*        Changed passwords - proceeding with boot!                *"
