@@ -13,7 +13,7 @@ The kernel and userland are both 64-bit (`arm64`/`aarch64`), and support for the
 
 Here's a screenshot:
 
-<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/demo-screenshot-small.jpg" alt="gentoo-on-rpi3-64bit in use (screenshot)" width="960px"/>
+<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/demo-screenshot-small-2.jpg" alt="gentoo-on-rpi3-64bit in use (screenshot)" width="960px"/>
 
 The image may be downloaded from the link below (or via `wget`, per the instructions which follow).
 
@@ -81,7 +81,7 @@ Next, insert the (Gentoo) microSD card you just wrote the image to into the Pi. 
 
 You should see the RPi3's standard 'rainbow square' on-screen for about 2 seconds, then the display will go blank for about 10 seconds, and then (once the graphics driver has loaded) a text console will appear, showing OpenRC starting up. On this first boot (unless you have renamed the sentinel file `autoexpand_root_partition` in the microSD card's first partition to `autoexpand_root_none`), the system will, after a further 10 seconds or so, _automatically resize_ the root partition to fill all remaining free space on the drive, and, having done this, reboot (to [allow the kernel to see](http://unix.stackexchange.com/questions/196435/is-it-possible-to-enlarge-the-partition-without-rebooting) the new partition table). You should then see the 'rainbow square' startup sequence once more, and then the system will resize its root filesystem, to fill the newly enlarged partition. Once this is done, it will launch a standard Xfce desktop (logged in automatically to the pre-created `demouser` account):
 
-<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/xfce-desktop-small.png" alt="Baseline Xfce desktop" width="960px"/>
+<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/xfce-desktop-small-2.png" alt="Baseline Xfce desktop" width="960px"/>
 
 The whole process (from first power on to graphical desktop) should take less than two minutes or so (on subsequent reboots, the resizing process will not run, so it will be faster).
 
