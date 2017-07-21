@@ -19,9 +19,9 @@ The image may be downloaded from the link below (or via `wget`, per the instruct
 
 Variant | Version | Image | Digital Signature
 :--- | ---: | ---: | ---:
-Raspberry Pi 3 Model B 64-bit | v1.1.0 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.0/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.0/genpi64.img.xz.asc)
+Raspberry Pi 3 Model B 64-bit | v1.1.1 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.1/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.1/genpi64.img.xz.asc)
 
-> The previous release versions are still available (together with a detailed changelog) [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases). If you have a significant amount of work invested in an older release of this image, I have also provided manual upgrade instructions (from 1.0.{0,1,2} &rarr; 1.1.0) [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases#upgrade).
+> The previous release versions are still available (together with a detailed changelog) [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases). If you have a significant amount of work invested in an older release of this image, I have also provided manual upgrade instructions (from 1.0.{0,1,2} &rarr; 1.1.1) [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases#upgrade).
 
 Please read the instructions below before proceeding. Also please note that all images (and binary packages) are provided 'as is' and without warranty. You should also be comfortable with the (at the moment, unavoidable) non-free licenses required by the firmware and boot software supplied on the image before proceeding: these may be reviewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/tree/master/licenses).
 
@@ -32,7 +32,7 @@ Please read the instructions below before proceeding. Also please note that all 
 ## Prerequisites
 
 To try this out, you will need:
-* A [microSD](https://en.wikipedia.org/wiki/Secure_Digital) card of _at least_ 8GB capacity (the image is 821MiB compressed, 7.31GiB == 7.85GB uncompressed, so should fit on any card marked as >= 8GB). If you intend to build large packages (or kernels) on your RPi3, a card of >=16GB is _strongly_ recommended (the root partition will [automatically be expanded](#morespace) to fill the available space on your microSD card, on first boot). Depending on the slots available on your PC, you may also need an adaptor to allow the microSD card to be plugged in (to write the image to it initially).
+* A [microSD](https://en.wikipedia.org/wiki/Secure_Digital) card of _at least_ 8GB capacity (the image is 824MiB compressed, 7.31GiB == 7.85GB uncompressed, so should fit on any card marked as >= 8GB). If you intend to build large packages (or kernels) on your RPi3, a card of >=16GB is _strongly_ recommended (the root partition will [automatically be expanded](#morespace) to fill the available space on your microSD card, on first boot). Depending on the slots available on your PC, you may also need an adaptor to allow the microSD card to be plugged in (to write the image to it initially).
    > I have found most SanDisk cards work fine; if you are having trouble, a good sanity check is to try writing the [standard Raspbian 32-bit image](https://www.raspberrypi.org/downloads/raspbian/) to your card, to verify that your Pi3 will boot with it, before proceeding.
 
 * A Raspberry Pi 3 Model B (obviously!). (The image is also usable for RPi3 boards in chassis such as the [Pi-Top](https://www.pi-top.com/product/pi-top), but you'll need to source additional components in such a case for battery control etc., see e.g. [here](https://github.com/rricharz/pi-top-install).)
@@ -46,10 +46,10 @@ A [decent power supply](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=
 
 On your Linux box, issue:
 ```console
-# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.0/genpi64.img.xz
-# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.0/genpi64.img.xz.asc
+# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.1/genpi64.img.xz
+# wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.1/genpi64.img.xz.asc
 ```
-to fetch the compressed disk image file (~821MiB) and its signature.
+to fetch the compressed disk image file (~824MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
@@ -98,7 +98,7 @@ The supplied image contains a fully-configured `~arm64` Gentoo system (*not* sim
 The `@world` set of packages (from `/var/lib/portage/world`) pre-installed on the image may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/world-packages) (note that the version numbers shown in this list are Gentoo ebuilds, but they generally map 1-to-1 onto upstream package versions).
 > The *full* package list for the image (which includes @system and dependencies) may also be viewed, [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/world-all-packages).
 
-The system on the image has been built via a minimal install system and stage 3 from Gentoo (`arm64`, available [here](http://distfiles.gentoo.org/releases/arm/autobuilds/current-stage3-arm64/)), but _all_ binaries (libraries and executables) have been rebuilt to target the Raspberry Pi 3 B's BCM2837 SoC specifically (the `/etc/portage/make.conf` file used on the image may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/make.conf), augmented by the [custom profile's](#profile) [`make.defaults`](https://github.com/sakaki-/rpi3-overlay/tree/master/profiles/targets/rpi3/make.defaults)). The CHOST on the image is `aarch64-unknown-linux-gnu` (per [these notes](https://wiki.gentoo.org/wiki/User:NeddySeagoon/Pi3#Getting_Started)). All packages have been brought up to date against the Gentoo tree as of 9 July 2017.
+The system on the image has been built via a minimal install system and stage 3 from Gentoo (`arm64`, available [here](http://distfiles.gentoo.org/releases/arm/autobuilds/current-stage3-arm64/)), but _all_ binaries (libraries and executables) have been rebuilt to target the Raspberry Pi 3 B's BCM2837 SoC specifically (the `/etc/portage/make.conf` file used on the image may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/make.conf), augmented by the [custom profile's](#profile) [`make.defaults`](https://github.com/sakaki-/rpi3-overlay/tree/master/profiles/targets/rpi3/make.defaults)). The CHOST on the image is `aarch64-unknown-linux-gnu` (per [these notes](https://wiki.gentoo.org/wiki/User:NeddySeagoon/Pi3#Getting_Started)). All packages have been brought up to date against the Gentoo tree as of 20 July 2017.
 
 > Note: the CFLAGS used for the image build is `-march=armv8-a+crc -mtune=cortex-a53 -O2 -pipe`. You can of course re-build selective components with more aggressive flags yourself, should you choose. As the SIMD FPU features are standard in ARMv8, there is no need for `-mfpu=neon mfloat-abi=hard` etc., as you would have had on e.g. the 32-bit ARMv7a architecture. Note that AArch64 NEON also has a full IEEE 754-compliant mode (including handling denormalized numbers etc.), there is also need for `-ffast-math` flag to fully exploit the FPU either (again, unlike earlier ARM systems). Please refer to the official [Programmer’s Guide for ARMv8-A](http://infocenter.arm.com/help/topic/com.arm.doc.den0024a/DEN0024A_v8_architecture_PG.pdf) for more details.
 
@@ -213,7 +213,7 @@ You don't need to read the following notes to use the image, but they may help y
   * Claws Mail has also been pre-installed on the image, if you want a lighter-weight, but still fully featured, mail client.
 
 * By default, the image uses the Pi's [VC4 GPU](https://wiki.gentoo.org/wiki/Raspberry_Pi_VC4) acceleration in X, which has reasonable support in the 4.10.y kernel and the supplied userspace (via `media-libs/mesa` etc.) Note however that this is still work in progress, so you may experience issues with certain applications. The image uses the mixed-mode [`vc4-fkms-v3d`](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=159853) overlay / driver (see `/boot/config.txt`). On my RPi3 at least, a `glxgears` score of ~1000fps can be obtained on an unloaded system  (~400fps on a loaded desktop) - in the same ballbark as the non-free Raspbian driver. Incidentally, in normal use the main load is the Xfce window manager's compositor - try turning it off to see (via <kbd>Applications</kbd>&rarr;<kbd>Settings</kbd>&rarr;<kbd>Window Manager Tweaks</kbd>, `Compositor` tab) . YMMV - if you experience problems with this setup (or find that e.g. your system is stuck on the 'rainbow square' at boot time after a kernel update), you can fall-back to the standard framebuffer mode by commenting out the `dtoverlay=vc4-fkms-v3d` line in `/boot/config.txt` (i.e., the file `config.txt` located in the microSD card's first partition).
-   > Both VLC and SMPlayer have been pre-installed on the image, and they will both make use of accelerated (Mesa/gl) playback. Because of incompatibilities and periodic crashes when using it, XVideo (xv) mode has been disabled in the X server (`/etc/X11/xorg.conf.d/50-disable-Xv.conf`); this doesn't really impinge on usability. I have found VLC to perform slightly better than SMPlayer, but YMMV.
+   > Both VLC and SMPlayer have been pre-installed on the image, and they will both make use of accelerated (Mesa/gl) playback. Because of incompatibilities and periodic crashes when using it, XVideo (xv) mode has been disabled in the X server (`/etc/X11/xorg.conf.d/50-disable-Xv.conf`); this doesn't really impinge on usability. I have found VLC to perform slightly better than SMPlayer, but YMMV. NB: **if you find playback too slow**, it is always worth **disabling the window manager's compositor** (see point immediately above) as a first step.
 
 * ALSA sound on the system is operative and routed by default through the headphone jack on the Pi. If you connect a sound-capable HDMI monitor (or television) sound should automatically also play through that device (in parallel) - at the moment there is only one 'master' volume control available.
 
@@ -429,7 +429,7 @@ The image is subscribed to the following ebuild repositories:
 * **[rpi3](https://github.com/sakaki-/rpi3-overlay)**: this provides ebuilds specific to the Raspberry Pi 3, or builds that have fallen off the main Gentoo tree but which are the last known reliable variants for `arm64`. It also provides the [custom profile](#profile) [`rpi3:default/linux/arm64/13.0/desktop/rpi3`](https://github.com/sakaki-/rpi3-overlay/tree/master/profiles/targets/rpi3). The image currently uses the following ebuilds from the `rpi3` overlay:
 
   * **dev-embedded/rpi3-64bit-meta**
-   This is the main `gentoo-on-rpi3-64bit` metapackage - it's version matches that of the image release (currently, 1.1.0). The features it pulls in (via other ebuilds) can be customized via the following USE flags (edit via `/etc/portage/package.use/rpi3-64bit-meta`):<a name="meta_use_flags"></a>
+   This is the main `gentoo-on-rpi3-64bit` metapackage - it's version matches that of the image release (currently, 1.1.1). The features it pulls in (via other ebuilds) can be customized via the following USE flags (edit via `/etc/portage/package.use/rpi3-64bit-meta`):<a name="meta_use_flags"></a>
    
      | USE flag | Default? | Effect |
      | -------- | --------:| ------:|
@@ -454,6 +454,8 @@ The image is subscribed to the following ebuild repositories:
     Provides a few simple init scripts (to autoexpand the root partition on first boot, etc.).
   * **sys-apps/rpi3-ondemand-cpufreq**
     Provides the `rpi3-ondemand` OpenRC `sysinit` service, which switches the RPi3 from its (`bcmrpi3_defconfig`) default `powersave` CPU frequency governor, to `ondemand`, for better performance.
+  * **x11-misc/rpi3-safecursor**
+    Provides the `rpi3-safecursor` OpenRC service, which will install a rule to force software cursor blitting (rather than the hardware default) if the user has not set `disable_overscan=1` in `config.txt`. Introduced to deal with issue #17.
   * **app-portage/rpi3-check-porthash**
     Provides a [`porthash`](https://github.com/sakaki-/porthash) signed hash check for the [isshoni.org](https://isshoni.org) rsync gentoo ebuild repository, implemented as a `repo.postsync.d` hook.
   * **sys-boot/rpi3-64bit-firmware** [upstream](https://github.com/raspberrypi/firmware)
