@@ -52,7 +52,7 @@ A [decent power supply](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=
 
 Choose either the regular (for a standard RPi3 board) or Pi-Top variant, then follow the appropriate instructions below ([regular](#regularimage) or [Pi-Top](#pitopimage)).
 
-> If you are using a Windows or Mac box, or prefer to use a GUI tool in Linux, I recommend you download your preferred image via your web browser using the [links](#downloadlinks) above, and then check out the free, open-source, cross-platform tool [Etcher](https://etcher.io) to write it to microSD card.
+> If you are using a Windows or Mac box, or prefer to use a GUI tool in Linux, I recommend you download your preferred image via your web browser using the [links](#downloadlinks) above, and then check out the free, open-source, cross-platform tool [Etcher](https://etcher.io) to write it to microSD card. Then, once you've done that, continue reading at ["Booting!"](#booting) below.
 
 ### <a id="regularimage"></a>Regular Image (`genpi64.img.xz`)
 
