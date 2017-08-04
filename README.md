@@ -6,7 +6,7 @@ Bootable 64-bit Gentoo image for the Raspberry Pi 3, with Linux 4.10.17, OpenRC,
 <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/Raspberry_Pi_3_B.jpg" alt="Raspberry Pi 3 B" width="250px" align="right"/>
 
 This project is a bootable, microSD card **64-bit Gentoo image for the [Raspberry Pi 3 model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)** single board computer (SBC).
-> A variant image for the [Pi-Top](https://pi-top.com/) (an RPi3-based DIY laptop) is now also provided.
+> A variant image for the [Pi-Top](https://pi-top.com/products/pi-top) (an RPi3-based DIY laptop) is now also provided.
 
 The image's userland contains a complete (OpenRC-based) Gentoo system (including a full Portage tree) - so you can run `emerge` operations immediately - and has been pre-populated with a reasonable package set (Xfce v4.12, LibreOffice v5.3.4.2, Firefox v53.0.3, Thunderbird v52.2.0, VLC v2.2.6, GIMP v2.9.4 etc.) so that you can get productive *without* having to compile anything first (unless you want to, of course ^-^).
 
@@ -23,7 +23,7 @@ The image may be downloaded from the link below (or via `wget`, per the instruct
 Raspberry Pi 3 Model B 64-bit | v1.1.2 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64.img.xz.asc)
 Pi-Top (an RPi3-based DIY Laptop) 64-bit | v1.1.2 | [genpi64pt.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64pt.img.xz) | [genpi64pt.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64pt.img.xz.asc)
 
-**NB:** most users will want the first ([genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64.img.xz)) image - the Pi-Top variant ([genpi64pt.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64pt.img.xz)) should *only* be used for those who want to run their RPi3 in a [Pi-Top](https://pi-top.com) chassis (as it contains platform-specific drivers to communicate with the Pi-Top's onboard battery, hub, speakers etc.)
+**NB:** most users will want the first ([genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64.img.xz)) image - the Pi-Top variant ([genpi64pt.img.xz](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64pt.img.xz)) should *only* be used for those who want to run their RPi3 in a [Pi-Top](https://pi-top.com/products/pi-top) chassis (as it contains platform-specific drivers to communicate with the Pi-Top's onboard battery, hub, speakers etc.)
 
 > The previous release versions are still available (together with a detailed changelog) [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases). If you have a significant amount of work invested in an older release of this image, I have also provided manual upgrade instructions (from 1.0.{0,1,2} &rarr; 1.1.2) [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases#upgrade).
 
