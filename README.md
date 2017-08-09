@@ -61,6 +61,9 @@ On your Linux box, issue:
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64.img.xz
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64.img.xz.asc
 ```
+
+<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/Raspberry_Pi_3_B.jpg" alt="Raspberry Pi 3 B" height="200px" align="right"/>
+
 to fetch the compressed disk image file (~829MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
@@ -94,6 +97,9 @@ On your Linux box, issue:
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64pt.img.xz
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.1.2/genpi64pt.img.xz.asc
 ```
+
+<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/pitop/gentoo-pitop-small.jpg" alt="Pi-Top Running Gentoo" height="200px" align="right"/>
+
 to fetch the compressed disk image file (~829MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
