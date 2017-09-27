@@ -247,7 +247,7 @@ to deal with any config file clashes that may have been introduced by the upgrad
 
 For more information about Gentoo's package management, see [my notes here](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Installing_the_Gentoo_Stage_3_Files#Gentoo.2C_Portage.2C_Ebuilds_and_emerge_.28Background_Reading.29).
 
-> You may also find it useful to keep an eye on this project's (sticky) thread in the 'Gentoo on Alternative Architectures' forum at [gentoo.org](https://forums.gentoo.org/viewtopic-t-1058530.html), as I occasionally post information about this project there.
+> You may also find it useful to keep an eye on this project's (sticky) thread in the 'Gentoo on ARM' forum at [gentoo.org](https://forums.gentoo.org/viewtopic-t-1058530.html), as I occasionally post information about this project there.
 
 ### Installing New Packages Under Gentoo
 
