@@ -661,7 +661,7 @@ The image is subscribed to the following ebuild repositories:
   * **dev-util/cargo** [upstream](https://wiki.gentoo.org/wiki/Project:Rust)
     Provides `cargo-0.20.0.ebuild`, adapted from the Gentoo tree version to build under `arm64`. `dev-util/cargo` is the package manager for `dev-lang/rust`.
   * **x11-misc/twofing** [upstream](http://plippo.de/p/twofing)
-    Provides the `twofing` daemon, which converts touchscreen gestures into mouse and keyboard events. Included primarily for use with the offical 7" RPi (1,2,3) touchscreen.
+    Provides the `twofing` daemon, which converts touchscreen gestures into mouse and keyboard events. Included primarily for use with the official 7" RPi (1,2,3) touchscreen.
   * **app-accessibility/onboard** [upstream](https://launchpad.net/onboard)
     Provides a flexible onscreen keyboard. Again, included primarily for use with the official 7" RPi (1,2,3) touchscreen. Adapted with thanks from original ebuild, [here](https://bitbucket.org/wjn/wjn-overlay).
   * **media-tv/kodi** [upstream](https://github.com/xbmc/xbmc)
