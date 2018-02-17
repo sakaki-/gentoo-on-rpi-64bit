@@ -554,6 +554,27 @@ For example, you can cross-compile kernels for your RPi3 on your PC very quickly
 
 Should you setup `crossdev` on your PC in this manner, you can then take things a step further, by leveraging your PC as a `distcc` server (instructions [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Set-Up-Your-crossdev-PC-for-Distributed-Compilation-with-distcc) on the wiki). Then, with just some simple configuration changes on your RPi3 (see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Set-Up-Your-RPi3-as-a-distcc-Client)), you can distribute C/C++ compilation (and header preprocessing) to your remote machine, which makes system updates a lot quicker (and the provided tool `genup` will automatically take advantage of this distributed compilation ability, if available).
 
+### <a id="rpi3_headless"></a>Using your RPi3 as a Headless Server
+
+If you want to run a dedicated server program on your RPi3 (for example, a cryptocurrency miner), you won't generally want (or need) the graphical desktop user interface. To disable it, issue (as root):
+```console
+pi64 ~ # rc-update del xdm default
+```
+
+then reboot your system. You will now have a standard terminal login available only, which greatly saves on system memory. Next, ensure that your system won't autoupdate. Log in as root, then issue:
+```console
+pi64 ~ # echo "dev-embedded/rpi3-64bit-meta -weekly-genup" > /etc/portage/package.use/rpi3-64bit-meta
+pi64 ~ # emerge -v rpi3-64bit-meta
+```
+
+You can now arrange for your server program to start on boot, either by creating an explicit OpenRC service file in `/etc/init.d/` or by adding an (executable) startup script, named `/etc/local.d/<servicename>.start`, which will fork off the server using `start-stop-daemon` (or similar).
+
+> I recommend that you run your service at the *lowest* possible system priority (i.e., highest positive number niceness), particularly if it is CPU intensive. This will ensure that you're able to log in successfully using `ssh`, even if the daemon is in a tight CPU-bound loop.
+
+It is generally more reliable to use the Ethernet rather than the WiFi network interface when running a headless server in this manner. Also, make sure your system has an adequate heatsink fitted (or even active CPU cooling, for particularly demanding applications), since the RPi3 (particuarly when running in 64-bit mode) can [get quite hot](https://www.theregister.co.uk/2017/10/18/active_cooling_a_raspberry_pi_3/), leading to thermal throttling or even protective system shutdown if your cooling is insufficient.
+
+> Of course, take the normal precautions when running an internet-exposed server in this manner: for example, set up an appropriate firewall, consider running the server process under `firejail`, modify the shipped-default passwords, and keep your system up-to-date by (manually) running `genup`, from time to time.
+
 ## <a id="miscpoints"></a>Miscellaneous Points (Advanced Users Only) (&darr;[skip](#helpwanted))
 
 The following are some notes about the detailed structure of the image. It is not necessary to read these to use the image day-to-day.
