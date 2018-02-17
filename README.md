@@ -426,9 +426,25 @@ Because (at the time of writing) 64-bit support for the RPi3 is fairly 'cutting 
 
 The tree you need is maintained [here](https://github.com/raspberrypi/linux).
 
+However first, since it generally makes sense to use a 'stable' branch compiler for kernel builds, but the RPi3 image uses the 'testing' (aka `~arm64`) branch for all packages by default, begin by downgrading your `gcc` compiler on the RPi3 to the 'stable' variant (this version is also available on the binhost, so the following process shouldn't take long). Become root, and issue:
+```console
+pi64 ~ # echo "sys-devel/gcc -~arm64" >> /etc/portage/package.accept_keywords/gcc
+pi64 ~ # emerge -u sys-devel/gcc
+pi64 ~ # gcc-config --list-profiles
+```
+
+Take a note of the index number of the 'stable branch' version of the compiler returned by the last command above (this will probably be `1`), and then ensure the profile is set (substitute it for `1` in the below, if different):
+```console
+pi64 ~ # gcc-config 1
+pi64 ~ # env-update && source /etc/profile
+pi64 ~ # emerge --oneshot sys-devel/libtool
+```
+
+This process only needs to be done once. It won't affect your ability to build other packages on your RPi3.
+
 > **NB:** if you are running Gentoo on a microSD card, please be sure that you have an expanded root partition (as described [above](#morespace)) on a >=16GB card, before attempting to build a kernel: this process requires more free space than is present on an 8GB card.
 
-Suppose you wish to build the most modern version of the 4.10.y kernel (same major/minor version as on the image). Then, begin by pulling down a [shallow clone](http://stackoverflow.com/q/21833870) of the desired version's branch from [GitHub](https://github.com/raspberrypi/linux) (users with sufficient bandwidth and disk space may of course clone the entire tree, and then checkout the desired branch locally, but the following approach is much faster).
+Now, suppose you wish to build the most modern version of the 4.10.y kernel (same major/minor version as on the image). Then, begin by pulling down a [shallow clone](http://stackoverflow.com/q/21833870) of the desired version's branch from [GitHub](https://github.com/raspberrypi/linux) (users with sufficient bandwidth and disk space may of course clone the entire tree, and then checkout the desired branch locally, but the following approach is much faster).
 
 Working logged in as your regular user, _not_ root (for security), issue:
 ```console
