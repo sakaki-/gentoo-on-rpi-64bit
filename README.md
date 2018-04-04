@@ -1,5 +1,5 @@
 # gentoo-on-rpi3-64bit
-Bootable 64-bit Gentoo image for the Raspberry Pi 3 Model B/B+, with Linux 4.14, OpenRC, Xfce4, VC4, profile 17.0, weekly-autobuild binhost
+Bootable 64-bit Gentoo image for the Raspberry Pi 3 Model B and B+, with Linux 4.14, OpenRC, Xfce4, VC4, profile 17.0, weekly-autobuild binhost
 
 ## Description
 
