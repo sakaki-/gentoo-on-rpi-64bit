@@ -56,7 +56,7 @@ Choose either the regular (for a standard RPi3 board) or Pi-Top variant, then fo
 
 ### <a id="regularimage"></a>Regular Image (`genpi64.img.xz`)
 
-On your Linux box, issue (you may need to be `root`, or use `sudo`, for the following):
+On your Linux box, issue (you may need to be `root`, or use `sudo`, for the following, hence the '#' prompt):
 ```console
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.2.1/genpi64.img.xz
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.2.1/genpi64.img.xz.asc
@@ -94,7 +94,7 @@ Now continue reading at ["Booting!"](#booting) below.
 
 > Please note that only v1 of the Pi-Top is currently supported (although you *are* free to use an RPi3 B *or* B+ within the v1 chassis, at your option). The image *may* work on v2 hardware (the one with the sliding keyboard), but as I don't currently own this newer model, I am unable to check. If you have tried booting this image on a v2 Pi-Top, please let me know how it went. Thanks!
 
-On your Linux box, issue (you may need to be `root`, or use `sudo`, for the following):
+On your Linux box, issue (you may need to be `root`, or use `sudo`, for the following, hence the '#' prompt):
 ```console
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.2.1/genpi64pt.img.xz
 # wget -c https://github.com/sakaki-/gentoo-on-rpi3-64bit/releases/download/v1.2.1/genpi64pt.img.xz.asc
