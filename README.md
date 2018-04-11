@@ -476,6 +476,7 @@ dev-embedded/rpi3-64bit-meta -kernel-bin
 Then re-emerge the meta package, to delete the binary kernel package itself:
 ```console
 pi64 ~ # emerge -v rpi3-64bit-meta
+pi64 ~ # emerge --depclean
 ```
 > Important: do **not** try to restart your system yet - with the binary kernel uninstalled, you **must** install the new kernel (and DTBs and module set) you have just built, or the image will no longer boot. We will do that next.
 
