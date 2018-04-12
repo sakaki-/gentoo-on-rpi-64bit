@@ -574,7 +574,7 @@ As of version 1.1.0 of the image, all the required firmware and startup files ha
 * <a id="ondemand"></a>The `/etc/local.d/ondemand_freq_scaling.start` boot script, which switches the RPi3 from its (`bcmrpi3_defconfig`) default `powersave` CPU frequency governor, to `ondemand`, for better performance, has been switched to a `sysinit` OpenRC service, provided by [`sys-apps/rpi3-ondemand-cpufreq`](https://github.com/sakaki-/rpi3-overlay/tree/master/sys-apps/rpi3-ondemand-cpufreq). On the RPi3 B, this allows the frequency to range up to 1.2GHz, and on the RPi3 B+, up to 1.4GHz, without overclocking.
 * <a id="init_scripts"></a>The `autoexpand_root_partition.start` script has been migrated into an OpenRC boot service, provided by [`sys-apps/rpi3-init-scripts`](https://github.com/sakaki-/rpi3-overlay/tree/master/sys-apps/rpi3-init-scripts).
 
-### New Features to Expedite Regular System Updating
+### <a id="expedited_updates"></a>New Features to Expedite Regular System Updating
 
 In addition to the above, as of version 1.1.0 of the image, a number of other changes have been made to expedite the process of keeping your 64-bit Gentoo RPi3 up-to-date:
 * <a id="binary_kp"></a>An autobuild of the official [`raspberrypi/linux`](https://github.com/raspberrypi/linux) kernel (default branch) using `bcmrpi3_defconfig` has been set up [here](https://github.com/sakaki-/bcmrpi3-kernel); a new release tarball is automatically pushed once per week, and a matching kernel binary package ([`sys-kernel/bcmrpi3-kernel-bin`](https://github.com/sakaki-/rpi3-overlay/tree/master/sys-kernel/bcmrpi3-kernel-bin)) is also created simultaneously.
