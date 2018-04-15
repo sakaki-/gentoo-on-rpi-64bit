@@ -14,7 +14,7 @@ The kernel and userland are both 64-bit (`arm64`/`aarch64`), and support for the
 
 Here's a screenshot:
 
-<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/demo-screenshot-small-2.jpg" alt="gentoo-on-rpi3-64bit in use (screenshot)" width="960px"/>
+<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/demo-screenshot-small-3.jpg" alt="gentoo-on-rpi3-64bit in use (screenshot)" width="960px"/>
 
 The image may be downloaded from the link below (or via `wget`, per the instructions which follow).
 
