@@ -389,6 +389,7 @@ You don't need to read the following notes to use the image, but they may help y
 
 * You can easily install (and run) 32-bit Raspbian apps on your 64-bit Gentoo system if you like (using `apt-get` from a `chroot`), since [ARMv8 supports mixed-mode userland](https://community.arm.com/processors/f/discussions/3330/how-aarch32-bit-applications-will-be-supported-on-aarch64?ReplyFilter=Answers&ReplySortBy=Answers&ReplySortOrder=Descending). If this interests you, please see my wiki entry on this subject, [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Running-32-bit-Raspbian-Packages-on-your-64-bit-Gentoo-System).
 * If you would like to run **benchmarks** on your RPi3 system, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Effective-Benchmarking-on-your-64-Bit-RPi3-System).
+* You can easily remove unwanted applications, and even the Xfce4 graphical desktop itself, from your 64-bit Gentoo system if desired. To do so, please refer to my notes [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Create-a-Slimmed-Down-Version-of-the-Image).
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
 
@@ -545,7 +546,11 @@ If you want to run a dedicated server program on your RPi3 (for example, a crypt
 pi64 ~ # rc-update del xdm default
 ```
 
-then reboot your system. You will now have a standard terminal login available only, which greatly saves on system memory. Next, ensure that your system won't autoupdate (since this can cause high system load at an unpredictable moment). Log in as root, then issue:
+then reboot your system. You will now have a standard terminal login available only, which greatly saves on system memory.
+
+> Should you wish to completely remove the graphical desktop's _packages_ from your system too, please see my notes [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Create-a-Slimmed-Down-Version-of-the-Image).
+
+Next, ensure that your system won't autoupdate (since this can cause high system load at an unpredictable moment). Log in as root, then issue:
 ```console
 pi64 ~ # echo "dev-embedded/rpi3-64bit-meta -weekly-genup" > /etc/portage/package.use/rpi3-64bit-meta
 pi64 ~ # emerge -v rpi3-64bit-meta
