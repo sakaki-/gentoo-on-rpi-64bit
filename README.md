@@ -152,6 +152,8 @@ The supplied image contains a fully-configured `~arm64` Gentoo system (*not* sim
 
 If you wish to add Bluetooth peripherals (e.g., a wireless mouse and/or keyboard) to your RPi3, please see [below](#add_bt_device).
 
+If you would like to run **benchmarks** on your RPi3 system, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Effective-Benchmarking-on-your-64-Bit-RPi3-System).
+
 The `@world` set of packages (from `/var/lib/portage/world`) pre-installed on the image may be viewed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/world-packages) (note that the version numbers shown in this list are Gentoo ebuilds, but they generally map 1-to-1 onto upstream package versions).
 > The *full* package list for the image (which includes @system and dependencies) may also be viewed, [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/blob/master/reference/world-all-packages).
 
@@ -336,6 +338,8 @@ Once you get a package working successfully, you can then explicitly keyword its
 
 Have fun! ^-^
 
+> If you need to install a particular package that isn't currently in the Gentoo tree, note that it _is_ possible to install binary packages from Raspbian (or other 32-bit repos) on your 64-bit system. For further details, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Running-32-bit-Raspbian-Packages-on-your-64-bit-Gentoo-System)
+
 ## Miscellaneous Configuration Notes, Hints, and Tips (&darr;[skip](#maintnotes))
 
 You don't need to read the following notes to use the image, but they may help you better understand what is going on!
@@ -384,6 +388,7 @@ You don't need to read the following notes to use the image, but they may help y
   * Additionally, as of 1.2.0, the necessary binaries for using your RPi3 to [disable the Intel Management Engine](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Disabling_the_Intel_Management_Engine) are now bundled with the image. Together with the above change, this allows your system to be used to run [`me_cleaner`](https://github.com/corna/me_cleaner) 'out of the box' (provided you have the correct [hardware connector and wires](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Disabling_the_Intel_Management_Engine#Prerequisites), of course). Users uninterested in this particular application are unaffected, and need take no action.
 
 * You can easily install (and run) 32-bit Raspbian apps on your 64-bit Gentoo system if you like (using `apt-get` from a `chroot`), since [ARMv8 supports mixed-mode userland](https://community.arm.com/processors/f/discussions/3330/how-aarch32-bit-applications-will-be-supported-on-aarch64?ReplyFilter=Answers&ReplySortBy=Answers&ReplySortOrder=Descending). If this interests you, please see my wiki entry on this subject, [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Running-32-bit-Raspbian-Packages-on-your-64-bit-Gentoo-System).
+* If you would like to run **benchmarks** on your RPi3 system, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Effective-Benchmarking-on-your-64-Bit-RPi3-System).
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
 
