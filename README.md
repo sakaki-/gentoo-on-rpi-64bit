@@ -338,7 +338,9 @@ Once you get a package working successfully, you can then explicitly keyword its
 
 Have fun! ^-^
 
-> If you need to install a particular package that isn't currently in the Gentoo tree, note that it _is_ possible to install binary packages from Raspbian (or other 32-bit repos) on your 64-bit system. For further details, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Running-32-bit-Raspbian-Packages-on-your-64-bit-Gentoo-System)
+> If you need to install a particular package that isn't currently in the Gentoo tree, note that it _is_ possible to install binary packages from Raspbian (or other 32-bit repos) on your 64-bit system. For further details, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Running-32-bit-Raspbian-Packages-on-your-64-bit-Gentoo-System).
+
+> Alternatively, to install source packages with highly resource-intensive build profiles (such as `dev-lang/rust`), you can temporarily mount the image within a `binfmt_misc` QEMU user-mode `chroot` on your Linux PC, and perform the `emerge` there. This technique allows you to easily leverage the increased memory and CPU throughput of your regular desktop machine. For further details, please see my wiki tutorial [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Build-aarch64-Packages-on-your-PC%2C-with-User-Mode-QEMU-and-binfmt_misc).
 
 ## Miscellaneous Configuration Notes, Hints, and Tips (&darr;[skip](#maintnotes))
 
@@ -388,6 +390,7 @@ You don't need to read the following notes to use the image, but they may help y
   * Additionally, as of 1.2.0, the necessary binaries for using your RPi3 to [disable the Intel Management Engine](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Disabling_the_Intel_Management_Engine) are now bundled with the image. Together with the above change, this allows your system to be used to run [`me_cleaner`](https://github.com/corna/me_cleaner) 'out of the box' (provided you have the correct [hardware connector and wires](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Disabling_the_Intel_Management_Engine#Prerequisites), of course). Users uninterested in this particular application are unaffected, and need take no action.
 
 * You can easily install (and run) 32-bit Raspbian apps on your 64-bit Gentoo system if you like (using `apt-get` from a `chroot`), since [ARMv8 supports mixed-mode userland](https://community.arm.com/processors/f/discussions/3330/how-aarch32-bit-applications-will-be-supported-on-aarch64?ReplyFilter=Answers&ReplySortBy=Answers&ReplySortOrder=Descending). If this interests you, please see my wiki entry on this subject, [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Running-32-bit-Raspbian-Packages-on-your-64-bit-Gentoo-System).
+* To install source packages with resource-intensive build profiles, you can temporarily mount the image within a `binfmt_misc` QEMU user-mode `chroot` on your PC, and perform the `emerge` there. For further details, please see my wiki tutorial [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Build-aarch64-Packages-on-your-PC%2C-with-User-Mode-QEMU-and-binfmt_misc).
 * If you would like to run **benchmarks** on your RPi3 system, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Effective-Benchmarking-on-your-64-Bit-RPi3-System).
 * You can easily remove unwanted applications, and even the Xfce4 graphical desktop itself, from your 64-bit Gentoo system if desired. To do so, please refer to my notes [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Create-a-Slimmed-Down-Version-of-the-Image).
 
