@@ -710,6 +710,12 @@ The image is subscribed to the following ebuild repositories:
     Provides `qdiskusage-1.0.4.ebuild`, no longer in the main Gentoo tree.
   * **x11-themes/gnome-icon-theme** [upstream](https://www.gnome.org)
     Provides `gnome-icon-theme-3.12.0-r1.ebuild`; this has been removed from the main Gentoo tree, but is still required for some icons on the image.
+  * **x11-base/xorg-server** [upstream](https://www.x.org/wiki/)
+    Provides `xorg-server-1.19.6-r1.ebuild`; this has been removed from the main Gentoo tree, but is still the current main rev, and in use on the image.
+  * **xfce-extra/xfce4-notifyd** [upstream](https://goodies.xfce.org/projects/applications/xfce4-notifyd)
+    Provides `xfce4-notifyd-0.4.0.ebuild`; this has been removed from the main Gentoo tree, but is still used on the image. Upgrades masked because of message truncation, which causes problems with PIN notification during Bluetooth device setup. To be fixed / resolved soon.
+  * **xfce-extra/xfce4-indicator-plugin** [upstream](https://goodies.xfce.org/projects/panel-plugins/xfce4-indicator-plugin)
+    Provides `xfce4-indicator-plugin-2.3.3-r2.ebuild`; this has been removed from the main Gentoo tree, and the v2.3.4 is currently masked.
 
 ## <a id="helpwanted"></a>Help Wanted!
 
