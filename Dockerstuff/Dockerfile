@@ -2,6 +2,7 @@ FROM scratch
 MAINTAINER sakaki & Necrose99
 ENV QEMU_EXECVE 1
 ENV QEMU_CPU aarch64
+ENV ARCH=arm64
 ### ADD Base Image for mnt Loop and load emulation etc.  AMD64 Busybox for utils in docker on amd64 hosts.. 
 ADD https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64 /busybox/busybox
 ### ADD Base Image
@@ -45,10 +46,7 @@ ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-
 ENV ARCH=arm64
 ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
 
-
-#ENTRYPOINT ["/usr/bin/umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
-
-
+### gentoo docker bits likely old and no loger neded will clean on confirm... 
 # Setup the rc_sys  # fix emulation then let this by.  
 #RUN /busybox/busybox sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 # By default, UTC system
