@@ -25,6 +25,7 @@ ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/perl-5.2
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/tcl-8.6.6.tbz2 /usr/portage/packages/dev-lang/
 ## tcl
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/tk-8.6.6.tbz2 /usr/portage/packages/dev-lang/
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/python-3.5.5.tbz2 /usr/portage/packages/dev-lang/
 ## tk
 
 #################### dev-vcs ##################
@@ -65,7 +66,7 @@ RUN emerge-webrsync
 ## add binhost/s so this dont take till xmass of 2525 .. 
 RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
-RUN cd /usr/portage/packages/dev-lang/ && emerge --nodeps tk-8.6.6.tbz2   tcl-8.6.6.tbz2   perl-5.24.3-r1.tbz2  python-2.7.14-r1.tbz2
+RUN cd /usr/portage/packages/dev-lang/ && emerge --nodeps tk-8.6.6.tbz2   tcl-8.6.6.tbz2   perl-5.24.3-r1.tbz2  python*.tbz2
 RUN cd /usr/portage/packages/dev-db/ && emerge --nodeps sqlite-3.23.1.tbz2
 RUN  USE="tcl" emerge -v sys-libs/db
 RUN emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @system
