@@ -65,7 +65,7 @@ RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
 
 ############################################################
-RUN USE="gdbm berkdb" emerge --getbinpkg --usepkg dev-lang/perl
+RUN USE="gdbm berkdb" emerge --getbinpkg --usepkg dev-lang/perl dev-lang/rust
 RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y sys-devel/gcc-config dev-go/gox sys-devel/binutils-config app-portage/gentoolkit app-portage/eix
 RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y  app-portage/portage-utils app-portage/genlop
 
