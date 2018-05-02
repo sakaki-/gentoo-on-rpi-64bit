@@ -1,4 +1,4 @@
-##resonalby workable example of a crossdev docker distcc for host. 
+## **A resonalby workable example of a crossdev docker distcc for host.** 
 #### **to Do Improve the Template to Production & Genral Use... with a Built Image you can run anywhare... 
 
 **FROM gentoo/stage3-amd64**  
@@ -6,7 +6,7 @@
 Automatic public ebuild Docker allows container **"fork's"** 
 or you to take an **official Gentoo  base image** , like a stage 3 and ***add on.. as you like.***
 
-## some of the code was borrowed From debian distcc & Sabayon Linux  containers. 
+## some of this code was borrowed From debian distcc & Sabayon Linux  containers. 
  
 If you have a beffy server , or 10 core i7 etc or even a seldome used... wich can run docker as a container 
 minimizes risks , anyhow this will create a crossdev/crossbuilder , workable example.. 
