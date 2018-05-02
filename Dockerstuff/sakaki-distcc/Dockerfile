@@ -66,7 +66,7 @@ RUN emerge-webrsync
 ## add binhost/s so this dont take till xmass of 2525 .. 
 RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
-RUN cd /usr/portage/packages/dev-lang/ && emerge  --nodeps tk-8.6.6.tbz2 tcl-8.6.6.tbz2 perl-5.24.3-r1.tbz python-2.7.14-r1.tbz2
+RUN cd /usr/portage/packages/dev-lang/ && emerge --nodeps tk-8.6.6.tbz2  && emerge --nodeps tcl-8.6.6.tbz2  && emerge --nodeps perl-5.24.3-r1.tbz  && emerge --nodeps python-2.7.14-r1.tbz2
 RUN cd /usr/portage/packages/sys-libs/ && emerge --nodeps db-5.3.28-r2.tbz2 && cd /usr/portage/packages/dev-db/ emerge --nodeps sqlite-3.23.1.tbz2
 RUN emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @system
 ############################################################
