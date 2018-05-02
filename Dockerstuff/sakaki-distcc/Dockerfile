@@ -68,7 +68,7 @@ RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
 RUN cd /usr/portage/packages/dev-lang/ && emerge --nodeps tk-8.6.6.tbz2   tcl-8.6.6.tbz2   perl-5.24.3-r1.tbz2  python-2.7.14-r1.tbz2
 RUN cd /usr/portage/packages/sys-libs/ && emerge --nodeps db-5.3.28-r2.tbz2 
-RUN cd /usr/portage/packages/dev-db/ emerge --nodeps sqlite-3.23.1.tbz2
+RUN cd /usr/portage/packages/dev-db/ && emerge --nodeps sqlite-3.23.1.tbz2
 RUN emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @system
 ############################################################
 RUN emerge --nodeps /usr/portage/packages/dev-vcs/git-2.16.1.tbz2 && emerge --nodeps /usr/portage/packages/dev-vcs/subversion-1.9.7-r1.tbz2
