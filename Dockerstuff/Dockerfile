@@ -3,6 +3,11 @@ MAINTAINER sakaki & Necrose99
 ENV QEMU_EXECVE 1
 ENV QEMU_CPU aarch64
 ENV ARCH=arm64
+# Define standard volumes
+VOLUME ["/usr/portage", "/usr/portage/distfiles", "/usr/portage/packages", "/var/lib/entropy/client/packages"]
+# VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo at this time. 
+
+
 ### ADD Base Image for mnt Loop and load emulation etc.  AMD64 Busybox for utils in docker on amd64 hosts.. 
 ADD https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64 /busybox/busybox
 ### ADD Base Image
@@ -37,18 +42,16 @@ ADD https://pastebin.com/dl/sJArLT8x  /ebuildr
 ## add volumes for building packages , etc.
 ADD https://raw.githubusercontent.com/necrose99/Arm64-Linux-prep/master/prep/etc/resolv.conf_  /etc/resolv.conf
 # use google DNS for Resovler. 
-VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /packages:rw, /:rw
-# VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo at this time. 
-## Add emulation Binaries for AMD64 host. 
 
 ADD ADD https://github.com/multiarch/qemu-user-static/blob/master/register/qemu-binfmt-conf.sh / 
 RUN  /busybox/busybox chmod 775 /qemu-binfmt-conf.sh && /busybox/busybox sh ./qemu-binfmt-conf.sh 
 # try and register fmt in system busybox-x86_64 so can run native... 
  
+ ## Add emulation Binaries for AMD64 host. 
 ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.11.1/qemu-aarch64-static.tar.gz /usr/bin/qemu-aarch64-static
 RUN /busybox/busybox chmod 775 /usr/bin/qemu-aarch64-static
 #updated qemu static 
-ENV ARCH=arm64
+
 #ENTRYPOINT [/busybox/busybox "/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
 # test case CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
 CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
