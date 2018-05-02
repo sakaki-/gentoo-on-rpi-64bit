@@ -7,7 +7,6 @@ ENV ARCH=arm64
 VOLUME ["/usr/portage", "/usr/portage/distfiles", "/usr/portage/packages", "/var/lib/entropy/client/packages"]
 # VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo at this time. 
 
-
 ### ADD Base Image for mnt Loop and load emulation etc.  AMD64 Busybox for utils in docker on amd64 hosts.. 
 ADD https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64 /busybox/busybox
 ### ADD Base Image
@@ -17,11 +16,11 @@ ADD https://www.dropbox.com/s/jptnzaf1fgr2k5d/sakaki--gentoo-rpi3-ARM64bit.tar.g
 ## Fix to new binhost. 
 ADD https://www.dropbox.com/s/v1q0wjlxy62qrjl/pi-back.sh?dl=0  /etc/portage/make.conf 
 
-## ADD https://www.dropbox.com/s/v1q0wjlxy62qrjl/pi-back.sh?dl=0  /pi-back.sh 
-## backup toy 
+ADD https://www.dropbox.com/s/v1q0wjlxy62qrjl/pi-back.sh?dl=0  /pi-back.sh 
+## backup toy tarball root-fs-backup minus swapfile 
 ## 
 ADD https://pastebin.com/dl/sJArLT8x  /ebuildr
-## ebuildr  useful over shh ohup ./ebuildr > /dev/null 2>&1 &  emerges binpkgs only after grep also useful if you've broken genup.. 
+## ebuildr  useful over shh nohup ./ebuildr > /dev/null 2>&1 &  emerges binpkgs only after grep also useful if you've broken genup.. 
 ## forget were i filched it off ... but so dambed handy if ssh crashes also useful for arm64 hosting @ Scaleaway /rpi-64-chroot 
 ## as SSH can die..  however very no frills nohup background emerge ... etc.. 
 ## 
@@ -44,7 +43,7 @@ ADD https://raw.githubusercontent.com/necrose99/Arm64-Linux-prep/master/prep/etc
 # use google DNS for Resovler. 
 
 ADD https://github.com/multiarch/qemu-user-static/blob/master/register/qemu-binfmt-conf.sh / 
-RUN  /busybox/busybox sh ./qemu-binfmt-conf.sh 
+RUN  qemu-binfmt-conf.sh 
 # try and register fmt in system busybox-x86_64 so can run native... or cloud host :-)
  
  ## Add emulation Binaries for AMD64 host. 
