@@ -7,13 +7,18 @@ RUN touch /etc/init.d/functions.sh && \
   echo 'PYTHON_SINGLE_TARGET="python2_7"' >> /etc/portage/make.conf
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/entrypoint.sh /entrypoint.sh
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/docker-compose.yml /docker-compose.yml
-RUN emerge--webrsync
-RUN USE="crossdev gssapi zeroconf " emerge sys-devel/gcc-config net-libs/libgssglue  sys-apps/dbus sys-devel/gcc sys-devel/distcc sys-devel/crossdev sys-devel/ct-ng sys-devel/icecream  net-dns/avahi  dev-vcs/git app-portage/layman
- 
+### 
+RUN emerge-webrsync && echo  "PORTAGE_BINHOST="http://mirror.math.princeton.edu/pub/redcorelinux/packages"" >> /etc/portage/make.conf 
+RUN echo  "PORTAGE_BINHOST="http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/"" >> /etc/portage/make.conf
+## add binhost/s so this dont take till xmass of 2525 .. 
+RUN USE="crossdev gssapi zeroconf " emerge --getbinpkg sys-devel/gcc-config net-libs/libgssglue  sys-apps/dbus sys-devel/gcc sys-devel/distcc sys-devel/crossdev sys-devel/ct-ng sys-devel/icecream  net-dns/avahi  dev-vcs/git app-portage/layman
+RUN eselect profile set default/linux/amd64/17.0/developer
  # net-fs/nfs-utils may add nfs to push out pkgs net-fs/samba net-misc/ngrok::SEEDS needs golang  https tunnels for pkgs out... 
 # rm -rf /usr/portage/*
 RUN crossdev --ov-output /usr/local/portage -S -v -t armv7a-hardfloat-linux-gnueabi
+## drop unkown pretty please makes for metadata hell... like on equo or entrpoy pm convert bins... 
 RUN crossdev --ov-output /usr/local/portage -S -v -t arm64-linux-gnu  
+
 RUN ( \
     echo "#!/bin/sh" && \
     echo "eval \"\`gcc-config -E\`\"" && \
