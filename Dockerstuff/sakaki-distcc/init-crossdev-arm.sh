@@ -29,10 +29,10 @@ crossdev -t armv7a-hardfloat-linux-gnueabi --stable --init-target -oO /usr/local
 ## fire up crossdev
 ## might have perfecly married both starters.. 
 ## ****dropping unknown**** from arm64 it fuggles metadata. entropy
-crossdev -t aarch64-linux-gnu --stable -oO /usr/local/mingw-crossdev/
-crossdev -t armv7a-hardfloat-linux-gnueabi --stable -oO /usr/local/mingw-crossdev/
+crossdev -t aarch64-linux-gnu --stable -oO -oO /usr/local/portage-crossdev/
+crossdev -t armv7a-hardfloat-linux-gnueabi --stable -oO /usr/local/portage-crossdev/
  
 ## boot strap we can more sexy later in porthole and or manual re-emerge's...
 ## gcc to build sometimes you may need to "Massage" it in porthole anyhow... if it fails add more opts as you go.
-crossdev -v -t aarch64-linux-gnu --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"'
-crossdev -v -t armv7a-hardfloat-linux-gnueabi --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"'
+crossdev -v -t aarch64-linux-gnu --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"' -oO /usr/local/portage-crossdev/
+crossdev -v -t armv7a-hardfloat-linux-gnueabi --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"' -oO /usr/local/portage-crossdev/
