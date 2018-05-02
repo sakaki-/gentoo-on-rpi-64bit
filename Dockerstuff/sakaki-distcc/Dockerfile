@@ -37,7 +37,7 @@ ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/subversio
 ################ /sys-devel ##########
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-config-1.8-r1.tbz2 /usr/portage/packages/sys-devel/
 # ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-7.3.0-r1.tbz2 /usr/portage/packages/sys-devel/
-too big or leaves layer. 
+#too big or leaves layer. 
 ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/crossdev-20171230.tbz2 /usr/portage/packages/sys-devel/
 ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/gdb-7.12.1.tbz2  /usr/portage/packages/sys-devel/
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/binutils-config-5-r4.tbz2 /usr/portage/packages/sys-devel/
