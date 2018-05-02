@@ -392,6 +392,7 @@ You don't need to read the following notes to use the image, but they may help y
 * To install source packages with resource-intensive build profiles, you can temporarily mount the image within a `binfmt_misc` QEMU user-mode `chroot` on your PC, and perform the `emerge` there. For further details, please see my wiki tutorial [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Build-aarch64-Packages-on-your-PC%2C-with-User-Mode-QEMU-and-binfmt_misc).
 * If you would like to run **benchmarks** on your RPi3 system, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Effective-Benchmarking-on-your-64-Bit-RPi3-System).
 * You can easily remove unwanted applications, and even the Xfce4 graphical desktop itself, from your 64-bit Gentoo system if desired. To do so, please refer to my notes [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Create-a-Slimmed-Down-Version-of-the-Image).
+* If you are interested in a Docker variant of the image, please see necrose99's notes [here](https://github.com/necrose99/gentoo-on-rpi3-64bit/tree/master/Dockerstuff).
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
 
