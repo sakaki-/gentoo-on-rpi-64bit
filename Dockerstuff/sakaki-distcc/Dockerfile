@@ -10,8 +10,52 @@ ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dock
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/make.conf /etc/portage/make.conf
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/local.use /etc/portage/package.use/local.use
 ### 
+## Bootstrap langs... #######################
 RUN mkdir -p /var/lib/layman/ && mkdir -p /usr/portage/packages && touch /var/lib/layman/make.conf
-## make an emmpty stub file grrr.. 
+## make an emmpty stub file grrr..  layman is not yet installed. tempoarally quiets make.conf fail... in portage
+## however soon as layman is installed works.. 
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/python-2.7.14-r1.tbz2 /usr/portage/packages/dev-lang/
+#python
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/go-1.10.1.tbz2 /usr/portage/packages/dev-lang/
+# go
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/rust-1.25.0.tbz2 /usr/portage/packages/dev-lang/
+# rust
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/perl-5.24.3-r1.tbz2 /usr/portage/packages/dev-lang/
+## perl
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/tcl-8.6.6.tbz2 /usr/portage/packages/dev-lang/
+## tcl
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/tk-8.6.6.tbz2 /usr/portage/packages/dev-lang/
+## tk
+
+#################### dev-vcs ##################
+http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/git-2.16.1.tbz2 /usr/portage/packages/dev-vcs/
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/bzr-2.7.0.tbz2 /usr/portage/packages/dev-vcs/
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/cvs-1.12.12-r12.tbz2 /usr/portage/packages/dev-vcs/
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/mercurial-4.5.2.tbz2 /usr/portage/packages/dev-vcs/
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/subversion-1.9.7-r1.tbz2 /usr/portage/packages/dev-vcs/
+######
+################ /sys-devel ##########
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-config-1.8-r1.tbz2 /usr/portage/packages/sys-devel
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-7.3.0-r1.tbz2 /usr/portage/packages/sys-devel
+ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/crossdev-20171230.tbz2 /usr/portage/packages/sys-devel
+## /sys-libs
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-libs/db-5.3.28-r2.tbz2 /usr/portage/packages/sys-libs
+## dev-db/sqlite /usr/portage/packages/dev-db
+ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/dev-db/sqlite-3.23.1.tbz2 /usr/portage/packages/dev-db
+
+### DNS 
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/net-dns/avahi-0.7-r1.tbz2 /usr/portage/packages/net-dns
+#net-libs /usr/portage/packages/net-libs/ net-libs/libgssglue
+
+############## portage 
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/app-portage/eix-0.32.9.tbz2  /usr/portage/packages/app-portage
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/app-portage/genlop-0.30.9-r1.tbz2  /usr/portage/packages/app-portage
+ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/app-portage/smart-live-rebuild-1.3.5.tbz2 /usr/portage/packages/app-portage
+ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/app-portage/layman-2.4.2-r1.tbz2 /usr/portage/packages/app-portage
+ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/app-portage/eix-0.32.9.tbz2 /usr/portage/packages/app-portage
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/app-portage/gentoolkit-0.4.0.tbz2 /usr/portage/packages/app-portage
+
+
 ## 
 
 RUN emerge-webrsync
@@ -30,9 +74,10 @@ RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-con
 ############################################################
  # net-fs/nfs-utils may add nfs to push out pkgs net-fs/samba net-misc/ngrok::SEEDS needs golang  https tunnels for pkgs out... 
 # rm -rf /usr/portage/*
-RUN crossdev --ov-output /usr/local/portage -S -v -t armv7a-hardfloat-linux-gnueabi
-## drop unkown pretty please makes for metadata hell... like on equo or entrpoy pm convert bins... 
-RUN crossdev --ov-output /usr/local/portage -S -v -t arm64-linux-gnu  
+
+### init crossdev kits 
+ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/init-crossdev-arm.sh /
+RUN /init-crossdev-arm.sh
 ############################################################
 RUN ( \
     echo "#!/bin/sh" && \
