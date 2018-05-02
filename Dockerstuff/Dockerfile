@@ -2,10 +2,12 @@ FROM scratch
 MAINTAINER sakaki & Necrose99
 
 ### ADD Base Image for mnt Loop and load emulation etc.  AMD64 Busybox for utils in docker on amd64 hosts.. 
-ADD https://busybox.net/downloads/binaries/1.26.2-defconfig-multiarch/busybox-x86_64 /busybox/busybox
+ADD https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64 /busybox/busybox
 ### ADD Base Image
 # gentoo-on-rpi3-64bit
 ADD https://www.dropbox.com/s/jptnzaf1fgr2k5d/sakaki--gentoo-rpi3-ARM64bit.tar.gz?dl=0   / 
+## hotpatch docker make.conf bihost.
+/busybox/busybox echo "PORTAGE_BINHOST="https://isshoni.org/pi64pie""  >> /etc/portage/make.conf
 # RUN /busybox/busybox mv -R /mnt/stick/* / fix tarball image
 # /boot volume , I extracted to /tmp/boot packed as /boot should dump to /boot/*
 # add root volume extracted from DD image > usb > root-fs.tar.xz 
@@ -28,19 +30,20 @@ VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /package
 ## Add emulation Binaries for AMD64 host. 
 ### with arm64 always a bit , make that frustratingly alot of tinkering, 
 ## can add DEBIAN BINFMT service , as it will add more transparent emulation. 
+ADD ADD https://github.com/multiarch/qemu-user-static/blob/master/register/qemu-binfmt-conf.sh / 
+RUN /busybox/busybox sh ./qemu-binfmt-conf.sh
+# try and register fmt in system busybox-x86_64 so can run native... 
 ADD https://github.com/necrose99/Arm64-Linux-prep/blob/master/binfmt-support_2.1.6-2_arm64.tar?raw=true /
 # /usr/sbin, update-binfmts < cat update-binfmts_amd update-binfmts_arm64 debian. 
-ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.8.1/x86_64_qemu-aarch64-static.tar.gz /usr/bin/qemu-aarch64-static
+ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.11.1/qemu-aarch64-static.tar.gz /usr/bin/qemu-aarch64-static
 ADD https://github.com/mickael-guene/umeq/releases/download/1.7.5/umeq-arm64 /usr/bin/umeq-arm64
 ADD https://github.com/mickael-guene/proot-static-build/raw/master/static/proot-x86_64 /usr/bin/proot-x86_64
 # debugg
 #RUN /usr/sbin/update-binfmts_arm64
 ## more than a number of ways to skin this cat. 
 ENV ARCH=arm64
-#ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
-#RUN /busybox/busybox ash  ./usr/sbin/update-binfmts
-# /usr/sbin, update-binfmts < cat update-binfmts_amd update-binfmts_arm64 debian. 
-#RUN /busybox/busybox ash  ./usr/sbin/update-binfmts_amd
+ENTRYPOINT ["/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
+
 
 #ENTRYPOINT ["/usr/bin/umeq-arm64", "-execve", "-0", "bash", "/bin/bash"]
 
