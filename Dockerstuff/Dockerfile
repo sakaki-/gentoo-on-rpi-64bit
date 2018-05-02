@@ -53,8 +53,8 @@ ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.11.1/qemu
 
 #ENTRYPOINT [/busybox/busybox "/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
 # test case CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
-RUN  /usr/bin/qemu-aarch64-static  -execve-0 /bin/bash ./qemu-binfmt-conf.sh 
-CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
+#RUN  /usr/bin/qemu-aarch64-static  -execve-0 /bin/bash ./qemu-binfmt-conf.sh 
+#CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
 
 # test 
 ## pray ::: might actually get to rig in quay.io/hubdocker. 
