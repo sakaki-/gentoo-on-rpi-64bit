@@ -7,7 +7,7 @@ ADD https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x8
 # gentoo-on-rpi3-64bit
 ADD https://www.dropbox.com/s/jptnzaf1fgr2k5d/sakaki--gentoo-rpi3-ARM64bit.tar.gz?dl=0   / 
 ## hotpatch docker make.conf bihost.
-/busybox/busybox echo "PORTAGE_BINHOST="https://isshoni.org/pi64pie""  >> /etc/portage/make.conf
+RUN /busybox/busybox echo "PORTAGE_BINHOST="https://isshoni.org/pi64pie""  >> /etc/portage/make.conf
 # RUN /busybox/busybox mv -R /mnt/stick/* / fix tarball image
 # /boot volume , I extracted to /tmp/boot packed as /boot should dump to /boot/*
 # add root volume extracted from DD image > usb > root-fs.tar.xz 
