@@ -8,6 +8,7 @@ ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dock
 #######
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/gentoo.conf /etc/portage/repos.conf/gentoo.conf
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/make.conf /etc/portage/make.conf
+ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/local.use /etc/portage/package.use/local.use
 ### 
 RUN emerge-webrsync
 ## add binhost/s so this dont take till xmass of 2525 .. 
@@ -16,7 +17,7 @@ RUN eselect profile set default/linux/amd64/17.0/developer
 
 ############################################################
 RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y sys-devel/gcc-config dev-go/gox sys-devel/binutils-config app-portage/gentoolkit app-portage/eix dev-lang/
-cilk app-portage/portage-utils app-portage/genlop
+RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y  app-portage/portage-utils app-portage/genlop
 RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @world
 RUN emerge --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps-auto=y  net-dns/avahi  dev-vcs/git app-portage/layman net-libs/libgssglue   net-dns/avahi
 RUN USE="crossdev gssapi zeroconf " emerge --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps-auto=y sys-devel/gcc-config  sys-devel/gcc sys-devel/distcc sys-devel/crossdev sys-devel/ct-ng sys-devel/icecream
