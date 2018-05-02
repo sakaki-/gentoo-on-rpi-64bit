@@ -1,7 +1,7 @@
 #/bin/bash
 # refrance https://github.com/olsonbg/crossdev-gentoo , /usr/local/mingw-crossdev/ used insted so different toolchains wont clobber
 # each other...
-## trying to see if ming on arm64 will work is mad-science at this point. but why not give it a try.
+## trying to see if ming on arm/arm64 will work is mad-science at this point. but why not give it a try.
 echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm:' > /proc/sys/fs/binfmt_misc/register
  
 echo initilizing mingw-pc/& arm-pc , Do note that windows 10 arm/arm64 is quite experamental... 
