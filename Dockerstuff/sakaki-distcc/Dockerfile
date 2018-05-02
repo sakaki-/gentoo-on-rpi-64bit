@@ -39,6 +39,8 @@ ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-con
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-7.3.0-r1.tbz2 /usr/portage/packages/sys-devel
 ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/crossdev-20171230.tbz2 /usr/portage/packages/sys-devel
 ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/gdb-7.12.1.tbz2  /usr/portage/packages/sys-devel
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/binutils-config-5-r4.tbz2 /usr/portage/packages/sys-devel
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/binutils-2.30-r2.tbz2 /usr/portage/packages/sys-devel
 ## /sys-libs
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-libs/db-5.3.28-r2.tbz2 /usr/portage/packages/sys-libs
 ## dev-db/sqlite /usr/portage/packages/dev-db
@@ -65,14 +67,15 @@ RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
 
 ############################################################
-RUN USE="berkdb" emerge --getbinpkg --usepkg dev-lang/perl dev-lang/rust
-RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y sys-devel/gcc-config dev-go/gox sys-devel/binutils-config app-portage/gentoolkit app-portage/eix
-RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y  app-portage/portage-utils app-portage/genlop
-
-RUN emerge --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps-auto=y  net-dns/avahi  dev-vcs/git app-portage/layman net-libs/libgssglue   net-dns/avahi
-RUN USE="crossdev gssapi zeroconf " emerge --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps-auto=y sys-devel/gcc-config  sys-devel/gcc sys-devel/distcc sys-devel/crossdev sys-devel/ct-ng 
-#sys-devel/icecream
-RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @world
+RUN emerge --nodeps /usr/portage/packages/dev-vcs/git-2.16.1.tbz2 && 
+RUN emerge  --nodeps  /usr/portage/packages/dev-lang/go-1.10.1.tbz2 && emerge --nodeps usr/portage/packages/dev-lang/rust-1.25.0.tbz2
+RUN emerge --nodeps /usr/portage/packages/app-portage/eix-0.32.9.tbz2  && emerge --nodeps /usr/portage/packages/app-portage/gentoolkit-0.4.0.tbz2
+RUN emerge --nodeps /usr/portage/packages/app-portage/smart-live-rebuild-1.3.5.tbz2 && emerge --nodeps /usr/portage/packages/app-portage/layman-2.4.2-r1.tbz2
+RUN emerge --nodeps /usr/portage/packages/sys-devel/gcc-config-1.8-r1.tbz2 && emerge --nodeps /usr/portage/packages/sys-devel/sys-devel/gcc-7.3.0-r1.tbz2
+RUN emerge --nodeps /usr/portage/packages/sys-devel/sys-devel/crossdev-20171230.tbz2
+RUN emerge --nodeps /usr/portage/packages/sys-devel/binutils-config-5-r4.tbz2  && emerge --nodeps /usr/portage/packages/sys-devel/sys-devel/binutils-2.30-r2.tbz2
+RUN emerge dev-go/gox
+RUN emerge -uDnU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @world
 ############################################################
  # net-fs/nfs-utils may add nfs to push out pkgs net-fs/samba net-misc/ngrok::SEEDS needs golang  https tunnels for pkgs out... 
 # rm -rf /usr/portage/*
