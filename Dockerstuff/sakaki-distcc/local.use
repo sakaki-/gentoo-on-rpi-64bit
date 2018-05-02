@@ -1,0 +1,18 @@
+############################################################
+###  /etc/portage/package.use/local.use
+sys-devel/gcc objc objc++ objc-gc graphite pgo vtv cilk go pie -gtk
+#
+dev-lang/python sqlite berkdb
+
+sys-devel/llvm clang
+##
+
+app-portage/eix sqlite
+##
+##
+app-portage/layman bazaar git mercurial subversion sync-plugin-portage
+dev-vcs/bzr bash-completion curl sftp
+dev-vcs/subversion -java -apache2 -dso -kde
+##
+## 
+net-dns/avahi howl-compat mdnsresponder-compat -dbus gdbm -gtk python autoipd -qt4 -introspection
