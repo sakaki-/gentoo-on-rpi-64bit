@@ -38,6 +38,7 @@ ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/subversio
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-config-1.8-r1.tbz2 /usr/portage/packages/sys-devel
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-7.3.0-r1.tbz2 /usr/portage/packages/sys-devel
 ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/crossdev-20171230.tbz2 /usr/portage/packages/sys-devel
+#ADD  /usr/portage/packages/sys-devel
 ## /sys-libs
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-libs/db-5.3.28-r2.tbz2 /usr/portage/packages/sys-libs
 ## dev-db/sqlite /usr/portage/packages/dev-db
@@ -64,6 +65,7 @@ RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
 
 ############################################################
+RUN USE="gdbm berkdb" emerge --getbinpkg --usepkg dev-lang/perl
 RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y sys-devel/gcc-config dev-go/gox sys-devel/binutils-config app-portage/gentoolkit app-portage/eix
 RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y  app-portage/portage-utils app-portage/genlop
 
