@@ -1,6 +1,8 @@
 ############################################################
 ###  /etc/portage/package.use/local.use
 sys-devel/gcc objc objc++ objc-gc graphite pgo vtv cilk go pie -gtk
+sys-devel/binutils multitarget
+## make it easier for base binutils to Crosscompile.
 #
 dev-lang/python sqlite berkdb
 
