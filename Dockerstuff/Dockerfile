@@ -1,6 +1,7 @@
 FROM scratch
 MAINTAINER sakaki & Necrose99
-
+ENV QEMU_EXECVE 1
+ENV QEMU_CPU aarch64
 ### ADD Base Image for mnt Loop and load emulation etc.  AMD64 Busybox for utils in docker on amd64 hosts.. 
 ADD https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-x86_64 /busybox/busybox
 ### ADD Base Image
