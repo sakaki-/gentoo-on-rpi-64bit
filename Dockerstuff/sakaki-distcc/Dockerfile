@@ -43,7 +43,6 @@ ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/g
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/binutils-config-5-r4.tbz2 /usr/portage/packages/sys-devel/
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/binutils-2.30-r2.tbz2 /usr/portage/packages/sys-devel/
 ## /sys-libs
-ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-libs/db-5.3.28-r2.tbz2 /usr/portage/packages/sys-libs/
 ## dev-db/sqlite /usr/portage/packages/dev-db
 ADD http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/dev-db/sqlite-3.23.1.tbz2 /usr/portage/packages/dev-db/
 
@@ -67,7 +66,6 @@ RUN emerge-webrsync
 RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
 RUN cd /usr/portage/packages/dev-lang/ && emerge --nodeps tk-8.6.6.tbz2   tcl-8.6.6.tbz2   perl-5.24.3-r1.tbz2  python-2.7.14-r1.tbz2
-RUN cd /usr/portage/packages/sys-libs/ && emerge --nodeps db-5.3.28-r2.tbz2 
 RUN cd /usr/portage/packages/dev-db/ && emerge --nodeps sqlite-3.23.1.tbz2
 RUN  USE="tcl" emerge -v sys-libs/db
 RUN emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @system
