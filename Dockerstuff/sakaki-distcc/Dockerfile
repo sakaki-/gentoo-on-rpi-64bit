@@ -28,7 +28,7 @@ ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-lang/tk-8.6.6
 ## tk
 
 #################### dev-vcs ##################
-http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/git-2.16.1.tbz2 /usr/portage/packages/dev-vcs/
+ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/git-2.16.1.tbz2 /usr/portage/packages/dev-vcs/
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/bzr-2.7.0.tbz2 /usr/portage/packages/dev-vcs/
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/cvs-1.12.12-r12.tbz2 /usr/portage/packages/dev-vcs/
 ADD http://mirror.math.princeton.edu/pub/redcorelinux/packages/dev-vcs/mercurial-4.5.2.tbz2 /usr/portage/packages/dev-vcs/
