@@ -66,7 +66,7 @@ RUN emerge-webrsync
 ## add binhost/s so this dont take till xmass of 2525 .. 
 RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
-emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @system
+RUN emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @system
 ############################################################
 RUN emerge --nodeps /usr/portage/packages/dev-vcs/git-2.16.1.tbz2 && emerge --nodeps /usr/portage/packages/dev-vcs/subversion-1.9.7-r1.tbz2
 RUN emerge  --nodeps  /usr/portage/packages/dev-lang/go-1.10.1.tbz2 && emerge --nodeps usr/portage/packages/dev-lang/rust-1.25.0.tbz2
