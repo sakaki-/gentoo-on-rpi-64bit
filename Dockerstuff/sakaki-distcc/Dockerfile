@@ -3,7 +3,7 @@ FROM gentoo/stage3-amd64
 ## Icecream its often easier.  howver for now not that many to build on. 
 ## USE Zeroconf to make it stupidly EASY... 
 RUN touch /etc/init.d/functions.sh && \
-  echo 'PYTHON_TARGETS="${PYTHON_TARGETS} python2_7"' >> /etc/portage/make.conf && \
+  echo 'PYTHON_TARGETS="${PYTHON_TARGETS} python2_7 python3_5""' >> /etc/portage/make.conf && \
   echo 'PYTHON_SINGLE_TARGET="python2_7"' >> /etc/portage/make.conf
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/entrypoint.sh /entrypoint.sh
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/docker-compose.yml /docker-compose.yml
