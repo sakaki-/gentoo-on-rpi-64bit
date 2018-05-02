@@ -28,20 +28,26 @@ RUN /busybox/busybox echo "PORTAGE_BINHOST="https://isshoni.org/pi64pie""  >> /e
 ADD https://raw.githubusercontent.com/necrose99/Arm64-Linux-prep/master/prep/etc/resolv.conf_  /etc/resolv.conf
 # use google DNS for Resovler. 
 VOLUME /var/lib/layman:rw, /usr/portage:rw", /usr/portage/distfiles:rw, /packages:rw, /:rw
-# VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo. 
+# VOLUME /var/lib/entropy/client/packages:rw # not building Sabayon packages from gentoo at this time. 
 ## Add emulation Binaries for AMD64 host. 
 
 ADD ADD https://github.com/multiarch/qemu-user-static/blob/master/register/qemu-binfmt-conf.sh / 
-RUN /busybox/busybox sh ./qemu-binfmt-conf.sh
+RUN  /busybox/busybox chmod 775 /qemu-binfmt-conf.sh && /busybox/busybox sh ./qemu-binfmt-conf.sh
 # try and register fmt in system busybox-x86_64 so can run native... 
  
 ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.11.1/qemu-aarch64-static.tar.gz /usr/bin/qemu-aarch64-static
+RUN /busybox/busybox chmod 775 /usr/bin/qemu-aarch64-static
 #updated qemu static 
 ENV ARCH=arm64
-ENTRYPOINT [/busybox/busybox "/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
+#ENTRYPOINT [/busybox/busybox "/usr/bin/qemu-aarch64-static", "-execve", "-0", "bash", "/bin/bash"]
+# test case CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
+CMD /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0  /bin/bash
 # test 
 ## pray ::: might actually get to rig in quay.io/hubdocker. 
-## RUN emerge-webrsync && && layman -S && emerge -uDUG --keep-going --with-bdeps=y @world
+#
+## RUN emerge-webrsync && && layman -S && emerge -uDUG --keep-going --with-bdeps=y @world --binpkg-respect-use=y 
+## G getpkgonly freshen image from new binhost.. 
+#else RUN /busybox/busybox /usr/bin/qemu-aarch64-static  -execve-0 emerge-webrsync && && layman -S && emerge -uDUG --keep-going --with-bdeps=y @world
 
 ### gentoo docker bits likely old and no loger neded will clean on confirm... 
 # Setup the rc_sys  # fix emulation then let this by.  
