@@ -67,7 +67,7 @@ RUN eselect profile set default/linux/amd64/17.0/developer
 ############################################################
 
 ############################################################
-RUN emerge --nodeps /usr/portage/packages/dev-vcs/git-2.16.1.tbz2 && 
+RUN emerge --nodeps /usr/portage/packages/dev-vcs/git-2.16.1.tbz2 && emerge --nodeps /usr/portage/packages/dev-vcs/subversion-1.9.7-r1.tbz2
 RUN emerge  --nodeps  /usr/portage/packages/dev-lang/go-1.10.1.tbz2 && emerge --nodeps usr/portage/packages/dev-lang/rust-1.25.0.tbz2
 RUN emerge --nodeps /usr/portage/packages/app-portage/eix-0.32.9.tbz2  && emerge --nodeps /usr/portage/packages/app-portage/gentoolkit-0.4.0.tbz2
 RUN emerge --nodeps /usr/portage/packages/app-portage/smart-live-rebuild-1.3.5.tbz2 && emerge --nodeps /usr/portage/packages/app-portage/layman-2.4.2-r1.tbz2
