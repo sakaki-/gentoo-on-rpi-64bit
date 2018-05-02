@@ -10,6 +10,10 @@ ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dock
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/make.conf /etc/portage/make.conf
 ADD https://raw.githubusercontent.com/necrose99/gentoo-on-rpi3-64bit/master/Dockerstuff/sakaki-distcc/local.use /etc/portage/package.use/local.use
 ### 
+RUN mkdir -p /var/lib/layman/ && mkdir -p /usr/portage/packages && touch /var/lib/layman/make.conf
+## make an emmpty stub file grrr.. 
+## 
+
 RUN emerge-webrsync
 ## add binhost/s so this dont take till xmass of 2525 .. 
 RUN eselect profile set default/linux/amd64/17.0/developer
