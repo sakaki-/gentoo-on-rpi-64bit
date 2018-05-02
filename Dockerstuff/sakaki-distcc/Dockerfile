@@ -12,6 +12,31 @@ RUN emerge-webrsync && echo  "PORTAGE_BINHOST="http://mirror.math.princeton.edu/
 RUN echo  "PORTAGE_BINHOST="http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/"" >> /etc/portage/make.conf
 ## add binhost/s so this dont take till xmass of 2525 .. 
 RUN eselect profile set default/linux/amd64/17.0/developer
+############################################################
+### cat eof ### keep it her'e
+RUN cat << 'EOF' > /etc/portage/package.use/local.use
+sys-devel/gcc objc objc++ objc-gc graphite pgo vtv cilk go pie -gtk
+#
+dev-lang/python sqlite berkdb
+
+sys-devel/llvm clang
+##
+
+app-portage/eix sqlite
+##
+##
+app-portage/layman bazaar git mercurial subversion sync-plugin-portage
+dev-vcs/bzr bash-completion curl sftp
+dev-vcs/subversion -java -apache2 -dso -kde
+##
+## 
+
+net-dns/avahi howl-compat mdnsresponder-compat -dbus gdbm -gtk python autoipd -qt4 -introspection
+EOF
+############################################################
+RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y sys-devel/gcc-config dev-go/gox sys-devel/binutils-config app-portage/gentoolkit app-portage/eix dev-lang/
+cilk app-portage/portage-utils app-portage/genlop
+RUN emerge -uDU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @world
 RUN emerge --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps-auto=y  net-dns/avahi  dev-vcs/git app-portage/layman net-libs/libgssglue   net-dns/avahi
 RUN USE="crossdev gssapi zeroconf " emerge --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps-auto=y sys-devel/gcc-config  sys-devel/gcc sys-devel/distcc sys-devel/crossdev sys-devel/ct-ng sys-devel/icecream
 
