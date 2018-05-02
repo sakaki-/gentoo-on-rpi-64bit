@@ -19,8 +19,8 @@ crossdev -t aarch64-pc-mingw32 --stable -oO /usr/local/mingw-crossdev/
 crossdev -t armv7a-hardfloat-pc-mingw32 --stable -oO /usr/local/mingw-crossdev/
 #bootstrap... Porthole to get more sexy ie cgo pie etc.. 
 ## arm64 Minggoing to be markerdly unstable.. but for a weekly run , it''l ?Eventually fix it self.. perhaps..
-crossdev -v -t x86_64-pc-mingw32 --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize"' -oO /usr/local/mingw-crossdev/
-crossdev -v -t i686-pc-mingw32 --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize"' -oO /usr/local/mingw-crossdev/
+crossdev -v -t x86_64-pc-mingw32 --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"' -oO /usr/local/mingw-crossdev/ -oO /usr/local/mingw-crossdev/
+crossdev -v -t i686-pc-mingw32 --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"' -oO /usr/local/mingw-crossdev/ -oO /usr/local/mingw-crossdev/
 # arm targets,, ## coment out if not WANTED... 
 crossdev -v -t armv7a-pc-mingw32 --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"' -oO /usr/local/mingw-crossdev/
 crossdev -v -t aarch64-pc-mingw32 --genv 'USE="cxx multilib fortran -mudflap nls openmp -sanitize  objc objc++ objc-gc graphite pgo vtv cilk go pie"' -oO /usr/local/mingw-crossdev/
