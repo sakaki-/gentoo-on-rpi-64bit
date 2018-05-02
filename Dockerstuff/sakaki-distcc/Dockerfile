@@ -76,9 +76,9 @@ RUN emerge --nodeps /usr/portage/packages/sys-devel/gcc-config-1.8-r1.tbz2
 
 RUN cd /usr/portage/packages/sys-devel/ && wget http://mirror.math.princeton.edu/pub/redcorelinux/packages/sys-devel/gcc-7.3.0-r1.tbz2 && emerge --nodeps gcc-7.3.0-r1.tbz2
 RUN cd /usr/portage/packages/sys-devel/ && wget http://mirror.switch.ch/ftp/mirror/pentoo/Packages/amd64-default/sys-devel/crossdev-20171230.tbz2 && emerge --nodeps crossdev-20171230.tbz2
-RUN emerge --nodeps /usr/portage/packages/sys-devel/binutils-config-5-r4.tbz2  && emerge --nodeps /usr/portage/packages/sys-devel/sys-devel/binutils-2.30-r2.tbz2
+RUN emerge --nodeps /usr/portage/packages/sys-devel/binutils-config-5-r4.tbz2  && emerge --nodeps /usr/portage/packages/sys-devel/binutils-2.30-r2.tbz2
 RUN emerge dev-go/gox
-RUN emerge -uDnU --keep-going --getbinpkg --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @world
+RUN emerge -uDngU --keep-going --getbinpkg --newuse --binpkg-respect-use=y --autounmask-continue=y --with-bdeps=y @world
 ############################################################
  # net-fs/nfs-utils may add nfs to push out pkgs net-fs/samba net-misc/ngrok::SEEDS needs golang  https tunnels for pkgs out... 
 # rm -rf /usr/portage/*
