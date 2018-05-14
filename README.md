@@ -408,10 +408,11 @@ Because (at the time of writing) 64-bit support for the RPi3 is fairly 'cutting 
 
 The tree you need is maintained [here](https://github.com/raspberrypi/linux).
 
-However first, since it generally makes sense to use a 'stable' branch compiler for kernel builds, but the RPi3 image uses the 'testing' (aka `~arm64`) branch for all packages by default, begin by downgrading your `gcc` compiler on the RPi3 to the 'stable' variant (this version is also available on the binhost, so the following process shouldn't take long). Become root, and issue:
+However first, since it generally makes sense to use a 'stable' branch compiler and `binutils` for kernel builds, but the RPi3 image uses the 'testing' (aka `~arm64`) branch for all packages by default, begin by downgrading your `gcc` compiler and `binutils` on the RPi3 to the 'stable' variants (these versions are also available on the binhost, so the following process shouldn't take long). Become root, and issue:
 ```console
 pi64 ~ # echo "sys-devel/gcc -~arm64" >> /etc/portage/package.accept_keywords/gcc
-pi64 ~ # emerge -u sys-devel/gcc
+pi64 ~ # echo "sys-devel/binutils -~arm64" >> /etc/portage/package.accept_keywords/binutils
+pi64 ~ # emerge --update --oneshot sys-devel/gcc sys-devel/binutils
 pi64 ~ # gcc-config --list-profiles
 ```
 
