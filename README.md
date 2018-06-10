@@ -404,6 +404,24 @@ You don't need to read the following notes to use the image, but they may help y
 
 The following are some notes regarding optional maintenance tasks. The topics here may be of interest to advanced users, but it is not necessary to read these to use the image day-to-day.
 
+### <a id="revertkernelbin"></a>Optional: Switch Back to a 'Pure' `bcmrpi3_defconfig` Kernel
+
+As of version 1.2.2 of the image, the default binary kernel package has changed, to `sys-kernel/bccmrpi3-kernel-bis-bin`, the underlying kernel for which uses a slightly augmented version of the upstream `bcmrpi3-defconfig`, thereby enabling a number of useful additional facilities (such as KVM).
+
+However, if you'd rather use the 'vanilla' `sys-kernel/bccmrpi3-kernel-bin` (i.e., "pure" `bcmrpi3_defconfig`) kernel package, as was the case for <= v1.2.1 of the image, you can do so easily; simply become root, and issue:
+```console
+pi64 ~ # emerge --ask --verbose --oneshot sys-kernel/bccmrpi3-kernel-bin
+```
+
+Once this completes, reboot immediately, and you'll be using the "old default" binary kernel package again (and this choice will be respected during e.g. `genup` system update runs, going forward).
+
+Switching back to the "-bis" binary kernel package, should you subsequently wish to do so, is just as straightforward; simply become root again and issue:
+```console
+pi64 ~ # emerge --ask --verbose --oneshot sys-kernel/bccmrpi3-kernel-bis-bin
+```
+
+Reboot immediately the above command completes.
+
 ### <a id="kernelbuild"></a>Optional: Compiling a Kernel from Source
 
 If you'd like to compile a kernel from source on your new system, rather than using the provided binary package, you can do so easily.
