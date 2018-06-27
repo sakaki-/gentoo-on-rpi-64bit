@@ -574,7 +574,19 @@ If you want to run a dedicated server program on your RPi3 (for example, a crypt
 pi64 ~ # rc-update del xdm default
 ```
 
-then reboot your system. You will now have a standard terminal login available only, which greatly saves on system memory.
+<a id="reclaim_mem"></a>You can also reclaim the memory reserved for the `vc4` graphics driver (this is optional). To do so, issue:
+```console
+pi64 ~ # nano -w /boot/config.txt
+```
+
+and comment out the following line, so it reads:
+```bash
+#dtoverlay=vc4-fkms-v3d,cma-256
+```
+
+Leave the rest of the file as-is. Save, and exit `nano`.
+
+Reboot your system. You will now have a standard terminal login available only, which greatly saves on system resources.
 
 > Should you wish to completely remove the graphical desktop's _packages_ from your system too, please see my notes [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Create-a-Slimmed-Down-Version-of-the-Image).
 
@@ -595,8 +607,20 @@ It is generally more reliable to use the Ethernet rather than the WiFi network i
 Should you wish to revert back to using the graphical desktop at some point in the future, simply issue (as root):
 ```console
 pi64 ~ # rc-update add xdm default
-pi64 ~ # rc-service xdm start
 ```
+
+Then, if you edited `/boot/config.txt` [above](#reclaim_mem), undo that change now. Issue:
+```console
+pi64 ~ # nano -w /boot/config.txt
+```
+
+and uncomment the following line, so it reads:
+```bash
+dtoverlay=vc4-fkms-v3d,cma-256
+```
+
+Leave the rest of the file as-is. Save, and exit `nano`. Reboot your system, and you should have your full graphical desktop back again!
+
 
 ## <a id="miscpoints"></a>Miscellaneous Points (Advanced Users Only) (&darr;[skip](#helpwanted))
 
