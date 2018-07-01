@@ -721,7 +721,7 @@ The image is subscribed to the following ebuild repositories:
   * **sys-kernel/bcmrpi3-kernel-bis-bin**
     Provides ebuilds to install the available binary packages for the 64-bit `bcmrpi3_defconfig` Linux kernels (for the Raspberry Pi 3 model B and B+), which are updated weekly [here](https://github.com/sakaki-/bcmrpi3-kernel-bis). This version is used by default in preference to `bcmrpi3-kernel-bin` as of v1.2.2 of the image, as it includes some additional kernel configuration items such as KVM (but either is acceptable).
   * **media-libs/raspberrypi-userland**
-    Provides `raspberrypi-userland-9999.ebuild`, a (restricted) 64-bit build (`-DARM64=ON`). NB: not currently installed on the image, or controlled by the `rpi3-64bit-meta` metapackage.
+    Provides a (restricted) 64-bit build (`-DARM64=ON`) of `raspberrypi-userland`, for`vcgencmd` etc. The ebuild needs tidying, so please use with care ><
   * **sys-apps/rpi3-init-scripts**
     Provides a few simple init scripts (to autoexpand the root partition on first boot, etc.).
   * **app-portage/weekly-genup**
