@@ -33,6 +33,30 @@ Please read the instructions below before proceeding. Also please note that all 
 
 > Please also note that support for `arm64` is still in its [early stages](https://wiki.gentoo.org/wiki/Raspberry_Pi) with Gentoo, so it is quite possible that you may encounter strange bugs etc. when running a 64-bit image such as this one. A lot of packages [have been `* ~*` keyworded](https://github.com/sakaki-/rpi3-overlay/tree/master/profiles/targets/rpi3/package.accept_keywords) to get the system provided here to build... but hey, if you like Gentoo, little things like that aren't likely to put you off ^-^
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Downloading and Writing the Image](#downloading-and-writing-the-image)
+  * [Regular Image (genpi64.img.xz)](#regular-image-genpi64imgxz)
+  * [Pi-Top Image (genpi64pt.img.xz)](#pi-top-image-genpi64ptimgxz)
+- [Booting!](#booting)
+- [Using Gentoo](#using-gentoo)
+- [Keeping Your System Up-To-Date](#keeping-your-system-up-to-date)
+  * [Installing New Packages Under Gentoo](#installing-new-packages-under-gentoo)
+- [Miscellaneous Configuration Notes, Hints, and Tips](#miscellaneous-configuration-notes-hints-and-tips-skip)
+- [Maintenance Notes (Advanced Users Only)](#maintenance-notes-advanced-users-only-skip)
+  * [Optional: Switch Back to a 'Pure' bcmrpi3_defconfig Kernel](#optional-switch-back-to-a-pure-bcmrpi3_defconfig-kernel)
+  * [Optional: Compiling a Kernel from Source](#optional-compiling-a-kernel-from-source)
+  * [Have your Gentoo PC Do the Heavy Lifting!](#have-your-gentoo-pc-do-the-heavy-lifting)
+  * [Using your RPi3 as a Headless Server](#using-your-rpi3-as-a-headless-server)
+- [Miscellaneous Points (Advanced Users Only)](#miscellaneous-points-advanced-users-only-skip)
+  * [RPi3-Specific Ebuilds](#rpi3-specific-ebuilds)
+  * [New Features to Expedite Regular System Updating](#new-features-to-expedite-regular-system-updating)
+  * [Subscribed Ebuild Repositories (aka Overlays)](#subscribed-ebuild-repositories-aka-overlays)
+- [Help Wanted!](#help-wanted)
+- [Acknowledgement](#acknowledgement)
+- [Feedback Welcome!](#feedback-welcome)
+
 ## Prerequisites
 
 To try this out, you will need:
