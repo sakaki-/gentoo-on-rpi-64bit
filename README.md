@@ -162,7 +162,7 @@ You should see the RPi3's standard 'rainbow square' on-screen for about 2 second
 
 <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/xfce-desktop-small-2.png" alt="Baseline Xfce desktop" width="960px"/>
 
-The whole process (from first power on to graphical desktop) should take less than **three minutes** or so. **Please be patient during this first-time startup**; on subsequent reboots, the resizing and swapfile creation processes will not run, so your system will come up a _lot_ faster.
+The whole process (from first power on to graphical desktop) should take less than **three minutes** or so. **Please be patient during this initial startup**; on subsequent reboots, the resizing and swapfile creation processes will not run, so your system will come up a _lot_ faster.
 
 > The initial **root** password on the image is **raspberrypi64**. The password for **demouser** is also **raspberrypi64** (you may need this if e.g. the screen lock comes on; you can also do `sudo su --login root` to get a root prompt at the terminal, without requiring a password). These passwords are set by the [`autoexpand-root`](https://github.com/sakaki-/rpi3-overlay/blob/master/sys-apps/rpi3-init-scripts/files/init.d_autoexpand_root-4) startup service. Note that the screensaver for `demouser` has been disabled by default on the image.
 
