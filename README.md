@@ -53,6 +53,7 @@ Please read the instructions below before proceeding. Also please note that all 
   * [RPi3-Specific Ebuilds](#rpi3-specific-ebuilds)
   * [New Features to Expedite Regular System Updating](#new-features-to-expedite-regular-system-updating)
   * [Subscribed Ebuild Repositories (aka Overlays)](#subscribed-ebuild-repositories-aka-overlays)
+- [Project Wiki](#projectwiki)
 - [Help Wanted!](#help-wanted)
 - [Acknowledgement](#acknowledgement)
 - [Feedback Welcome!](#feedback-welcome)
@@ -432,6 +433,7 @@ You don't need to read the following notes to use the image, but they may help y
 * If you are interested in a Docker variant of the image, please see necrose99's notes [here](https://github.com/necrose99/gentoo-on-rpi3-64bit/tree/master/Dockerstuff).
 * As of version 1.3.0 of the image, the weekly-gated rsync mirror URI has changed, to `rsync://isshoni.org/gentoo-portage-pi64-gem`. This mirror has no `porthash`  `repo.hash{,.asc}` files present in it, so may be checked by Portage's official `gemato` verification tool (and this will be done automatically for you during `genup` runs). The `porthash` tool itself (which previous versions of the image used for tree verification) has now been retired.
    > The old `rsync://isshoni.org/gentoo-portage-pi64` (non `-gem`) mirror will continue to be updated also for now, but will likely be withdrawn at some point in the future.
+* As of version 1.2.2 of the image, you can efficiently run additional guest operating systems on your 64-bit Gentoo system, using QEMU virtualization with KVM acceleration. For further details, please see my wiki tutorial [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Run-Another-OS-on-your-RPi3-as-a-Virtualized-QEMU-Guest-under-KVM).
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
 
@@ -655,7 +657,7 @@ dtoverlay=vc4-fkms-v3d,cma-256
 Leave the rest of the file as-is. Save, and exit `nano`. Reboot your system, and you should have your full graphical desktop back again!
 
 
-## <a id="miscpoints"></a>Miscellaneous Points (Advanced Users Only) (&darr;[skip](#helpwanted))
+## <a id="miscpoints"></a>Miscellaneous Points (Advanced Users Only) (&darr;[skip](#projectwiki))
 
 The following are some notes about the detailed structure of the image. It is not necessary to read these to use the image day-to-day.
 
@@ -822,6 +824,12 @@ The image is subscribed to the following ebuild repositories:
     Provides an OpenRC service to workaround certain RPi3B+ Ethernet issues via `ethtool`.
   * **app-office/orage** [upstream](https://git.xfce.org/apps/orage/)
     Provides `orage-4.12.1-r1.ebuild`, patched for [bug 657542](https://bugs.gentoo.org/657542). Once this revbumps in the main Gentoo tree, `orage` should revert to using that version instead.
+
+## <a id="projectwiki"></a>Project Wiki
+
+In addition to the notes in this README, this project also has an associated open **wiki**, containing a number of short tutorial articles you may find helpful when using 64-bit Gentoo on your RPi3.
+
+You can view the wiki homepage [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki). Feel free to add your own material!
   
 ## <a id="helpwanted"></a>Help Wanted!
 
