@@ -435,7 +435,7 @@ You don't need to read the following notes to use the image, but they may help y
    > The old `rsync://isshoni.org/gentoo-portage-pi64` (non `-gem`) mirror will continue to be updated also for now, but will likely be withdrawn at some point in the future.
 * As of version 1.2.2 of the image, you can efficiently run additional guest operating systems on your 64-bit Gentoo RPi3, using QEMU virtualization with KVM acceleration (much as you might use, say, VirtualBox on a PC). For further details, please see my wiki tutorial [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Run-Another-OS-on-your-RPi3-as-a-Virtualized-QEMU-Guest-under-KVM). If you like, you can run a GUI, even a full desktop, on your guest OS, as further detailed [here](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Adding-a-GUI-to-your-QEMU-KVM-Guest-OS). Sample screenshot (with an Ubuntu 18.04 LTS guest):
   <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/kvm-bionic-vnc.png" alt="QEMU Guest Desktop with KVM Virtualization" width="800px"/>
-  Notice how the guest and host OSes in the above are running different *kernels* - it's not just a `chroot`.
+  <br>Notice how the guest and host OSes in the above are running different *kernels* - it's not just a `chroot`.
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
 
