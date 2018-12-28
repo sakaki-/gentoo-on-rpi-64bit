@@ -12,7 +12,7 @@ The image's userland contains a complete (OpenRC-based) Gentoo system (including
 
 The kernel and userland are both 64-bit (`arm64`/`aarch64`), and support for the Pi's [VC4](https://wiki.gentoo.org/wiki/Raspberry_Pi_VC4) GPU has been included (using [`vc4-fkms-v3d`](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=159853) / Mesa), so rendering performance is reasonable (e.g., `glxgears` between 400 and 1200fps, depending on load; real-time video playback). The Pi's onboard Ethernet, WiFi (dual-band on the RPi3 B+) and Bluetooth adaptors are supported, as is the official 7" [touchscreen](#touchscreen) (if you have one). Sound works too, both via HDMI (given an appropriate display), and the onboard headphone jack. As of version 1.1.0 of the image, a [weekly-autobuild binhost](#binhost), custom [Gentoo profile](#profile), and [binary kernel package](#binary_kp) have been provided, making it relatively painless to keep your system up-to-date (and, because of this, [`genup`](https://github.com/sakaki-/genup) has been configured to run [automatically once per week](#weekly_update), by default).
 
-Here's a screenshot of the image (running on an RPi3B+):
+Here's a screenshot of the image running on an RPi3B+:
 
 <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/demo-screenshot-small-5.jpg" alt="gentoo-on-rpi3-64bit in use (screenshot)" width="960px"/>
 
