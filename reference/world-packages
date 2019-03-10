@@ -6,7 +6,7 @@ app-office/libreoffice-6.1.5.2
 app-office/libreoffice-l10n-6.1.5.2
 app-portage/porthole-0.6.1-r6
 app-text/evince-3.28.5
-dev-embedded/rpi3-64bit-meta-1.4.1-r2
+dev-embedded/rpi3-64bit-meta-1.4.0-r1
 dev-util/meld-3.20.0
 mail-client/claws-mail-3.17.3
 mail-client/thunderbird-60.5.1
@@ -23,6 +23,6 @@ media-video/vlc-3.0.6
 net-irc/hexchat-2.14.2
 sys-apps/gnome-disk-utility-3.30.2
 sys-devel/portage-distccmon-gui-1.0
-www-client/chromium-72.0.3626.121-r1
+www-client/chromium-72.0.3626.96-r1
 www-client/firefox-65.0.1
 www-client/links-2.18
