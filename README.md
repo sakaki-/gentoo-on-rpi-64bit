@@ -545,9 +545,9 @@ Next, modify the configuration if you like to suit your needs (this step is opti
 ```console
 user@pi64 linux $ make menuconfig
 ```
-When ready, go ahead and build the kernel, modules, included firmware and dtbs. Issue:
+When ready, go ahead and build the kernel, modules, and dtbs. Issue:
 ```console
-user@pi64 linux $ nice -n 19 make -j4
+user@pi64 linux $ nice -n 19 make -j4 Image modules dtbs
 ```
 This will a reasonable time to complete. (Incidentally, the build is forced to run at the lowest system priority, to prevent your machine becoming too unresponsive during this process.)
 
