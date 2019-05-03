@@ -462,6 +462,7 @@ You don't need to read the following notes to use the image, but they may help y
   <br>Notice how the guest and host OSes in the above are running different *kernels* - it's not just a `chroot`.
 
 * If you'd like to remotely access your RPi3's desktop from another machine (whether a Linux PC, Windows PC, Mac or even another RPi3!), you can do so easily, by using [VNC](https://en.wikipedia.org/wiki/Virtual_Network_Computing). Please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Run-a-Remote-VNC-Desktop-on-your-RPi3) for further details.
+  * For Windows users, [RDP](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) access is also supported (please see [these notes](https://github.com/sakaki-/gentoo-on-rpi3-64bit/wiki/Access-your-RPi3%27s-Desktop-Remotely-from-a-Windows-Box-via-RDP) for further details).
 
 * As of version 1.3.1 of the image, an Xfce4 startup service `rpi3-noblank` is active; this prevents the X11 screensaver from blanking the screen when it (i.e., the screensaver) is supposed to be turned off, as this can cause a mysterious 'black screen' (with no obvious way to recover, moving the mouse and keyboard don't work) under the `vc4-{f,}kms-v3d` graphics drivers.
 
