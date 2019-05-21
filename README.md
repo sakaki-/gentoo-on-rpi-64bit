@@ -479,18 +479,18 @@ The following are some notes regarding optional maintenance tasks. The topics he
 
 ### <a id="revertkernelbin"></a>Optional: Switch Back to a 'Pure' `bcmrpi3_defconfig` Kernel
 
-As of version 1.2.2 of the image, the default binary kernel package has changed, to `sys-kernel/bccmrpi3-kernel-bis-bin`, the underlying kernel for which uses a slightly augmented version of the upstream `bcmrpi3-defconfig`, thereby enabling a number of useful additional facilities (such as KVM, ZSWAP etc).
+As of version 1.2.2 of the image, the default binary kernel package has changed, to `sys-kernel/bcmrpi3-kernel-bis-bin`, the underlying kernel for which uses a slightly augmented version of the upstream `bcmrpi3-defconfig`, thereby enabling a number of useful additional facilities (such as KVM, ZSWAP etc).
 
-However, if you'd rather use the 'vanilla' `sys-kernel/bccmrpi3-kernel-bin` (i.e., "pure" `bcmrpi3_defconfig`) kernel package, as was the case for <= v1.2.1 of the image, you can do so easily; simply become root, and issue:
+However, if you'd rather use the 'vanilla' `sys-kernel/bcmrpi3-kernel-bin` (i.e., "pure" `bcmrpi3_defconfig`) kernel package, as was the case for <= v1.2.1 of the image, you can do so easily; simply become root, and issue:
 ```console
-pi64 ~ # emerge --ask --verbose --oneshot sys-kernel/bccmrpi3-kernel-bin
+pi64 ~ # emerge --ask --verbose --oneshot sys-kernel/bcmrpi3-kernel-bin
 ```
 
 Once this completes, reboot immediately, and you'll be using the "old default" binary kernel package again (and this choice will be respected during e.g. `genup` system update runs, going forward).
 
 Switching back to the "-bis" binary kernel package, should you subsequently wish to do so, is just as straightforward; simply become root again and issue:
 ```console
-pi64 ~ # emerge --ask --verbose --oneshot sys-kernel/bccmrpi3-kernel-bis-bin
+pi64 ~ # emerge --ask --verbose --oneshot sys-kernel/bcmrpi3-kernel-bis-bin
 ```
 
 Reboot immediately the above command completes.
