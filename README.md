@@ -89,7 +89,7 @@ On your Linux box, issue (you may need to be `root`, or use `sudo`, for the foll
 
 <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/Raspberry_Pi_3_B_and_B_plus.jpg" alt="Raspberry Pi 3 B and B+" height="200px" align="right"/>
 
-to fetch the compressed disk image file (~1,511) and its signature.
+to fetch the compressed disk image file (~1,511MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
