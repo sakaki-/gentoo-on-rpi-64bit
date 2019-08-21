@@ -417,7 +417,7 @@ on the image to include v3d support for the new Pi4). Note however that this is 
    
    > Hint: if you have headphones connected to your RPi3, but can't hear anything, issue (as the regular user, in a terminal) `amixer -c 0 cset numid=3 1` to force sound to route to the onboard jack (this will cause HDMI output to be muted too). Issue `amixer -c 0 cset numid=3 2` to turn HDMI audio output on again (muting the headphones).
 
-* As over v1.5.0 of the image, full `pulseaudio` support has been built into all supplied packages (via a global USE flag).
+* As of v1.5.0 of the image, full `pulseaudio` support has been built into all supplied packages (via a global USE flag).
 
 * If you are using the Pi-Top image, and have one or more pi-topSPEAKER units plugged in, the HDMI audio stream will [automatically play](#ptspeaker) though these. You should also be able to change the [screen backlight brightness](#ptbrightness) using the [keyboard buttons](#ptkeycuts), see the [remaining battery charge](#ptbattery) in the top panel, and find that the when you shut down your system, the hub [powers off](#ptpoweroff) your Pi-Top properly.
   * Pi-Top (v1) users: you can (at your option) swap out your existing RPi3 Model B board for a RPi3 Model B+; everything should work as before, but performance will be increased somewhat (the peak normal clock speed of the B+ is faster (at 1.4GHz) than the B (at 1.2GHz); also, the B+ includes a heat spreader, so is less prone to thermal throttling when worked hard). While you could in principle also use an RPi4 in the Pi-Top chassis, you'd need an adaptor for the microHDMI and power connectors, and you may also find the unit draws more power than the Pi-Top circuitry can supply, so this approach is not recommended.
