@@ -78,7 +78,7 @@ Choose either the regular (for a standard RPi 4B/3B+/3B board) or Pi-Top variant
 
 > If you are using a Windows or Mac box, or prefer to use a GUI tool in Linux, I recommend you download your preferred image via your web browser using the [links](#downloadlinks) above, and then check out the free, open-source, cross-platform tool [Etcher](https://etcher.io) to write it to microSD card. Then, once you've done that, continue reading at ["Booting!"](#booting) below.
 
-> Alternatively, for those who prefer the Raspberry Pi [NOOBS](https://www.raspberrypi.org/documentation/installation/noobs.md) installer GUI, both images are now available for installation using [PINN](https://github.com/procount/pinn). PINN is a fork of NOOBS and includes a number of additional advanced features. Please see [this post](https://forums.gentoo.org/viewtopic-p-8122236.html#8122236) for further details. *Many thanks to [procount](https://github.com/procount) for his work on this.*
+> Alternatively, for those who prefer the Raspberry Pi [NOOBS](https://www.raspberrypi.org/documentation/installation/noobs.md) installer GUI, both images are now available for installation using [PINN](https://github.com/procount/pinn) (called `gentoo64` and `gentoo64pt` there). PINN is a fork of NOOBS and includes a number of additional advanced features. Please see [this post](https://forums.gentoo.org/viewtopic-p-8122236.html#8122236) for further details. *Many thanks to [procount](https://github.com/procount) for his work on this.*
 
 ### <a id="regularimage"></a>Regular Image (`genpi64.img.xz`)
 
