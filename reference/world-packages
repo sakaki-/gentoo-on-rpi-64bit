@@ -1,13 +1,13 @@
 app-arch/p7zip-16.02-r4
 app-crypt/seahorse-3.30.1.1
-app-editors/emacs-26.2
+app-editors/emacs-26.3_rc1
 app-editors/mousepad-0.4.1
 app-office/abiword-3.0.2-r2
 app-office/libreoffice-6.3.0.4
 app-office/libreoffice-l10n-6.3.0.4
 app-portage/porthole-0.6.1-r6
 app-text/evince-3.32.0
-dev-embedded/rpi-64bit-meta-1.5.0-r9
+dev-embedded/rpi-64bit-meta-1.5.1-r7
 dev-java/icedtea-3.13.0
 dev-java/icedtea-sound-1.0.1
 dev-java/icedtea-web-1.6.2
@@ -19,7 +19,7 @@ media-gfx/gimp-2.10.12
 media-gfx/ristretto-0.10.0
 media-sound/clementine-1.3.1_p20190609
 media-sound/mpc-0.32
-media-sound/mpd-0.21.13
+media-sound/mpd-0.21.14
 media-tv/kodi-18.0
 media-video/mplayer-1.3.0-r5
 media-video/mpv-0.29.1-r1
@@ -30,5 +30,5 @@ net-p2p/transmission-2.94
 sys-apps/gnome-disk-utility-3.30.2-r1
 sys-devel/portage-distccmon-gui-1.1
 www-client/chromium-76.0.3809.87-r1
-www-client/firefox-68.0.1
+www-client/firefox-68.0.2
 www-client/links-2.18
