@@ -7,9 +7,8 @@ Bootable 64-bit Gentoo image for the Raspberry Pi 4 Model B, and Pi 3 B and B+, 
 
 This project is a bootable, microSD card **64-bit Gentoo image for the [Raspberry Pi 4 model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/), 
 [3 model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) and [3 model B+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/)** single board computers (SBC).
-> A variant image for the [Pi-Top v1](https://pi-top.com/products/pi-top) (an RPi3-based DIY laptop) is also provided.
 
-The image's userland contains a complete (OpenRC-based) Gentoo system (including a full Portage tree) - so you can run `emerge` operations immediately - and has been pre-populated with a reasonable package set (Xfce v4.12, LibreOffice v6.3.0.4, Firefox Quantum v68.0.1, Chromium v76.0.3809.87, Thunderbird v60.8.0, VLC v3.0.7.1, Kodi v18.0, GIMP v2.10.12 etc.) so that you can get productive *without* having to compile anything first! Unless you *want* to, of course; this being Gentoo, GCC v9.1.0, Clang v8.0.1, IcedTea v3.13.0 (OpenJDK 8), Go v1.12.7, Rust v1.36.0 and various versions of Python are of course bundled also ^-^ As of version 1.2.0 of the image, all userland software has been built under Gentoo's 17.0 profile, and, as of version 1.5.0 of the image, **the new RPi4 Model B is also supported** (and to reflect this, the project itself has been renamed, from `gentoo-on-rpi3-64bit` to `gentoo-on-rpi-64bit` ^-^).
+The image's userland contains a complete (OpenRC-based) Gentoo system (including a full Portage tree) - so you can run `emerge` operations immediately - and has been pre-populated with a reasonable package set (Xfce v4.12, LibreOffice v6.3.0.4, Firefox Quantum v68.0.2, Chromium v76.0.3809.87, Thunderbird v60.8.0, VLC v3.0.7.1, Kodi v18.0, GIMP v2.10.12 etc.) so that you can get productive *without* having to compile anything first! Unless you *want* to, of course; this being Gentoo, GCC v9.2.0, Clang v8.0.1, IcedTea v3.13.0 (OpenJDK 8), Go v1.12.9, Rust v1.37.0 and various versions of Python are of course bundled also ^-^ As of version 1.2.0 of the image, all userland software has been built under Gentoo's 17.0 profile, and, as of version 1.5.0 of the image, **the new RPi4 Model B is also supported** (and to reflect this, the project itself has been renamed, from `gentoo-on-rpi3-64bit` to `gentoo-on-rpi-64bit` ^-^).
 
 The kernel and userland are both 64-bit (`arm64`/`aarch64`), and support for the Pi's [VC4](https://wiki.gentoo.org/wiki/Raspberry_Pi_VC4) GPU (VC6 on the Pi4) has been included (using [`vc4-fkms-v3d`](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=159853) / Mesa), so rendering performance is reasonable (e.g., `glxgears` between 400 and 1200fps, depending on load and system type; real-time video playback). The Pi's onboard Ethernet, WiFi (dual-band on the RPi3 B+ / Pi4 B) and Bluetooth adaptors are supported, as is the official 7" [touchscreen](#touchscreen) (if you have one). Sound works too, both via HDMI (given an appropriate display), and the onboard headphone jack. As of version 1.1.0 of the image, a [weekly-autobuild binhost](#binhost), custom [Gentoo profile](#profile), and [binary kernel package](#binary_kp) have been provided, making it relatively painless to keep your system up-to-date (and, because of this, [`genup`](https://github.com/sakaki-/genup) has been configured to run [automatically once per week](#weekly_update), by default). As of version 1.4.0 of the image, access to the RPi3's hardware video codecs (and camera module, if you have one) [is supported](#v4l2) too, via the V4L2 framework, and, as of version 1.5.0, these features are available on the RPi4 also. Additionally, on the RPi4, the use of dual monitors is supported (but not required) as of version 1.5.0 (as is accelerated graphics, via V3D / Mesa). And, there is no 3GiB 'memory ceiling' anymore: if you are fortunate enough to own a 4GiB Pi4, all 4GiB of that RAM is usable.
 
@@ -21,12 +20,14 @@ The image may be downloaded from the link below (or via `wget`, per the instruct
 
 <a id="downloadlinks"></a>Variant | Version | Image | Digital Signature
 :--- | ---: | ---: | ---:
-Raspberry Pi  4B, 3B/B+ 64-bit | v1.5.0 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64.img.xz.asc)
-Pi-Top (an RPi3-based DIY Laptop) 64-bit | v1.5.0 | [genpi64pt.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64pt.img.xz) | [genpi64pt.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64pt.img.xz.asc)
+Raspberry Pi  4B, 3B/B+ 64-bit Full | v1.5.1 | [genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64.img.xz) | [genpi64.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64.img.xz.asc)
+Raspberry Pi 4B, 3B/B+ 64-bit Lite | v1.5.1 | [genpi64lite.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64lite.img.xz) | [genpi64lite.img.xz.asc](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64lite.img.xz.asc)
 
-**NB:** most users will want the first ([genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64.img.xz)) image - the Pi-Top variant ([genpi64pt.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64pt.img.xz)) should *only* be used for those who want to run an RPi3 in a [Pi-Top](https://pi-top.com/products/pi-top) chassis (as it contains platform-specific drivers to communicate with the Pi-Top's onboard battery, hub, speakers etc.)
+**NB:** most users will want the first, full image ([genpi64.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64.img.xz)) - the 'lite' variant ([genpi64lite.img.xz](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64lite.img.xz)) boots to a command-line (rather than a graphical desktop), and is intended only for experienced Gentoo users (who wish to to *e.g.* set up a server).
 
-> The previous release versions are still available (together with a detailed changelog) [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases). If you have a significant amount of work invested in an older release of this image, I have also provided manual upgrade instructions (from 1.0.0 thru 1.4.2 &rarr; 1.5.0) [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases#upgrade_to_1_5_0) (note that due to the addition of RPi4-compatibility in 1.5.0, you cannot simply upgrade via `genup` alone; some manual steps are required).
+> Please note that as of v1.5.1, the Pi-Top (a DIY, RPi3-based laptop) pre-built image will unfortunately no longer be provided as part of this project. My Pi-Top v1's hub has recently suffered a hardware failure, leaving me unable to charge the internal battery, or boot an RPi3 in its chassis. As such, I am unable to test this variant of the image going forward - and I am not comfortable releasing images I haven't tested myself. You should still be able to bring up the Pi-Top specific drivers on the 'full' standard image above, by setting the `pitop` USE flag globally, and then re-emerging `rpi-64bit-meta` however. My apologies for the inconvenience to users on this platform ><
+
+> The previous release versions are still available (together with a detailed changelog) [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases). If you have a significant amount of work invested in an older release of this image, I have also provided manual upgrade instructions (from 1.0.0 thru 1.5.0 &rarr; 1.5.1) [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/releases#upgrade_to_1_5_1) (note that due to the addition of RPi4-compatibility in 1.5.0, you cannot simply upgrade via `genup` alone; some manual steps are required).
 
 Please read the instructions below before proceeding. Also please note that all images (and binary packages) are provided 'as is' and without warranty. You should also be comfortable with the (at the moment, unavoidable) non-free licenses required by the firmware and boot software supplied on the image before proceeding: these may be reviewed [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/tree/master/licenses).
 
@@ -38,8 +39,8 @@ Please read the instructions below before proceeding. Also please note that all 
 
 - [Prerequisites](#prerequisites)
 - [Downloading and Writing the Image](#downloading-and-writing-the-image)
-  * [Regular Image (genpi64.img.xz)](#regular-image-genpi64imgxz)
-  * [Pi-Top Image (genpi64pt.img.xz)](#pi-top-image-genpi64ptimgxz)
+  * [Full Image (genpi64.img.xz)](#regularimage)
+  * [Lite Image (genpi64lite.img.xz)](#liteimage)
 - [Booting!](#booting)
 - [Using Gentoo](#using-gentoo)
 - [Keeping Your System Up-To-Date](#keeping-your-system-up-to-date)
@@ -62,10 +63,10 @@ Please read the instructions below before proceeding. Also please note that all 
 ## Prerequisites
 
 To try this out, you will need:
-* A [microSD](https://en.wikipedia.org/wiki/Secure_Digital) card of _at least_ 16GB capacity (the image is 1,643MiB compressed, 12.25GiB == 13.15GB uncompressed, so it should fit on any card marked as >= 16GB). If you intend to build many additional large packages (or kernels) on your RPi, a card of >16GB is recommended (the root partition will [automatically be expanded](#morespace) to fill the available space on your microSD card, on first boot). Depending on the slots available on your PC, you may also need an adaptor to allow the microSD card to be plugged in (to write the image to it initially). [Class A1 cards](https://www.raspberrypi.org/forums/viewtopic.php?p=1517864#p1517864) are particularly recommended, but not required.
+* A [microSD](https://en.wikipedia.org/wiki/Secure_Digital) card of _at least_ 16GB capacity (the full image is 1,720MiB compressed, 12.25GiB == 13.15GB uncompressed, so it should fit on any card marked as >= 16GB). If you intend to build many additional large packages (or kernels) on your RPi, a card of >16GB is recommended (the root partition will [automatically be expanded](#morespace) to fill the available space on your microSD card, on first boot). Depending on the slots available on your PC, you may also need an adaptor to allow the microSD card to be plugged in (to write the image to it initially). [Class A1 cards](https://www.raspberrypi.org/forums/viewtopic.php?p=1517864#p1517864) are particularly recommended, but not required.
    > I have found most SanDisk cards work fine; if you are having trouble, a good sanity check is to try writing the [standard Raspbian 32-bit image](https://www.raspberrypi.org/downloads/raspbian/) to your card, to verify that your Pi4 (or Pi3) will boot with it, before proceeding.
 
-* A Raspberry Pi 4 Model B, or Pi 3 Model B or B+ (obviously!). (Or, a Pi-Top, if you are using that variant of the image.)
+* A Raspberry Pi 4 Model B, or Pi 3 Model B or B+ (obviously!).
 For simplicity, I am going to assume that you will be logging into the image (at least initially) via an (HDMI) screen and (USB) keyboard connected directly to your Pi, rather than e.g. via `ssh` (although, for completeness, it *is* possible to `ssh` in via the Ethernet interface (which has a DHCP client running), if you can determine the allocated IP address, for example from your router, or via [`nmap`](https://security.stackexchange.com/a/36200)).
 A [decent power supply](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=138636) is recommended.
 
@@ -74,23 +75,23 @@ A [decent power supply](https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=
 
 ## Downloading and Writing the Image
 
-Choose either the regular (for a standard RPi 4B/3B+/3B board) or Pi-Top variant, then follow the appropriate instructions below ([regular](#regularimage) or [Pi-Top](#pitopimage)).
+Choose either the full (recommended for most users) or 'lite' (command-line only) variant, then follow the appropriate instructions below ([full](#regularimage) or [lite](#liteimage)).
 
 > If you are using a Windows or Mac box, or prefer to use a GUI tool in Linux, I recommend you download your preferred image via your web browser using the [links](#downloadlinks) above, and then check out the free, open-source, cross-platform tool [Etcher](https://etcher.io) to write it to microSD card. Then, once you've done that, continue reading at ["Booting!"](#booting) below.
 
-> Alternatively, for those who prefer the Raspberry Pi [NOOBS](https://www.raspberrypi.org/documentation/installation/noobs.md) installer GUI, both images are now available for installation using [PINN](https://github.com/procount/pinn) (called `gentoo64` and `gentoo64pt` there). PINN is a fork of NOOBS and includes a number of additional advanced features. Please see [this post](https://forums.gentoo.org/viewtopic-p-8122236.html#8122236) for further details. *Many thanks to [procount](https://github.com/procount) for his work on this.*
+> Alternatively, for those who prefer the Raspberry Pi [NOOBS](https://www.raspberrypi.org/documentation/installation/noobs.md) installer GUI, both images are now available for installation using [PINN](https://github.com/procount/pinn) (called `gentoo64` and `gentoo64lite` there). PINN is a fork of NOOBS and includes a number of additional advanced features. Please see [this post](https://forums.gentoo.org/viewtopic-p-8122236.html#8122236) for further details. *Many thanks to [procount](https://github.com/procount) for his work on this.*
 
-### <a id="regularimage"></a>Regular Image (`genpi64.img.xz`)
+### <a id="regularimage"></a>Full Image (`genpi64.img.xz`)
 
 On your Linux box, issue (you may need to be `root`, or use `sudo`, for the following, hence the '#' prompt):
 ```console
-# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64.img.xz
-# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64.img.xz.asc
+# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64.img.xz
+# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64.img.xz.asc
 ```
 
-<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi4/Raspberry_Pi_3_B_and_B_plus_and_4_B.jpg" alt="[Raspberry Pi 4B, 3B and B+]" height="200px" align="right"/>
+<img src="https://github.com/sakaki-/resources/raw/master/raspberrypi/pi4/rpi4-desktop.png" alt="RPi4 Running Full Image" height="200px" align="right"/>
 
-to fetch the compressed disk image file (~1,643MiB) and its signature.
+to fetch the compressed disk image file (~1,720MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
@@ -116,24 +117,24 @@ The above `xzcat` to the microSD card will take some time, due to the decompress
 
 Now continue reading at ["Booting!"](#booting) below.
 
-### <a id="pitopimage"></a>Pi-Top Image (`genpi64pt.img.xz`)
+### <a id="liteimage"></a>Lite Image (`genpi64lite.img.xz`)
 
-> Please note that only v1 of the Pi-Top is currently supported (although you *are* free to use an RPi3 B *or* B+ within the v1 chassis, at your option; a Pi4 *may* be workable for such a chassis too, but would require an HDMI adaptor (and also may attempt to draw too much power, so I wouldn't recommend it)). The image [has been reported](https://github.com/sakaki-/gentoo-on-rpi3-64bit/issues/96) to work on the v2 Pi-Top (the one with the sliding keyboard) too (in that it will at least boot and run - some of the platform specific drivers may not be operational on the v2 however).
+> Please note: this image boots to a command line, not a GUI, and is only suitable for experienced Gentoo users. If unsure, choose the [full image](#regularimage) above, instead.
 
 On your Linux box, issue (you may need to be `root`, or use `sudo`, for the following, hence the '#' prompt):
 ```console
-# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64pt.img.xz
-# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.0/genpi64pt.img.xz.asc
+# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64lite.img.xz
+# wget -c https://github.com/sakaki-/gentoo-on-rpi-64bit/releases/download/v1.5.1/genpi64lite.img.xz.asc
 ```
 
-<img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/pitop/gentoo-pitop-small.jpg" alt="[Pi-Top Running Gentoo]" height="200px" align="right"/>
+<img src="https://github.com/sakaki-/resources/raw/master/raspberrypi/pi4/rpi4-console.png" alt="[RPi4 Running Lite Image]" height="200px" align="right"/>
 
-to fetch the compressed disk image file (~1,641MiB) and its signature.
+to fetch the compressed disk image file (~668MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
 # gpg --recv-key DDE76CEA
-# gpg --verify genpi64pt.img.xz.asc genpi64pt.img.xz
+# gpg --verify genpi64lite.img.xz.asc genpi64lite.img.xz
 ```
 
 Assuming that reports 'Good signature', you can proceed. (Warnings that the key is "not certified with a trusted signature" are normal and [may be ignored](http://security.stackexchange.com/questions/6841/ways-to-sign-gpg-public-key-so-it-is-trusted).)
@@ -143,16 +144,18 @@ Next, insert (into your Linux box) the microSD card on which you want to install
 > **Warning** - this will *destroy* all existing data on the target drive, so please double-check that you have the path correct! As mentioned, it is wise to use a spare microSD card as your target, keeping your existing Raspbian microSD card in a safe place; that way, you can easily reboot back into your existing Raspbian system, simply by swapping back to your old card.
 
 ```console
-# xzcat genpi64pt.img.xz > /dev/sdX && sync
+# xzcat genpi64lite.img.xz > /dev/sdX && sync
 ```
 
 Substitute the actual microSD card device path, for example `/dev/sdc`, for `/dev/sdX` in the above command. Make sure to reference the device, **not** a partition within it (so e.g., `/dev/sdc` and not `/dev/sdc1`; `/dev/sdd` and not `/dev/sdd1` etc.)
-> If, on your system, the microSD card showed up with a path of form `/dev/mmcblk0` instead, then use this as the target, in place of `/dev/sdX`. For this naming format, the trailing digit *is* part of the drive name (partitions are labelled as e.g. `/dev/mmcblk0p1`, `/dev/mmcblk0p2` etc.). So, for example, you might need to use `xzcat genpi64pt.img.xz > /dev/mmcblk0 && sync`.
+> If, on your system, the microSD card showed up with a path of form `/dev/mmcblk0` instead, then use this as the target, in place of `/dev/sdX`. For this naming format, the trailing digit *is* part of the drive name (partitions are labelled as e.g. `/dev/mmcblk0p1`, `/dev/mmcblk0p2` etc.). So, for example, you might need to use `xzcat genpi64lite.img.xz > /dev/mmcblk0 && sync`.
 
-The above `xzcat` to the microSD card will take some time, due to the decompression (it takes between 10 and 25 minutes on my machine, depending on the microSD card used). It should exit cleanly when done - if you get a message saying 'No space left on device', then your card is too small for the image, and you should try again with a larger capacity one.
+The above `xzcat` to the microSD card will take some time, due to the decompression (it takes between 5 and 10 minutes on my machine, depending on the microSD card used). It should exit cleanly when done - if you get a message saying 'No space left on device', then your card is too small for the image, and you should try again with a larger capacity one.
 > Note that on first boot, the image will _automatically_ attempt to resize its root partition (which, in this image, includes `/home`) to fill all remaining free space on the microSD card, by running [this startup service](https://github.com/sakaki-/genpi64-overlay/blob/master/sys-apps/rpi3-init-scripts/files/init.d_autoexpand_root-4); if you _do not_ want this to happen (for example, because you wish to add extra partitions to the microSD card later yourself), then simply **rename** the (empty) sentinel file `autoexpand_root_partition` (in the top level directory of the `vfat` filesystem on the first partition of the microSD card) to `autoexpand_root_none`, before attempting to boot the image for the first time.
 
-Now continue reading at ["Booting!"](#booting), immediately below.
+Now continue reading at ["Booting!"](#booting), immediately below. Note, however, that in the case of this 'lite' image, after the startup / resize process has completed, you will be landed at a console login prompt. The login credentials are the same as for the full image, *viz.*:
+* default user **demouser**, password **raspberrypi64**;
+* **root** user password also **raspberrypi64**.
 
 ## <a id="booting"></a>Booting!
 
@@ -258,7 +261,8 @@ Note that **by [default](#why_weekly_update), this script will run automatically
 #  + kernel-bin : pull in the binary kernel package
 #  - porthash : pull in repo signature checker, for isshoni.org rsync
 #  + weekly-genup: pull in cron.weekly script, to run genup automatically
-#  + core: pull in core system packages for image (sudo etc.)
+#  + innercore: pull in essential system packages for image (RPi initscripts etc.)
+#  + core: pull in main packages for image (clang etc.) (requires innercore)
 #  + xfce: pull in packages for baseline Xfce4 system (requires core)
 #  - pitop: pull in Pi-Top support packages (NB most users will NOT want this;
 #      the Pi-Top is a DIY laptop kit based around the RPi3) (requires xfce)
@@ -283,8 +287,6 @@ When an update run has completed, if prompted to do so by genup (directly, or at
 pi64 ~ # dispatch-conf
 ```
 to deal with any config file clashes that may have been introduced by the upgrade process.
-
-> Note for Pi-Top variant users: if you are wondering about the `pitop` USE flag, it is set globally, in `/etc/portage/make.conf` on your image, rather than in `/etc/portage/package.use/rpi-64bit-meta`, as it affects a number of packages.
 
 For more information about Gentoo's package management, see [my notes here](https://wiki.gentoo.org/wiki/Sakaki's_EFI_Install_Guide/Installing_the_Gentoo_Stage_3_Files#Gentoo.2C_Portage.2C_Ebuilds_and_emerge_.28Background_Reading.29).
 
@@ -375,7 +377,7 @@ Have fun! ^-^
 
 You don't need to read the following notes to use the image, but they may help you better understand what is going on!
 
-> NB some of the following notes need updating for the new 1.5.0 image. I plan to do this shortly.
+> NB some of the following notes need updating for the new 1.5.1 image. I plan to do this shortly.
 
 * For simplicity, the image uses a single `ext4` root partition (includes `/home`), which [by default](#morespace) will be auto-resized to fill all remaining free space on the microSD card on first boot. Also, to allow large packages (such as `gcc`) to be built from source without running out of memory on smaller systems, a 1 GiB swapfile has been set up at `/var/cache/swap/swap1`, and on boot this will be auto-resized if necessary, if space becomes tight (by [this service](https://github.com/sakaki-/genpi64-overlay/tree/master/sys-apps/rpi3-expand-swap)). Feel free to modify this configuration as desired (for example, you can significantly improve performance under load by setting up a dedicated swap device on a separate bus from the system's rootfs; for details, please see [this short tutorial](https://github.com/sakaki-/gentoo-on-rpi-64bit/wiki/Improve-Swap-Perfomance-on-your-RPi3)).
    > Incidentally, it *is* possible to get an RPi3 Model B to boot from a USB drive (no microSD card required); see for example [these instructions](http://www.makeuseof.com/tag/make-raspberry-pi-3-boot-usb/) (try at your own risk!), and furthermore the RPi3 Model B+ can boot a USB-written image *without* modification, as it has the necessary OTP fuses factory set. Alternatively, you can retain `/boot` on the microSD card, but use a USB drive for the system root (remember to modify `/boot/cmdline.txt` and `/etc/fstab` accordingly, if you choose to go this route). At the time of writing, the RPi4 does not yet support direct USB boot (although this feature is pending, and you can always use the split sys{b,r}oot method just mentioned: NB, *if* doing so I recommend you use the a USB2 port for your rootfs on the RPi4, until the [FIQ](https://www.raspberrypi.org/forums/viewtopic.php?p=1510558#p1510558) is implemented on the aarch64 kernel).
@@ -419,7 +421,7 @@ on the image to include v3d support for the new Pi4). Note however that this is 
 
 * As of v1.5.0 of the image, full `pulseaudio` support has been built into all supplied packages (via a global USE flag).
 
-* If you are using the Pi-Top image, and have one or more pi-topSPEAKER units plugged in, the HDMI audio stream will [automatically play](#ptspeaker) though these. You should also be able to change the [screen backlight brightness](#ptbrightness) using the [keyboard buttons](#ptkeycuts), see the [remaining battery charge](#ptbattery) in the top panel, and find that the when you shut down your system, the hub [powers off](#ptpoweroff) your Pi-Top properly.
+* If you are using a Pi-Top chassis, have emerged `rpi-64bit-meta` with the `pitop` USE flag set, and have one or more pi-topSPEAKER units plugged in, the HDMI audio stream will [automatically play](#ptspeaker) though these. You should also be able to change the [screen backlight brightness](#ptbrightness) using the [keyboard buttons](#ptkeycuts), see the [remaining battery charge](#ptbattery) in the top panel, and find that the when you shut down your system, the hub [powers off](#ptpoweroff) your Pi-Top properly.
   * Pi-Top (v1) users: you can (at your option) swap out your existing RPi3 Model B board for a RPi3 Model B+; everything should work as before, but performance will be increased somewhat (the peak normal clock speed of the B+ is faster (at 1.4GHz) than the B (at 1.2GHz); also, the B+ includes a heat spreader, so is less prone to thermal throttling when worked hard). While you could in principle also use an RPi4 in the Pi-Top chassis, you'd need an adaptor for the microHDMI and power connectors, and you may also find the unit draws more power than the Pi-Top circuitry can supply, so this approach is not recommended.
 
 * The frequency governor is switched to `ondemand` (from the default, `powersave`), for better performance, as of version 1.0.1. This is managed by the `sys-apps/rpi3-ondemand-cpufreq` package (see [below](#ondemand)).
@@ -487,7 +489,7 @@ on the image to include v3d support for the new Pi4). Note however that this is 
 
 The following are some notes regarding optional maintenance tasks. The topics here may be of interest to advanced users, but it is not necessary to read these to use the image day-to-day.
 
-> NB some of the following notes need updating for the new 1.5.0 image. I plan to do this shortly.
+> NB some of the following notes need updating for the new 1.5.1 image. I plan to do this shortly.
 
 ### <a id="revertkernelbin"></a>Optional: Switch Back to a 'Pure' `bcmrpi3_defconfig` / `bcm2711_defconfig` Kernel
 
@@ -584,7 +586,8 @@ Next, remove the provided binary kernel. Edit the file `/etc/portage/package.use
 #  + kernel-bin : pull in the binary kernel package
 #  - porthash : pull in repo signature checker, for isshoni.org rsync
 #  + weekly-genup: pull in cron.weekly script, to run genup automatically
-#  + core: pull in core system packages for image (sudo etc.)
+#  + innercore: pull in essential system packages for image (RPi initscripts etc.)
+#  + core: pull in main packages for image (clang etc.) (requires innercore)
 #  + xfce: pull in packages for baseline Xfce4 system (requires core)
 #  - pitop: pull in Pi-Top support packages (NB most users will NOT want this;
 #      the Pi-Top is a DIY laptop kit based around the RPi3) (requires xfce)
@@ -756,7 +759,7 @@ Leave the rest of the file as-is. Save, and exit `nano`. Reboot your system, and
 
 The following are some notes about the detailed structure of the image. It is not necessary to read these to use the image day-to-day. <!--  -->
 
-> NB some of the following notes need updates/expansion for the new 1.5.0 image. I plan to do this shortly.
+> NB some of the following notes need updates/expansion for the new 1.5.1 image. I plan to do this shortly.
 
 ### RPi-Specific Ebuilds
 
@@ -803,7 +806,7 @@ make **updating a typical system (with few user-added packages) possible with a 
 
 ### Subscribed Ebuild Repositories (_aka_ Overlays)
 
-> NB some of the following need updates/expansion for the new 1.5.0 image. I plan to do this shortly.
+> NB some of the following need updates/expansion for the new 1.5.1 image. I plan to do this shortly.
 
 The image is subscribed to the following ebuild repositories:
 * **gentoo**: this is the main Gentoo tree of course, but is (by default) supplied via `rsync://isshoni.org/gentoo-portage-pi64-gem`, a weekly-gated, signature-authenticated portage rsync mirror locked to the binhost's available files, as described [above](#rsync).
@@ -840,7 +843,8 @@ The image is subscribed to the following ebuild repositories:
      | `kernel-bin` | Yes | Pull in the `bcm{2711,rpi3}-kernel<-bis>-bin` binary kernel package. |
      | `porthash` | No | Pull in repo signature checker, for isshoni.org `rsync`. |
      |  `weekly-genup` | Yes | Pull in `cron.weekly` script, to run `genup` automatically. |
-     |  `core` | Yes | Pull in core system packages for image (`sudo` etc.). |
+     | `innercore` | Yes | Pull in essential system packages for image (RPi initscripts etc.) |
+     |  `core` | Yes | Pull in main packages for image (`clang` etc.). Requires `innercore`. |
      |  `xfce` | Yes | Pull in packages for baseline Xfce4 system. Requires `core`. |
      |  `pitop` | No | Pull in Pi-Top packages (NB most users **won't** want this). Requires `xfce`. |
      |  `apps` | No | Pull in baseline desktop apps (`libreoffice` etc). Requires `xfce`. |
@@ -883,19 +887,19 @@ The image is subscribed to the following ebuild repositories:
   * **xfce-extra/xfce4-fixups-rpi3**
     Effects some useful new-user fixups for Xfce4 on the RPi3 (forcing compositing to sync to the vertical blank etc.). Installs an `/etc/xdg/autostart/xfce4-fixups-rpi3.desktop` entry.
   * <a id="ptkeycuts"></a>**xfce-extra/xfce4-keycuts-pitop**
-    Installs some simple keyboard shortcuts for the Pi-Top (an RPi3-based DIY laptop). Only installed on the Pi-Top variant image.
+    Installs some simple keyboard shortcuts for the Pi-Top (an RPi3-based DIY laptop). Only installed when the `pitop` USE flag is set on `rpi-64bit-meta`.
   * <a id="ptbattery"></a>**xfce-extra/xfce4-battery-plugin** [upstream](https://github.com/rricharz/pi-top-battery-status)
-    A modified version of the standard `xfce4-battery-plugin` gas gauge. It is patched with code from [rricharz](https://github.com/rricharz/pi-top-battery-status) to query the status of the Pi-Top's battery over I2C; this code is activated by building with the `pitop` USE flag. Only installed on the Pi-Top variant image.
+    A modified version of the standard `xfce4-battery-plugin` gas gauge. It is patched with code from [rricharz](https://github.com/rricharz/pi-top-battery-status) to query the status of the Pi-Top's battery over I2C; this code is activated by building `rpi-64bit-meta` with the `pitop` USE flag.
   * <a id="ptpoweroff"></a>**sys-apps/pitop-poweroff**
-    Provides a simple OpenRC shutdown service, to ensure that the Pi-Top's onboard hub controller is properly powered off. Only installed on the Pi-Top variant image.
+    Provides a simple OpenRC shutdown service, to ensure that the Pi-Top's onboard hub controller is properly powered off. Only installed when the `pitop` USE flag is set on `rpi-64bit-meta`.
   * **sys-apps/rpi3-spidev**
-    Provides a `udev` rule for SPI access on the RPi3/4; ensures that the `/dev/spidevN.M` devices are read/write for all members of the `wheel` group, not just `root`. Only installed by default on the Pi-Top variant image (but usable on any RPi3/RPi4).
+    Provides a `udev` rule for SPI access on the RPi3/4; ensures that the `/dev/spidevN.M` devices are read/write for all members of the `wheel` group, not just `root`. Only installed when the `pitop` USE flag is set on `rpi-64bit-meta` (but usable on any RPi3/RPi4).
   * **sys-apps/rpi3-i2cdev**
-    Proves an OpenRC service and `udev` rule for I2C access on the RPi3/4. Ensures that the `i2c-dev` module is `modprobe`d, and that the `/dev/i2c-[0-9]` devices are read/write for all members of the `wheel` group, not just `root`. Only installed by default on the Pi-Top variant image (but usable on any RPi3/4).
+    Proves an OpenRC service and `udev` rule for I2C access on the RPi3/4. Ensures that the `i2c-dev` module is `modprobe`d, and that the `/dev/i2c-[0-9]` devices are read/write for all members of the `wheel` group, not just `root`. Only installed when the `pitop` USE flag is set on `rpi-64bit-meta` (but usable on any RPi3/4).
   * <a id="ptbrightness"></a>**dev-embedded/pitop-utils** [upstream](https://github.com/rricharz/pi-top-install)
-    Provides the `pt-poweroff` and `pt-brightness` `sbin` utilities for the Pi-Top. Only installed on the Pi-Top variant image.
+    Provides the `pt-poweroff` and `pt-brightness` `sbin` utilities for the Pi-Top. Only installed when the `pitop` USE flag is set on `rpi-64bit-meta`.
   * <a id="ptspeaker"></a>**dev-embedded/pitop-speaker** [upstream](https://github.com/pi-top/pi-topSPEAKER)
-    Provides the `ptspeaker` Python 3 package and accompanying OpenRC service, to initialize pitopSPEAKER add-on-boards. The init has been adapted from the original Debian package and does _not_ use `pt-peripherals-daemon`. Only installed on the Pi-Top variant image
+    Provides the `ptspeaker` Python 3 package and accompanying OpenRC service, to initialize pitopSPEAKER add-on-boards. The init has been adapted from the original Debian package and does _not_ use `pt-peripherals-daemon`. Only installed when the `pitop` USE flag is set on `rpi-64bit-meta`.
   * **x11-misc/twofing** [upstream](http://plippo.de/p/twofing)
     Provides the `twofing` daemon, which converts touchscreen gestures into mouse and keyboard events. Included primarily for use with the official 7" RPi (1,2,3) touchscreen (not sure if this is yet compatible with the RPi4).
   * **app-accessibility/onboard** [upstream](https://launchpad.net/onboard)
