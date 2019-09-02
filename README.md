@@ -63,7 +63,7 @@ Please read the instructions below before proceeding. Also please note that all 
 ## Prerequisites
 
 To try this out, you will need:
-* A [microSD](https://en.wikipedia.org/wiki/Secure_Digital) card of _at least_ 16GB capacity (the full image is 1,720MiB compressed, 12.25GiB == 13.15GB uncompressed, so it should fit on any card marked as >= 16GB). If you intend to build many additional large packages (or kernels) on your RPi, a card of >16GB is recommended (the root partition will [automatically be expanded](#morespace) to fill the available space on your microSD card, on first boot). Depending on the slots available on your PC, you may also need an adaptor to allow the microSD card to be plugged in (to write the image to it initially). [Class A1 cards](https://www.raspberrypi.org/forums/viewtopic.php?p=1517864#p1517864) are particularly recommended, but not required.
+* For the **full** image (which most users will want), a [microSD](https://en.wikipedia.org/wiki/Secure_Digital) card of _at least_ 16GB capacity (as this image is 1,720MiB compressed, 12.25GiB == 13.15GB uncompressed, so it should fit on any card marked as >= 16GB). For the **'lite'** image, a card marked as >= 8GB should suffice (as this image is 664MiB compressed, 7.25GiB == 7.78GB uncompressed). If you intend to build many additional large packages (or kernels) on your RPi, a card of >16GB is recommended (the root partition will [automatically be expanded](#morespace) to fill the available space on your microSD card, on first boot). Depending on the slots available on your PC, you may also need an adaptor to allow the microSD card to be plugged in (to write the image to it initially). [Class A1 cards](https://www.raspberrypi.org/forums/viewtopic.php?p=1517864#p1517864) are particularly recommended, but not required.
    > I have found most SanDisk cards work fine; if you are having trouble, a good sanity check is to try writing the [standard Raspbian 32-bit image](https://www.raspberrypi.org/downloads/raspbian/) to your card, to verify that your Pi4 (or Pi3) will boot with it, before proceeding.
 
 * A Raspberry Pi 4 Model B, or Pi 3 Model B or B+ (obviously!).
@@ -129,7 +129,7 @@ On your Linux box, issue (you may need to be `root`, or use `sudo`, for the foll
 
 <img src="https://github.com/sakaki-/resources/raw/master/raspberrypi/pi4/rpi4-console.png" alt="[RPi4 Running Lite Image]" height="200px" align="right"/>
 
-to fetch the compressed disk image file (~668MiB) and its signature.
+to fetch the compressed disk image file (~664MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
