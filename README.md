@@ -157,6 +157,9 @@ Now continue reading at ["Booting!"](#booting), immediately below. Note, however
 * default user **demouser**, password **raspberrypi64**;
 * **root** user password also **raspberrypi64**.
 
+> Hint: you can use the bundled tool `nmtui` to easily establish a WiFi network connection from the command line.
+
+
 ## <a id="booting"></a>Booting!
 
 Begin with your RPi4 (or RPi3) powered off. Remove the current (Raspbian or other) microSD card from the board (if fitted), and store it somewhere safe.
