@@ -214,7 +214,7 @@ logout
 demouser@pi64 ~ $
 ```
 
-If you want to create your own account, you can do so easily. Open a terminal, su to root, then issue (adapting with your own details, obviously!):
+<a id="add_new_account"></a>If you want to create your own account, you can do so easily. Open a terminal, su to root, then issue (adapting with your own details, obviously!):
 ```console
 pi64 ~ # useradd --create-home --groups "adm,disk,lp,wheel,audio,video,cdrom,usb,users,plugdev,portage,cron" --shell /bin/bash --comment "Sakaki" sakaki
 pi64 ~ # passwd sakaki
