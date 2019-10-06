@@ -487,6 +487,8 @@ on the image to include v3d support for the new Pi4). Note however that this is 
   <img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi3/live-view-v4l2-codecs.jpg" alt="[Demonstrating Camera and Hardware Video Codec Access]" width="800px"/>
   <br>As of v1.5.0 of the image, these tools also work on an RPi4.<br>Given an appropriately patched `ffmpeg` (which is present in >=v1.4.0 of the image), exploiting these features from the command line is very simple - see the [example 'recipes'](https://github.com/sakaki-/gentoo-on-rpi-64bit/wiki/Using-the-RPi%27s-Video-Codecs-and-Camera-Module) (which work for both the RPi3 and RPi4) in this project's open [wiki](https://github.com/sakaki-/gentoo-on-rpi-64bit/wiki).
 
+* If you'd like to install [Flatpak](https://en.wikipedia.org/wiki/Flatpak) apps on your RPi, please see [these notes](https://github.com/sakaki-/gentoo-on-rpi-64bit/wiki/Install-Flatpak-Applications-on-your-RPi) for further details.
+
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
 
