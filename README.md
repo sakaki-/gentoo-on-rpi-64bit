@@ -573,7 +573,7 @@ This will a reasonable time to complete. (Incidentally, the build is forced to r
 
 With the kernel built, we need to install it. Assuming your first microSD card partition is mounted as `/boot` (which, given the `/etc/fstab` on the image (visible [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/blob/master/reference/fstab)), it should be), become root.
 
-Next, remove the provided binary kernel. Edit the file `/etc/portage/package.use/rpi3-64bit-meta` so it reads (the relevant line is the last one):
+Next, remove the provided binary kernel. Edit the file `/etc/portage/package.use/rpi-64bit-meta` so it reads (the relevant line is the last one):
 ```bash
 # Enable/disable any metapackage USE flags you want here, and then
 # re-emerge dev-embedded/rpi-64bit-meta to have the effect taken up
