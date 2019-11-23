@@ -888,7 +888,7 @@ The image is subscribed to the following ebuild repositories:
   * **sys-boot/rpi3-64bit-firmware** [upstream](https://github.com/raspberrypi/firmware)
     Provides the firmware and config files required in `/boot` to boot the RPi3/4 in 64-bit mode. Does not provide the kernel or DTBs (see `sys-kernel/bcmrpi3-kernel<-bis>-bin`, above, for that). A weekly check is made to see if a new tag has been added to the official [`raspberrypi/firmware/boot`](https://github.com/raspberrypi/firmware/tree/master/boot) upstream, and, if so, a matching ebuild is automatically created here.
   * **dev-embedded/wiringpi** [upstream](http://wiringpi.com/)
-    Provides Gordon Henderson's `WiringPi`, a PIN based GPIO access library (with accompanying `gpio` utility). Now [deprecated](http://wiringpi.com/wiringpi-deprecated/); use e.g. the bundled `pigpio` library instead.
+    Provides Gordon Henderson's `WiringPi`, a PIN based GPIO access library (with accompanying `gpio` utility). Now [deprecated](http://wiringpi.com/wiringpi-deprecated/), and will not work correctly on the RPi4 in any event; use e.g. the bundled `pigpio` library instead.
   * **xfce-extra/xfce4-fixups-rpi3**
     Effects some useful new-user fixups for Xfce4 on the RPi3 (forcing compositing to sync to the vertical blank etc.). Installs an `/etc/xdg/autostart/xfce4-fixups-rpi3.desktop` entry.
   * <a id="ptkeycuts"></a>**xfce-extra/xfce4-keycuts-pitop**
@@ -955,6 +955,11 @@ The image is subscribed to the following ebuild repositories:
     Provides a trivial video player app (based on `ffplay`) that uses the RPi3/4's hardware video codecs where possible.
   * **media-video/pi-ffcam**
     Provides a trivial live view app for the RPi3/4's (optional) camera module.
+
+  * **dev-lang/python**
+  Provides builds of the `python` language interpreter (for slots 3.6 and 3.7) that have profile guided optimisation (`pgo`) turned on, as this can yield a significant performance improvement (see e.g. [these notes](TODO)).
+  * **x11-misc/arandr**
+  Provides a slightly patched version of the `arandr` screen configuration GUI, which automatically applies setup files saved as `~/.screenlayout/default.sh` upon login.
 
 
 ## <a id="projectwiki"></a>Project Wiki
