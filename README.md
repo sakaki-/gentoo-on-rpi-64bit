@@ -182,6 +182,8 @@ The whole process (from first power on to graphical desktop) should take less th
 
 > If the edges of the desktop appear "clipped" by your display (this mostly happens when using HDMI TVs), issue `sudo mousepad /boot/config.txt`, comment out the line `disable_overscan=1` (so it reads instead `#disable_overscan=1`), save the file, and then reboot (from v1.3.1, you can also enable and configure overscan via the <kbd>Rpi Config Tool</kbd>, as noted above). Please note that with modern boot firmware, [overscan is ignored](https://github.com/raspberrypi/linux/issues/3059#issuecomment-510108535) if a DMT mode is set.
 
+> Tip: if you'd like to set up a persistent dual-monitor setup on an RPi4, please see my short tutorial on this project's open wiki [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/wiki/Set-Up-Dual-Displays-on-your-RPi4).
+
 ## <a id="using_gentoo"></a>Using Gentoo
 
 The supplied image contains a fully-configured `~arm64` Gentoo system (*not* simply a [minimal install](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Media#Minimal_installation_CD) or [stage 3](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Media#What_are_stages_then.3F)), with a complete Portage tree already downloaded, so you can immediately perform `emerge` operations etc. Be aware that, as shipped, it uses **UK locale settings, keyboard mapping, timezone and WiFi regulatory domain**; however, these are easily changed if desired. See the Gentoo Handbook ([here](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Timezone) and [here](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/System#Init_and_boot_configuration)) for details on the first three; to customize the WiFi regulatory domain, start the <kbd>Applications</kbd>&rarr;<kbd>Settings</kbd>&rarr;<kbd>RPi Config Tool</kbd> app, select the <kbd>WiFi</kbd> tab, choose your location from the drop-down, click <kbd>Save and Exit</kbd>, and reboot when prompted.
@@ -503,6 +505,8 @@ on the image to include v3d support for the new Pi4). Note however that this is 
   * `/usr/portage/distfiles` -> `/var/cache/distfiles` (`$DISTDIR`)
   * `/usr/portage/packages` -> `/var/cache/binpkgs` (`$PKGDIR`)
   * `/usr/local/portage/<overlay>` -> `/var/db/repos/<overlay>`
+
+* If you'd like to set up a persistent dual-monitor setup on an RPi4, please see my short tutorial on this project's open wiki [here](https://github.com/sakaki-/gentoo-on-rpi-64bit/wiki/Set-Up-Dual-Displays-on-your-RPi4).
 
 
 ## <a id="maintnotes"></a>Maintenance Notes (Advanced Users Only) (&darr;[skip](#miscpoints))
