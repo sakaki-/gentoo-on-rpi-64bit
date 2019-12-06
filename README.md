@@ -648,7 +648,7 @@ pi64 linux # cp -v arch/arm64/boot/dts/broadcom/bcm2710-rpi-cm3.dtb /boot/
 
 Then, copy across the device tree overlay blobs (these are now the responsibility of the kernel, not the boot firmware, package, so it is essential you add them):
 ```console
-pi64 linux # cp -rv arch/arm64/boot/dts/overlays /boot/
+pi64 linux # cp -rv arch/arm64/boot/dts/overlays/ /boot/
 ```
 
 Lastly, install the modules:
