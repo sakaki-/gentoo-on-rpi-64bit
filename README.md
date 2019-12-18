@@ -95,7 +95,7 @@ to fetch the compressed disk image file (~1,842MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
-# gpg --recv-key DDE76CEA
+# gpg --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-key DDE76CEA
 # gpg --verify genpi64.img.xz.asc genpi64.img.xz
 ```
 
@@ -133,7 +133,7 @@ to fetch the compressed disk image file (~680MiB) and its signature.
 
 Next, if you like, verify the image using gpg (this step is optional):
 ```console
-# gpg --recv-key DDE76CEA
+# gpg --keyserver hkp://ipv4.pool.sks-keyservers.net:80 --recv-key DDE76CEA
 # gpg --verify genpi64lite.img.xz.asc genpi64lite.img.xz
 ```
 
