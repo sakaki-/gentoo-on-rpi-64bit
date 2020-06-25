@@ -14,7 +14,7 @@ The kernel and userland are both 64-bit (`arm64`/`aarch64`), and support for the
 
 Here's a screenshot of the image running on a dual-display RPi4 B (click to show a higher resolution view):
 
-<a href="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi4/demo-screenshot-1.6.0-pi4-ds-white-bg.jpg"><img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi4/demo-screenshot-1.6.0-pi4-ds-white-bg-small.jpg" alt="[gentoo-on-rpi-64bit in use on Pi4 (screenshot)]" width="960px"/></a>
+<a href="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi4/demo-screenshot-1.6.0-pi4-ds-white-bg-v2.jpg"><img src="https://raw.githubusercontent.com/sakaki-/resources/master/raspberrypi/pi4/demo-screenshot-1.6.0-pi4-ds-white-bg-small-v2.jpg" alt="[gentoo-on-rpi-64bit in use on Pi4 (screenshot)]" width="960px"/></a>
 
 The image may be downloaded from the link below (or via `wget`, per the instructions which follow).
 
